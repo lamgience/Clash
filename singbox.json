@@ -61,8 +61,8 @@
       "tag": "🎈 自动选择",
       "type": "urltest",
       "outbounds": [
-        "剩余流量：1910.3 GB",
-        "距离下次重置剩余：19 天",
+        "剩余流量：1953.08 GB",
+        "距离下次重置剩余：29 天",
         "套餐到期：2025-02-28",
         "🇮🇳 跳转域名{请勿连接}:nflink.xyz",
         "🇷🇺 俄罗斯 A",
@@ -266,7 +266,7 @@
       "tag": "🌂英国",
       "type": "urltest",
       "outbounds": [
-        "剩余流量：1910.3 GB",
+        "剩余流量：1953.08 GB",
         "🇬🇧 英国 A",
         "🇬🇧 英国 B"
       ],
@@ -330,7 +330,7 @@
       ]
     },
     {
-      "tag": "剩余流量：1910.3 GB",
+      "tag": "剩余流量：1953.08 GB",
       "type": "shadowsocks",
       "server": "1.1.1.1",
       "server_port": 53,
@@ -338,7 +338,7 @@
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
     },
     {
-      "tag": "距离下次重置剩余：19 天",
+      "tag": "距离下次重置剩余：29 天",
       "type": "shadowsocks",
       "server": "1.1.1.1",
       "server_port": 53,
@@ -388,7 +388,7 @@
     {
       "tag": "🇭🇰 香港动态 A",
       "type": "shadowsocks",
-      "server": "shcuhk-1.nextnet.cyou",
+      "server": "cnexhk.nesx.xyz",
       "server_port": 563,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
@@ -396,7 +396,7 @@
     {
       "tag": "🇭🇰 香港动态 B",
       "type": "shadowsocks",
-      "server": "shcuhk-1.nextnet.cyou",
+      "server": "cnexhk.nesx.xyz",
       "server_port": 564,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
@@ -404,7 +404,7 @@
     {
       "tag": "🇭🇰 香港动态 C",
       "type": "shadowsocks",
-      "server": "shcuhk-1.nextnet.cyou",
+      "server": "cnexhk.nesx.xyz",
       "server_port": 565,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
