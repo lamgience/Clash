@@ -1,51 +1,78 @@
 {
   "log": {
+    "disabled": false,
     "level": "info",
-    "timestamp": true
+    "output": "",
+    "timestamp": false
   },
   "experimental": {
     "clash_api": {
       "external_controller": "127.0.0.1:20123",
       "external_ui": "",
-      "secret": "ID_ykwbmd0y",
       "external_ui_download_url": "",
-      "default_mode": "rule"
+      "external_ui_download_detour": "🎯 全球直连",
+      "secret": "ID_e9aavd7g",
+      "default_mode": "rule",
+      "access_control_allow_origin": [
+        "*"
+      ],
+      "access_control_allow_private_network": false
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false,
-      "store_rdrc": false
+      "path": "cache.db",
+      "cache_id": "",
+      "store_fakeip": true,
+      "store_rdrc": true,
+      "rdrc_timeout": "7d"
     }
   },
   "inbounds": [
     {
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 20122,
-      "sniff": true,
-      "sniff_override_destination": false,
-      "domain_strategy": "ipv4_only",
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": false
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "",
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": true,
+      "route_address": [
+        "0.0.0.0/1",
+        "128.0.0.0/1",
+        "::/1",
+        "8000::/1"
+      ],
+      "endpoint_independent_nat": false,
+      "stack": "mixed"
     }
   ],
   "outbounds": [
     {
-      "tag": "🚀 节点选择",
       "type": "selector",
+      "tag": "🚀 节点选择",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "🎈 自动选择"
       ]
     },
     {
-      "tag": "🎈 自动选择",
       "type": "urltest",
+      "tag": "🎈 自动选择",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
       "outbounds": [
-        "剩余流量：1784.14 GB",
-        "距离下次重置剩余：17 天",
+        "剩余流量：1993.24 GB",
+        "距离下次重置剩余：15 天",
         "套餐到期：2025-02-28",
-        "跳转域名{请勿连接}:nflink.xyz",
+        "跳转域名{请勿连接}:nflink.info",
+        "[hy2]香港 1 直连",
+        "[hy2]香港 2 直连",
+        "[hy2]香港 3 直连",
         "俄罗斯 A",
         "俄罗斯 B",
         "[直连] 香港",
@@ -112,42 +139,53 @@
         "意大利",
         "荷兰",
         "德国"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
-    },
-    {
-      "tag": "🎯 全球直连",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "block"
       ]
     },
     {
-      "tag": "🛑 全球拦截",
+      "type": "direct",
+      "tag": "🎯 全球直连"
+    },
+    {
       "type": "selector",
+      "tag": "🌍GLOBAL",
+      "interrupt_exist_connections": true,
       "outbounds": [
-        "block",
-        "direct"
+        "🚀 节点选择",
+        "🎈 自动选择",
+        "🎯 全球直连",
+        "🐟 漏网之鱼"
       ]
     },
     {
-      "tag": "🤖AI",
-      "type": "selector",
-      "outbounds": [
-        "🗽美国",
-        "🌸日本",
-        "⛵新加坡",
-        "🌽韩国",
-        "🌂英国"
-      ]
-    },
-    {
-      "tag": "🛩️香港",
       "type": "urltest",
+      "tag": "🗽美国",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
       "outbounds": [
+        "美国 A",
+        "美国 B",
+        "美国 C",
+        "美国 D",
+        "美国 E",
+        "美国 F",
+        "美国 G",
+        "美国 H",
+        "美国 I"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🛩️香港",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "[hy2]香港 1 直连",
+        "[hy2]香港 2 直连",
+        "[hy2]香港 3 直连",
         "[直连] 香港",
         "香港动态 A",
         "香港动态 B",
@@ -171,57 +209,15 @@
         "HKG Q",
         "HKG R",
         "HKG S"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
+      ]
     },
     {
-      "tag": "🗽美国",
       "type": "urltest",
-      "outbounds": [
-        "美国 A",
-        "美国 B",
-        "美国 C",
-        "美国 D",
-        "美国 E",
-        "美国 F",
-        "美国 G",
-        "美国 H",
-        "美国 I"
-      ],
+      "tag": "🐸台湾",
       "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
-    },
-    {
-      "tag": "🌸日本",
-      "type": "urltest",
-      "outbounds": [
-        "日本 A",
-        "日本 B"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
-    },
-    {
-      "tag": "⛵新加坡",
-      "type": "urltest",
-      "outbounds": [
-        "新加坡 A",
-        "新加坡 B",
-        "新加坡 C",
-        "新加坡 D",
-        "新加坡 E"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
-    },
-    {
-      "tag": "🪷台湾",
-      "type": "urltest",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
       "outbounds": [
         "台湾",
         "台湾 B",
@@ -238,47 +234,86 @@
         "台湾 N",
         "台湾 O",
         "台湾 P"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
+      ]
     },
     {
-      "tag": "🌂英国",
       "type": "urltest",
-      "outbounds": [
-        "剩余流量：1784.14 GB",
-        "英国 A",
-        "英国 B"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
-    },
-    {
       "tag": "🐻俄罗斯",
-      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
       "outbounds": [
         "俄罗斯 A",
         "俄罗斯 B"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
+      ]
     },
     {
-      "tag": "🌽韩国",
       "type": "urltest",
+      "tag": "🌸日本",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "日本 A",
+        "日本 B"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🌽韩国",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
       "outbounds": [
         "韩国"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 150
+      ]
     },
     {
-      "tag": "🌐其他",
+      "type": "urltest",
+      "tag": "🌂英国",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "英国 A",
+        "英国 B"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "⛵新加坡",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "新加坡 A",
+        "新加坡 B",
+        "新加坡 C",
+        "新加坡 D",
+        "新加坡 E"
+      ]
+    },
+    {
       "type": "selector",
+      "tag": "🤖Ai",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "🗽美国",
+        "⛵新加坡",
+        "🌸日本",
+        "🌂英国",
+        "🌽韩国"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🌐其他",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "加拿大",
         "西班牙",
@@ -290,38 +325,26 @@
       ]
     },
     {
-      "tag": "🐟 漏网之鱼",
       "type": "selector",
+      "tag": "🐟 漏网之鱼",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "🚀 节点选择",
         "🎯 全球直连"
       ]
     },
     {
-      "tag": "GLOBAL",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "block",
-        "🚀 节点选择",
-        "🎈 自动选择",
-        "🎯 全球直连",
-        "🛑 全球拦截",
-        "🐟 漏网之鱼"
-      ]
-    },
-    {
-      "tag": "剩余流量：1784.14 GB",
+      "tag": "剩余流量：1993.24 GB",
       "type": "shadowsocks",
-      "server": "1.1.1.1",
+      "server": "123.123.213.213",
       "server_port": 53,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
     },
     {
-      "tag": "距离下次重置剩余：17 天",
+      "tag": "距离下次重置剩余：15 天",
       "type": "shadowsocks",
-      "server": "1.1.1.1",
+      "server": "123.123.213.213",
       "server_port": 53,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
@@ -329,18 +352,72 @@
     {
       "tag": "套餐到期：2025-02-28",
       "type": "shadowsocks",
-      "server": "1.1.1.1",
+      "server": "123.123.213.213",
       "server_port": 53,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
     },
     {
-      "tag": "跳转域名{请勿连接}:nflink.xyz",
+      "tag": "跳转域名{请勿连接}:nflink.info",
       "type": "shadowsocks",
-      "server": "1.1.1.1",
+      "server": "123.123.213.213",
       "server_port": 53,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
+    },
+    {
+      "tag": "[hy2]香港 1 直连",
+      "type": "hysteria2",
+      "server": "hktv01.outleft-hy.xyz",
+      "server_port": 543,
+      "password": "e5377dbb-3744-4ce0-9285-a228983a650f",
+      "obfs": {
+        "type": "salamander",
+        "password": "ZDMwYmM5ZjYyZDVmMTk0Ng=="
+      },
+      "tls": {
+        "enabled": true,
+        "server_name": "hktv01.outleft-hy.xyz",
+        "insecure": false
+      },
+      "up_mbps": 600,
+      "down_mbps": 600
+    },
+    {
+      "tag": "[hy2]香港 2 直连",
+      "type": "hysteria2",
+      "server": "hktv02.outleft-hy.xyz",
+      "server_port": 5002,
+      "password": "e5377dbb-3744-4ce0-9285-a228983a650f",
+      "obfs": {
+        "type": "salamander",
+        "password": "YTRkMDE1MzQ4NmFlNmQxNg=="
+      },
+      "tls": {
+        "enabled": true,
+        "server_name": "hktv02.outleft-hy.xyz",
+        "insecure": false
+      },
+      "up_mbps": 1000,
+      "down_mbps": 1000
+    },
+    {
+      "tag": "[hy2]香港 3 直连",
+      "type": "hysteria2",
+      "server": "hktv03.outleft-hy.xyz",
+      "server_port": 543,
+      "password": "e5377dbb-3744-4ce0-9285-a228983a650f",
+      "obfs": {
+        "type": "salamander",
+        "password": "YjcwMDNiMDhhZWU1OTU4MA=="
+      },
+      "tls": {
+        "enabled": true,
+        "server_name": "hktv03.outleft-hy.xyz",
+        "insecure": false
+      },
+      "up_mbps": 1000,
+      "down_mbps": 1000
     },
     {
       "tag": "俄罗斯 A",
@@ -869,251 +946,250 @@
       "server_port": 640,
       "method": "aes-128-gcm",
       "password": "e5377dbb-3744-4ce0-9285-a228983a650f"
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    },
-    {
-      "type": "block",
-      "tag": "block"
     }
   ],
   "route": {
+    "rules": [
+      {
+        "action": "route",
+        "rule_set": [
+          "youtube"
+        ],
+        "outbound": "🎈 自动选择"
+      },
+      {
+        "action": "sniff",
+        "inbound": "tun-in"
+      },
+      {
+        "action": "hijack-dns",
+        "protocol": "dns"
+      },
+      {
+        "action": "route",
+        "clash_mode": "direct",
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "action": "route",
+        "clash_mode": "global",
+        "outbound": "🌍GLOBAL"
+      },
+      {
+        "action": "reject",
+        "protocol": "quic"
+      },
+      {
+        "action": "reject",
+        "rule_set": [
+          "Category-Ads"
+        ]
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "GeoSite-Private"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "GeoSite-CN"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "GeoIP-Private"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "GeoIP-CN"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "GeoLocation-!CN"
+        ],
+        "outbound": "🚀 节点选择"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "jp"
+        ],
+        "outbound": "🌸日本"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "OpenAi"
+        ],
+        "outbound": "🤖Ai"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "google-gemini"
+        ],
+        "outbound": "🤖Ai"
+      },
+      {
+        "action": "route",
+        "rule_set": [
+          "openai"
+        ],
+        "outbound": "🤖Ai"
+      }
+    ],
     "rule_set": [
+      {
+        "tag": "youtube",
+        "type": "local",
+        "path": "../rulesets/geosite_youtube.json",
+        "format": "source"
+      },
+      {
+        "tag": "jp",
+        "type": "local",
+        "path": "../rulesets/geoip_jp.srs",
+        "format": "binary"
+      },
       {
         "tag": "google-gemini",
         "type": "local",
-        "format": "source",
-        "path": "../rulesets/geosite_google-gemini.json"
+        "path": "../rulesets/geosite_google-gemini.json",
+        "format": "source"
       },
       {
         "tag": "openai",
         "type": "local",
-        "format": "source",
-        "path": "../rulesets/geosite_openai.json"
+        "path": "../rulesets/geosite_openai.json",
+        "format": "source"
       },
       {
-        "tag": "Youtube",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs",
-        "download_detour": "direct"
+        "tag": "OpenAi",
+        "type": "local",
+        "path": "../rulesets/Open ai.srs",
+        "format": "binary"
       },
       {
-        "tag": "Adobe",
+        "tag": "Category-Ads",
         "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/adobe.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "Steam",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "Google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "CATEGORY-ADS",
-        "type": "remote",
-        "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
+        "format": "binary",
         "download_detour": "🎯 全球直连"
       },
       {
-        "tag": "GEOIP-CN",
+        "tag": "GeoIP-Private",
         "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs",
         "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoSite-Private",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
+        "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoIP-CN",
+        "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+        "format": "binary",
         "download_detour": "🎯 全球直连"
       },
       {
-        "tag": "GEOSITE-CN",
+        "tag": "GeoSite-CN",
         "type": "remote",
-        "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "download_detour": "🎯 全球直连"
-      },
-      {
-        "tag": "GEOLOCATION-!CN",
-        "type": "remote",
         "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoLocation-!CN",
+        "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+        "format": "binary",
         "download_detour": "🎯 全球直连"
       }
     ],
-    "rules": [
-      {
-        "rule_set": "google-gemini",
-        "outbound": "🤖AI"
-      },
-      {
-        "rule_set": "Youtube",
-        "outbound": "🎈 自动选择"
-      },
-      {
-        "rule_set": "Adobe",
-        "outbound": "🎈 自动选择"
-      },
-      {
-        "rule_set": "Steam",
-        "outbound": "🛩️香港"
-      },
-      {
-        "rule_set": "Google",
-        "outbound": "🎈 自动选择"
-      },
-      {
-        "rule_set": "openai",
-        "outbound": "🤖AI"
-      },
-      {
-        "protocol": "dns",
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "clash_mode": "direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "global",
-        "outbound": "GLOBAL"
-      },
-      {
-        "network": "udp",
-        "port": 443,
-        "outbound": "🛑 全球拦截"
-      },
-      {
-        "rule_set": "CATEGORY-ADS",
-        "outbound": "🛑 全球拦截"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "🎯 全球直连"
-      },
-      {
-        "rule_set": "GEOIP-CN",
-        "outbound": "🎯 全球直连"
-      },
-      {
-        "rule_set": "GEOSITE-CN",
-        "outbound": "🎯 全球直连"
-      },
-      {
-        "rule_set": "GEOLOCATION-!CN",
-        "outbound": "🚀 节点选择"
-      }
-    ],
-    "final": "🐟 漏网之鱼",
-    "auto_detect_interface": true
+    "auto_detect_interface": true,
+    "final": "🎈 自动选择"
   },
   "dns": {
     "servers": [
       {
-        "tag": "remote-dns",
+        "tag": "Local-DNS",
+        "address": "https://223.5.5.5/dns-query",
+        "address_resolver": "Local-DNS-Resolver",
+        "detour": "🎯 全球直连"
+      },
+      {
+        "tag": "Local-DNS-Resolver",
+        "address": "223.5.5.5",
+        "detour": "🎯 全球直连"
+      },
+      {
+        "tag": "Remote-DNS",
         "address": "tls://8.8.8.8",
-        "address_resolver": "remote-resolver-dns",
+        "address_resolver": "Remote-DNS-Resolver",
         "detour": "🚀 节点选择"
       },
       {
-        "tag": "local-dns",
-        "address": "https://223.5.5.5/dns-query",
-        "address_resolver": "resolver-dns",
-        "detour": "direct"
-      },
-      {
-        "tag": "resolver-dns",
-        "address": "223.5.5.5",
-        "detour": "direct"
-      },
-      {
-        "tag": "remote-resolver-dns",
+        "tag": "Remote-DNS-Resolver",
         "address": "8.8.8.8",
         "detour": "🚀 节点选择"
-      },
-      {
-        "tag": "fakeip-dns",
-        "address": "fakeip"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
       }
     ],
-    "disable_cache": false,
-    "disable_expire": false,
-    "independent_cache": false,
     "rules": [
       {
-        "outbound": "any",
-        "disable_cache": true,
-        "server": "local-dns"
+        "action": "route",
+        "server": "Local-DNS",
+        "outbound": "any"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "domain_suffix": [
-              ".lan",
-              ".localdomain",
-              ".example",
-              ".invalid",
-              ".localhost",
-              ".test",
-              ".local",
-              ".home.arpa",
-              ".msftconnecttest.com",
-              ".msftncsi.com"
-            ],
-            "invert": true
-          },
-          {
-            "query_type": [
-              "A",
-              "AAAA"
-            ]
-          }
-        ],
-        "server": "fakeip-dns"
+        "action": "route",
+        "server": "Local-DNS",
+        "clash_mode": "direct"
       },
       {
-        "clash_mode": "direct",
-        "server": "local-dns"
+        "action": "route",
+        "server": "Remote-DNS",
+        "clash_mode": "global"
       },
       {
-        "clash_mode": "global",
-        "server": "remote-dns"
+        "action": "route",
+        "server": "Local-DNS",
+        "rule_set": [
+          "GeoSite-CN"
+        ]
       },
       {
-        "rule_set": "GEOSITE-CN",
-        "server": "local-dns"
-      },
-      {
-        "rule_set": "GEOLOCATION-!CN",
-        "server": "remote-dns"
+        "action": "route",
+        "server": "Remote-DNS",
+        "rule_set": [
+          "GeoLocation-!CN"
+        ]
       }
     ],
     "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.1/16",
+      "enabled": false,
+      "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18"
     },
-    "final": "remote-dns",
-    "strategy": "ipv4_only"
+    "disable_cache": false,
+    "disable_expire": false,
+    "independent_cache": false,
+    "final": "Remote-DNS"
   }
 }
