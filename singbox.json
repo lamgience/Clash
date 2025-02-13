@@ -951,13 +951,6 @@
   "route": {
     "rules": [
       {
-        "action": "route",
-        "rule_set": [
-          "youtube"
-        ],
-        "outbound": "🎈 自动选择"
-      },
-      {
         "action": "sniff",
         "inbound": "tun-in"
       },
@@ -1050,12 +1043,6 @@
       }
     ],
     "rule_set": [
-      {
-        "tag": "youtube",
-        "type": "local",
-        "path": "../rulesets/geosite_youtube.json",
-        "format": "source"
-      },
       {
         "tag": "jp",
         "type": "local",
