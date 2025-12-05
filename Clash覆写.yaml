@@ -207,7 +207,7 @@ proxy-groups:
       - DIRECT
       - 节点选择
       - 自动选择
-  name: 自由意志
+  - name: 自由意志
     icon: https://img.icons8.com/?size=100&id=undefined&format=png&color=000000
     type: select
     proxies:
