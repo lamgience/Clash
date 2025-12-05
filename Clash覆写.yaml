@@ -351,6 +351,7 @@ proxy-groups:
       - 英国节点
       - 韩国节点
       - 奈飞节点
+      - 自由意志
 
 rule-providers:
   LocalAreaNetwork:
