@@ -283,7 +283,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
   - name: 俄罗斯节点
-    icon: https://img.icons8.com/?size=100&id=VvaLezhzRlkv&format=png&color=000000
+    icon: https://img.icons8.com/?size=100&id=rcIHDZzZWKJ8&format=png&color=000000
     include-all: true
     filter: (?i)俄罗斯|ru
     type: url-test
