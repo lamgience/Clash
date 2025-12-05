@@ -39,7 +39,7 @@ proxy-groups:
       - 手动切换
       - DIRECT
   - name: Ai
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
+    icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
     type: select
     proxies:
       - 节点选择
@@ -431,12 +431,19 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  Telegram:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Telegram.list
-    path: ./ruleset/Telegram.list
-    behavior: classical
+  telegram_domain:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.yaml
+    path: ./ruleset/telegram_domain.yaml
+    behavior: domain
     interval: 86400
-    format: text
+    format: yaml
+    type: http
+  telegram_ip:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.yaml
+    path: ./ruleset/telegram_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
     type: http
   OpenAi:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list
@@ -448,7 +455,7 @@ rule-providers:
   Gemini:
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.yaml
     path: ./ruleset/gemini.yaml
-    behavior: classical
+    behavior: domain
     interval: 86400
     format: yaml
     type: http  
@@ -476,7 +483,7 @@ rule-providers:
   perplexity:
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/perplexity.yaml
     path: ./ruleset/perplexity.yaml
-    behavior: classical
+    behavior: domain
     interval: 86400
     format: yaml
     type: http
@@ -602,7 +609,7 @@ rule-providers:
   Custom:
     url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Custom%20rules.yaml
     path: ./ruleset/Custom.yaml
-    behavior: classical
+    behavior: domain
     interval: 86400
     format: yaml
     type: http
@@ -619,7 +626,8 @@ rules:
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
   - "RULE-SET,Apple,苹果服务"
-  - "RULE-SET,Telegram,电报消息"
+  - "RULE-SET,telegram_domain,电报消息"
+  - "RULE-SET,telegram_ip,电报消息"
   - "RULE-SET,OpenAi,Ai"
   - "RULE-SET,copilot,Ai"
   - "RULE-SET,bard,Ai"
