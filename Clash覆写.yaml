@@ -173,7 +173,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
   - name: 苹果服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
+    icon: https://img.icons8.com/?size=100&id=gXR9fwimIOsU&format=png&color=000000
     type: select
     proxies:
       - DIRECT
@@ -325,10 +325,6 @@ proxy-groups:
       - 自动选择
       - 电报消息
       - Ai
-      - 油管视频
-      - 奈飞视频
-      - 巴哈姆特
-      - 哔哩哔哩
       - 国外媒体
       - 国内媒体
       - 谷歌FCM
@@ -336,6 +332,10 @@ proxy-groups:
       - 微软云盘
       - 微软服务
       - 苹果服务
+      - 油管视频
+      - 奈飞视频
+      - 巴哈姆特
+      - 哔哩哔哩
       - 游戏平台
       - 网易音乐
       - 全球直连
