@@ -593,7 +593,7 @@ function main(config) {
 
   config["rules"] = [
     "RULE-SET,LocalAreaNetwork,全球直连"
-    "RULE-SET,private,DIRECT",
+    "RULE-SET,private,全球直连",
     "RULE-SET,UnBan,全球直连"
     "RULE-SET,BanAD,广告拦截"
     "RULE-SET,BanProgramAD,应用净化"
@@ -619,8 +619,8 @@ function main(config) {
     "RULE-SET,Sony,游戏平台"
     "RULE-SET,Steam,游戏平台"
     "RULE-SET,Nintendo,游戏平台"
-    "RULE-SET,YouTube,油管视频"
-    "RULE-SET,Netflix,奈飞视频"
+    "RULE-SET,YouTube,YouTube"
+    "RULE-SET,Netflix,Netflix"
     "RULE-SET,Bahamut,巴哈姆特"
     "RULE-SET,BilibiliHMT,哔哩哔哩"
     "RULE-SET,Bilibili,哔哩哔哩"
@@ -632,14 +632,12 @@ function main(config) {
     "RULE-SET,ChinaCompanyIp,全球直连"
     "RULE-SET,google_domain,谷歌FCM",
     "RULE-SET,google_ip,谷歌FCM",
-    "RULE-SET,geolocation-!cn,漏网之鱼",
-    "RULE-SET,cn_domain,DIRECT",
-    "RULE-SET,cn_ip,DIRECT",
-   "RULE-SET,Download,全球直连"
-   "GEOIP,CN,全球直连"
+    "RULE-SET,geolocation-!cn,节点选择",
+    "RULE-SET,cn_domain,全球直连",
+    "RULE-SET,cn_ip,全球直连",
+    "RULE-SET,Download,全球直连"
+    "GEOIP,CN,全球直连"
     "MATCH,漏网之鱼"
-    
-
     
   ];
   return config;
