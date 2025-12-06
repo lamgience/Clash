@@ -463,7 +463,7 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
-    steam: {
+    Steam: {
       url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml",
       path: "./ruleset/steam.yaml",
       behavior: "classical",
