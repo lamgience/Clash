@@ -439,7 +439,7 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
-    openai: {
+    Openai: {
       url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml",
       path: "./ruleset/openai.yaml",
       behavior: "classical",
