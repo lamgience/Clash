@@ -1,0 +1,646 @@
+function main(config) {
+  config["proxy-groups"] = [
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      name: "节点选择",
+      type: "select",
+      proxies: ["自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT","负载均衡"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      name: "自动选择",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      name: "手动切换",
+      type: "select",
+      //interval: 300,
+    },
+    {
+            name: "负载均衡",
+            type: "load-balance",
+            //url: "https://cp.cloudflare.com",
+            interval: 300,
+            strategy: loadBalanceStrategy,
+            "include-all": true,
+            "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Available.png"
+        },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png",
+      name: "AIGC",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png",
+      name: "Telegram",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png",
+      name: "YouTube",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png",
+      name: "Netflix",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
+      name: "巴哈姆特",
+      type: "select",
+      proxies: ["节点选择", "手动切换",  "台湾节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png",
+      name: "哔哩哔哩",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "全球直连", "DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png",
+      name: "国外媒体",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png",
+      name: "国内媒体",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png",
+      name: "谷歌FCM",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png",
+      name: "微软Bing",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png",
+      name: "微软云盘",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png",
+      name: "微软服务",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://img.icons8.com/?size=100&id=gXR9fwimIOsU&format=png&color=000000",
+      name: "苹果服务",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    }, 
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png",
+      name: "游戏平台",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000",
+      name: "自由意志",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png",
+      name: "全球直连",
+      type: "select",
+      proxies: ["DIRECT","节点选择", "自动选择"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png",
+      name: "广告拦截",
+      type: "select",
+      proxies: ["REJECT","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png",
+      name: "应用净化",
+      type: "select",
+      proxies: ["REJECT","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png",
+      name: "漏网之鱼",
+      type: "select",
+      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)网易|音乐|NetEase|Music",
+      name: "网易音乐",
+      type: "url-test",
+      interval: 300,
+    },
+    	  
+    	  
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)香港|Hong Kong|HK|🇭🇰|hk|HongKong|hongkong",
+      name: "香港节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)台|新北|彰化|TW|Taiwan",
+      name: "台湾节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)新加坡|Singapore|🇸🇬|坡|狮城|SG",
+      name: "狮城节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)日本|Japan|🇯🇵|川日|东京|大阪|泉日|埼玉|沪日|深日|JP",
+      name: "日本节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)美国|USA|🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
+      name: "美国节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://img.icons8.com/?size=100&id=rcIHDZzZWKJ8&format=png&color=000000",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)俄罗斯|ru",
+      name: "俄罗斯节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://img.icons8.com/?size=100&id=30630&format=png&color=000000",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)英国|BG",
+      name: "英国节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)KR|Korea|KOR|首尔|韩|韓",
+      name: "韩国节点",
+      type: "url-test",
+      interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media",
+      name: "奈飞节点",
+      type: "url-test",
+      //interval: 300,
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      proxies: ["节点选择","自动选择","手动切换", "AIGC", "Telegram","全球直连","国外媒体","国内媒体","YouTube","Netflix","谷歌FCM","微软Bing","微软云盘","微软服务","苹果服务","游戏平台","自由意志","巴哈姆特","哔哩哔哩","网易音乐","广告拦截","应用净化","漏网之鱼","奈飞节点","香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT","负载均衡"],
+      name: "GLOBAL",
+      type: "select",
+    }
+  ];
+  if (!config['rule-providers']) {
+    config['rule-providers'] = {};
+  }
+  config["rule-providers"] = Object.assign(config["rule-providers"], {
+    private: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.yaml",
+      path: "./ruleset/private.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    cn_domain: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.yaml",
+      path: "./ruleset/cn_domain.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    ChinaDomain: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list",
+      path: "./ruleset/ChinaDomain.list",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    ChinaCompanyIp: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list",
+      path: "./ruleset/ChinaCompanyIp.list",
+      behavior: "ipcidr",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    LocalAreaNetwork: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list",
+      path: "./ruleset/LocalAreaNetwork.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    UnBan: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list",
+      path: "./ruleset/UnBan.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    BanAD: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list",
+      path: "./ruleset/BanAD.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    BanProgramAD: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list",
+      path: "./ruleset/BanProgramAD.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    GoogleFCM: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list",
+      path: "./ruleset/GoogleFCM.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    GoogleCN: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list",
+      path: "./ruleset/GoogleCN.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    SteamCN: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list",
+      path: "./ruleset/SteamCN.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Bing: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list",
+      path: "./ruleset/Bing.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    OneDrive: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/OneDrive.list",
+      path: "./ruleset/OneDrive.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Microsoft: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list",
+      path: "./ruleset/Microsoft.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Apple: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list",
+      path: "./ruleset/Apple.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    telegram_domain: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.yaml",
+      path: "./ruleset/telegram_domain.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+      },
+      telegram_ip: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.yaml",
+      path: "./ruleset/telegram_ip.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    google_domain: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml",
+      path: "./ruleset/google_domain.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    "geolocation-!cn": {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.yaml",
+      path: "./ruleset/geolocation-!cn.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    cn_ip: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.yaml",
+      path: "./ruleset/cn_ip.yaml",
+      behavior: "ipcidr",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    google_ip: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml",
+      path: "./ruleset/google_ip.yaml",
+      behavior: "ipcidr",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    bing: {
+      url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml",
+      path: "./ruleset/bing.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    copilot: {
+      url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml",
+      path: "./ruleset/copilot.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    claude: {
+      url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml",
+      path: "./ruleset/claude.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    bard: {
+      url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BardAI/BardAI.yaml",
+      path: "./ruleset/bard.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    openai: {
+      url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml",
+      path: "./ruleset/openai.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    Gemini: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.yaml",
+      path: "./ruleset/gemini.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    perplexity: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/perplexity.yaml",
+      path: "./ruleset/perplexity.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    steam: {
+      url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml",
+      path: "./ruleset/steam.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    Epic: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list",
+      path: "./ruleset/Epic.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Sony: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list",
+      path: "./ruleset/Sony.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Nintendo: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list",
+      path: "./ruleset/Nintendo.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    YouTube: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTube.list",
+      path: "./ruleset/YouTube.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Netflix: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Netflix.list",
+      path: "./ruleset/Netflix.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Bahamut: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list",
+      path: "./ruleset/Bahamut.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    BilibiliHMT: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/BilibiliHMT.list",
+      path: "./ruleset/BilibiliHMT.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Bilibili: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bilibili.list",
+      path: "./ruleset/Bilibili.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    ChinaMedia: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list",
+      path: "./ruleset/ChinaMedia.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    ProxyMedia: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list",
+      path: "./ruleset/ProxyMedia.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Origin: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list",
+      path: "./ruleset/Origin.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Download: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list",
+      path: "./ruleset/Download.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
+    Custom: {
+      url: "https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Custom%20rules.yaml",
+      path: "./ruleset/Custom.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+  });
+
+  config["rules"] = [
+    "RULE-SET,LocalAreaNetwork,全球直连"
+    "RULE-SET,private,DIRECT",
+    "RULE-SET,UnBan,全球直连"
+    "RULE-SET,BanAD,广告拦截"
+    "RULE-SET,BanProgramAD,应用净化"
+    "RULE-SET,GoogleFCM,谷歌FCM"
+    "RULE-SET,GoogleCN,全球直连"
+    "RULE-SET,SteamCN,全球直连"
+    "RULE-SET,bing,微软Bing",
+    "RULE-SET,Bing,微软Bing"
+    "RULE-SET,OneDrive,微软云盘"
+    "RULE-SET,Microsoft,微软服务"
+    "RULE-SET,Apple,苹果服务"
+    "RULE-SET,telegram_domain,Telegram"
+    "RULE-SET,telegram_ip,Telegram"
+    "RULE-SET,OpenAi,AIGC"
+    "RULE-SET,copilot,AIGC"
+    "RULE-SET,bard,AIGC"
+    "RULE-SET,Gemini,Ai"
+    "RULE-SET,claude,AIGC"
+    "RULE-SET,perplexity,AIGC"
+    "RULE-SET,NetEaseMusic,网易音乐"
+    "RULE-SET,Epic,游戏平台"
+    "RULE-SET,Origin,游戏平台"
+    "RULE-SET,Sony,游戏平台"
+    "RULE-SET,Steam,游戏平台"
+    "RULE-SET,Nintendo,游戏平台"
+    "RULE-SET,YouTube,油管视频"
+    "RULE-SET,Netflix,奈飞视频"
+    "RULE-SET,Bahamut,巴哈姆特"
+    "RULE-SET,BilibiliHMT,哔哩哔哩"
+    "RULE-SET,Bilibili,哔哩哔哩"
+    "RULE-SET,ChinaMedia,国内媒体"
+    "RULE-SET,ProxyMedia,国外媒体"
+    "RULE-SET,Custom,自由意志"
+    "RULE-SET,ProxyGFWlist,节点选择"
+    "RULE-SET,ChinaDomain,全球直连"
+    "RULE-SET,ChinaCompanyIp,全球直连"
+    "RULE-SET,google_domain,谷歌FCM",
+    "RULE-SET,google_ip,谷歌FCM",
+    "RULE-SET,geolocation-!cn,漏网之鱼",
+    "RULE-SET,cn_domain,DIRECT",
+    "RULE-SET,cn_ip,DIRECT",
+   "RULE-SET,Download,全球直连"
+   "GEOIP,CN,全球直连"
+    "MATCH,漏网之鱼"
+    
+
+    
+  ];
+  return config;
+}
