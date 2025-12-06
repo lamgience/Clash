@@ -17,7 +17,7 @@ function main(config) {
       interval: 300,
     },
     {
-      icon: "https://img.icons8.com/?size=100&id=CaCCv7zBaqIe&format=png&color=000000",
+      icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png",
       "include-all": true,
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
       name: "手动切换",
