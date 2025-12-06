@@ -133,6 +133,19 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
+  - name: Adobe
+    icon: https://img.icons8.com/?size=100&id=nv008Mv97LTG&format=png&color=000000
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换
   - name: 微软Bing
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png
     type: select
@@ -325,6 +338,7 @@ proxy-groups:
       - 自动选择
       - 电报消息
       - AIGC
+      - Adobe
       - 国外媒体
       - 国内媒体
       - 谷歌FCM
@@ -430,6 +444,13 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: text
+    type: http
+  Adobe:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/adobe.yaml
+    path: ./ruleset/adobe.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
     type: http
   telegram_domain:
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.yaml
@@ -628,6 +649,7 @@ rules:
   - "RULE-SET,Apple,苹果服务"
   - "RULE-SET,telegram_domain,电报消息"
   - "RULE-SET,telegram_ip,电报消息"
+  - "RULE-SET,Adobe,Adobe"
   - "RULE-SET,OpenAi,AIGC"
   - "RULE-SET,copilot,AIGC"
   - "RULE-SET,bard,AIGC"
