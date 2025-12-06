@@ -535,6 +535,14 @@ function main(config) {
       format: "text",
       type: "http",
     },
+    NetEaseMusic: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list",
+      path: "./ruleset/etEaseMusic.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
     ChinaMedia: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list",
       path: "./ruleset/ChinaMedia.list",
