@@ -6,7 +6,7 @@ function main(config) {
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
       name: "节点选择",
       type: "select",
-      proxies: ["自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
@@ -27,97 +27,97 @@ function main(config) {
       icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png",
       name: "AIGC",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png",
       name: "Telegram",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png",
       name: "YouTube",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png",
       name: "Netflix",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
       name: "巴哈姆特",
       type: "select",
-      proxies: ["节点选择", "手动切换",  "台湾节点","DIRECT"],
+      proxies: ["节点选择","手动切换","台湾节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png",
       name: "哔哩哔哩",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "全球直连", "DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","全球直连","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png",
       name: "国外媒体",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png",
       name: "国内媒体",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png",
-      name: "谷歌FCM",
+      name: "谷歌",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png",
       name: "微软Bing",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png",
       name: "微软云盘",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png",
       name: "微软服务",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://img.icons8.com/?size=100&id=gXR9fwimIOsU&format=png&color=000000",
       name: "苹果服务",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     }, 
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png",
       name: "游戏平台",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000",
       name: "自由意志",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png",
       name: "全球直连",
       type: "select",
-      proxies: ["DIRECT","节点选择", "自动选择"],
+      proxies: ["DIRECT","节点选择","自动选择"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png",
@@ -135,7 +135,7 @@ function main(config) {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png",
       name: "漏网之鱼",
       type: "select",
-      proxies: ["节点选择", "自动选择","手动切换",  "香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换",  "香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png",
@@ -145,9 +145,7 @@ function main(config) {
       name: "网易音乐",
       type: "url-test",
       interval: 300,
-    },
-    	  
-    	  
+    }, 
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
       "include-all": true,
@@ -233,7 +231,7 @@ function main(config) {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
       "include-all": true,
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
-      proxies: ["节点选择","自动选择","手动切换", "AIGC", "Telegram","全球直连","国外媒体","国内媒体","YouTube","Netflix","谷歌FCM","微软Bing","微软云盘","微软服务","苹果服务","游戏平台","自由意志","巴哈姆特","哔哩哔哩","网易音乐","广告拦截","应用净化","漏网之鱼","奈飞节点","香港节点", "台湾节点", "美国节点", "日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT","负载均衡"],
+      proxies: ["节点选择","自动选择","手动切换", "AIGC","Telegram","全球直连","国外媒体","国内媒体","YouTube","Netflix","谷歌","微软Bing","微软云盘","微软服务","苹果服务","游戏平台","自由意志","巴哈姆特","哔哩哔哩","网易音乐","广告拦截","应用净化","漏网之鱼","奈飞节点","香港节点", "台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
       name: "GLOBAL",
       type: "select",
     }
@@ -263,7 +261,7 @@ function main(config) {
       path: "./ruleset/ChinaDomain.list",
       behavior: "domain",
       interval: 86400,
-      format: "yaml",
+      format: "text",
       type: "http",
     },
     ChinaCompanyIp: {
@@ -582,11 +580,11 @@ function main(config) {
 
   config["rules"] = [
     "RULE-SET,LocalAreaNetwork,全球直连"
-    "RULE-SET,private,全球直连",
+    "RULE-SET,private,DIRECT",
     "RULE-SET,UnBan,全球直连"
     "RULE-SET,BanAD,广告拦截"
     "RULE-SET,BanProgramAD,应用净化"
-    "RULE-SET,GoogleFCM,谷歌FCM"
+    "RULE-SET,GoogleFCM,谷歌"
     "RULE-SET,GoogleCN,全球直连"
     "RULE-SET,SteamCN,全球直连"
     "RULE-SET,bing,微软Bing",
@@ -599,7 +597,7 @@ function main(config) {
     "RULE-SET,OpenAi,AIGC"
     "RULE-SET,copilot,AIGC"
     "RULE-SET,bard,AIGC"
-    "RULE-SET,Gemini,Ai"
+    "RULE-SET,Gemini,AIGC"
     "RULE-SET,claude,AIGC"
     "RULE-SET,perplexity,AIGC"
     "RULE-SET,NetEaseMusic,网易音乐"
@@ -619,15 +617,14 @@ function main(config) {
     "RULE-SET,ProxyGFWlist,节点选择"
     "RULE-SET,ChinaDomain,全球直连"
     "RULE-SET,ChinaCompanyIp,全球直连"
-    "RULE-SET,google_domain,谷歌FCM",
-    "RULE-SET,google_ip,谷歌FCM",
+    "RULE-SET,google_domain,谷歌",
+    "RULE-SET,google_ip,谷歌",
     "RULE-SET,geolocation-!cn,节点选择",
     "RULE-SET,cn_domain,全球直连",
     "RULE-SET,cn_ip,全球直连",
     "RULE-SET,Download,全球直连"
     "GEOIP,CN,全球直连"
-    "MATCH,漏网之鱼"
-    
+    "MATCH,漏网之鱼"  
   ];
   return config;
 }
