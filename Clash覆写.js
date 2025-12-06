@@ -22,12 +22,10 @@ function main(config) {
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
       name: "手动切换",
       type: "select",
-      //interval: 300,
     },
     {
             name: "负载均衡",
             type: "load-balance",
-            //url: "https://cp.cloudflare.com",
             interval: 300,
             strategy: loadBalanceStrategy,
             "include-all": true,
