@@ -293,6 +293,14 @@ function main(config) {
       format: "text",
       type: "http",
     },
+    广告域名列表: {
+      url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt",
+      path: "./ruleset/remote-reject.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     BanAD: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list",
       path: "./ruleset/BanAD.list",
@@ -612,6 +620,7 @@ function main(config) {
     "RULE-SET,private,DIRECT",
     "RULE-SET,UnBan,全球直连",
     "RULE-SET,BanAD,广告拦截",
+    "RULE-SET,广告域名列表,广告拦截",
     "RULE-SET,BanProgramAD,应用净化",
     "RULE-SET,GoogleFCM,谷歌",
     "RULE-SET,GoogleCN,全球直连",
