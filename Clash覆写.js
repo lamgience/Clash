@@ -294,11 +294,11 @@ function main(config) {
       type: "http",
     },
     广告域名列表: {
-      url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt",
-      path: "./ruleset/remote-reject.yaml",
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs",
+      path: "./ruleset/category-ads-all.mrs",
       behavior: "domain",
       interval: 86400,
-      format: "yaml",
+      format: "mrs",
       type: "http",
     },
     BanAD: {
