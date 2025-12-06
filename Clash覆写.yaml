@@ -38,7 +38,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
-  - name: Ai
+  - name: AIGC
     icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
     type: select
     proxies:
@@ -324,7 +324,7 @@ proxy-groups:
       - 手动切换
       - 自动选择
       - 电报消息
-      - Ai
+      - AIGC
       - 国外媒体
       - 国内媒体
       - 谷歌FCM
@@ -628,12 +628,12 @@ rules:
   - "RULE-SET,Apple,苹果服务"
   - "RULE-SET,telegram_domain,电报消息"
   - "RULE-SET,telegram_ip,电报消息"
-  - "RULE-SET,OpenAi,Ai"
-  - "RULE-SET,copilot,Ai"
-  - "RULE-SET,bard,Ai"
-  - "RULE-SET,Gemini,Ai"
-  - "RULE-SET,claude,Ai"
-  - "RULE-SET,perplexity,Ai"
+  - "RULE-SET,OpenAi,AIGC"
+  - "RULE-SET,copilot,AIGC"
+  - "RULE-SET,bard,AIGC"
+  - "RULE-SET,Gemini,AIGC"
+  - "RULE-SET,claude,AIGC"
+  - "RULE-SET,perplexity,AIGC"
   - "RULE-SET,NetEaseMusic,网易音乐"
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
