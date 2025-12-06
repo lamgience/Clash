@@ -559,6 +559,14 @@ function main(config) {
       format: "text",
       type: "http",
     },
+    ProxyGFWlist: {
+      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list",
+      path: "./ruleset/ProxyGFWlist.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
     Origin: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list",
       path: "./ruleset/Origin.list",
