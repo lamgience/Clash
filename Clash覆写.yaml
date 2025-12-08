@@ -57,7 +57,7 @@ proxy-groups:
     icon: https://img.icons8.com/?size=100&id=nv008Mv97LTG&format=png&color=000000
     type: select
     proxies:
-      - DIRECT
+      - 自动选择
       - 节点选择
       - 美国节点
       - 香港节点
@@ -65,7 +65,22 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
-      - 手动切换    
+      - 手动切换  
+      - DIRECT   
+  - name: GitHub
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg
+    type: select
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT   
   - name: 油管视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
@@ -134,7 +149,7 @@ proxy-groups:
       - 日本节点
       - 手动切换
   - name: 国外社交
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/x-light.svg
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/threads-light.svg
     type: select
     proxies:
       - 节点选择
@@ -377,22 +392,25 @@ proxy-groups:
     include-all: true
     type: select
     proxies:
+      - 自动选择
       - 节点选择
       - 手动切换
-      - 自动选择
-      - 电报消息
       - AIGC
       - Adobe
-      - 微信
+      - GitHub
+      - 油管视频
+      - 奈飞视频
+      - Spotify
+      - 电报消息
       - 国外媒体
       - 国内媒体
+      - 国外社交
       - 谷歌FCM
       - 微软Bing
       - 微软云盘
       - 微软服务
       - 苹果服务
-      - 油管视频
-      - 奈飞视频
+      - 微信
       - 巴哈姆特
       - 哔哩哔哩
       - 游戏平台
@@ -462,6 +480,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  GitHub:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
+    path: ./ruleset/GitHub.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http  
   Bing:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list
     path: ./ruleset/Bing.list
@@ -729,6 +754,7 @@ rules:
   - "RULE-SET,Gemini,AIGC"
   - "RULE-SET,claude,AIGC"
   - "RULE-SET,perplexity,AIGC"
+  - "RULE-SET,GitHub,GitHub"
   - "RULE-SET,x,国外社交"
   - "RULE-SET,Instagram,国外社交"
   - "RULE-SET,Spotify,Spotify"
