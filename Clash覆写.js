@@ -60,6 +60,12 @@ function main(config) {
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","全球直连","DIRECT"],
     },
     {
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/x-light.svg",
+      name: "国外社交",
+      type: "select",
+      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png",
       name: "国外媒体",
       type: "select",
@@ -443,6 +449,14 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
+    x: {
+      url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml",
+      path: "./ruleset/x.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     copilot: {
       url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml",
       path: "./ruleset/copilot.yaml",
@@ -658,6 +672,7 @@ function main(config) {
     "RULE-SET,Bilibili,哔哩哔哩",
     "RULE-SET,ChinaMedia,国内媒体",
     "RULE-SET,ProxyMedia,国外媒体",
+    "RULE-SET,x,国外社交",
     "RULE-SET,Custom,自由意志",
     "RULE-SET,ProxyGFWlist,节点选择",
     "RULE-SET,ChinaDomain,全球直连",
