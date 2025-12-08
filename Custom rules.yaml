@@ -1,8 +1,8 @@
 payload:
-  - javlibrary.com
-  - +.t66y.com
-  - +.jable.tv
-  - +.javdb.com
-  - +.javbus.com
-  - +.netflav1.com
-  - +.netflav5.com
+  - DOMAIN,netflav5.com
+  - DOMAIN-SUFFIX,t66y.com
+  - DOMAIN-SUFFIX,javlibrary.com
+  - DOMAIN-SUFFIX,jable.tv
+  - DOMAIN-SUFFIX,javdb.com
+  - DOMAIN-SUFFIX,javbus.com
+  - DOMAIN-KEYWORD,netflav
