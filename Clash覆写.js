@@ -1,14 +1,6 @@
 function main(config) {
   config["proxy-groups"] = [
     {
-      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
-      "include-all": true,
-      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
-      name: "节点选择",
-      type: "select",
-      proxies: ["自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
-    },
-    {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
       "include-all": true,
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
@@ -24,8 +16,22 @@ function main(config) {
       type: "select",
     },
     {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
+      "include-all": true,
+      "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
+      name: "节点选择",
+      type: "select",
+      proxies: ["自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
       icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png",
       name: "AIGC",
+      type: "select",
+      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg",
+      name: "Adobe",
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
@@ -48,16 +54,10 @@ function main(config) {
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
-      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
-      name: "巴哈姆特",
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg",
+      name: "Spotify",
       type: "select",
-      proxies: ["节点选择","手动切换","台湾节点","DIRECT"],
-    },
-    {
-      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png",
-      name: "哔哩哔哩",
-      type: "select",
-      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","全球直连","DIRECT"],
+      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
       icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/x-light.svg",
@@ -80,12 +80,6 @@ function main(config) {
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png",
       name: "谷歌",
-      type: "select",
-      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
-    },
-    {
-      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg",
-      name: "Adobe",
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
@@ -124,6 +118,18 @@ function main(config) {
       name: "游戏平台",
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+      {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
+      name: "巴哈姆特",
+      type: "select",
+      proxies: ["节点选择","手动切换","台湾节点","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png",
+      name: "哔哩哔哩",
+      type: "select",
+      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","全球直连","DIRECT"],
     },
     {
       icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000",
@@ -457,6 +463,22 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
+    Instagram: {
+      url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Instagram/Instagram.yaml",
+      path: "./ruleset/Instagram.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
+    Spotify: {
+      url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml",
+      path: "./ruleset/Spotify.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     copilot: {
       url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml",
       path: "./ruleset/copilot.yaml",
@@ -667,12 +689,14 @@ function main(config) {
     "RULE-SET,Nintendo,游戏平台",
     "RULE-SET,YouTube,YouTube",
     "RULE-SET,Netflix,Netflix",
+    "RULE-SET,Spotify,Spotify",
     "RULE-SET,Bahamut,巴哈姆特",
     "RULE-SET,BilibiliHMT,哔哩哔哩",
     "RULE-SET,Bilibili,哔哩哔哩",
     "RULE-SET,ChinaMedia,国内媒体",
     "RULE-SET,ProxyMedia,国外媒体",
     "RULE-SET,x,国外社交",
+    "RULE-SET,Instagram,国外社交",
     "RULE-SET,Custom,自由意志",
     "RULE-SET,ProxyGFWlist,节点选择",
     "RULE-SET,ChinaDomain,全球直连",
