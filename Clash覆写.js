@@ -672,7 +672,7 @@ function main(config) {
     Custom: {
       url: "https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Custom%20rules.yaml",
       path: "./ruleset/Custom.yaml",
-      behavior: "classical",
+      behavior: "domain",
       interval: 86400,
       format: "yaml",
       type: "http",
