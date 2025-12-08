@@ -66,7 +66,7 @@ function main(config) {
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
-      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/twitter.svg",
+      icon: "https://img.icons8.com/?size=100&id=yoQabS8l0qpr&format=png&color=000000",
       name: "国外社交",
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
