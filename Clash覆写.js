@@ -461,6 +461,14 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
+    freedom: {
+      url: "https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/freedom.yaml",
+      path: "./ruleset/freedom.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     bing: {
       url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml",
       path: "./ruleset/bing.yaml",
@@ -669,14 +677,6 @@ function main(config) {
       format: "text",
       type: "http",
     },
-    Custom: {
-      url: "https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Custom%20rules.yaml",
-      path: "./ruleset/Custom.yaml",
-      behavior: "domain",
-      interval: 86400,
-      format: "yaml",
-      type: "http",
-    },
   });
 
   config["rules"] = [
@@ -721,7 +721,7 @@ function main(config) {
     "RULE-SET,x,国外社交",
     "RULE-SET,Instagram,国外社交",
     "RULE-SET,Threads,国外社交",
-    "RULE-SET,Custom,自由意志",
+    "RULE-SET,freedom,自由意志",
     "RULE-SET,ProxyGFWlist,节点选择",
     "RULE-SET,ChinaDomain,全球直连",
     "RULE-SET,ChinaCompanyIp,全球直连",
