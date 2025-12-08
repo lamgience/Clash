@@ -24,6 +24,12 @@ function main(config) {
       proxies: ["自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
+      icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000",
+      name: "机场专线",
+      type: "select",
+      proxies: ["DIRECT","节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点"],
+    },
+    {
       icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png",
       name: "AIGC",
       type: "select",
