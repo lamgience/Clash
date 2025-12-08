@@ -108,6 +108,12 @@ function main(config) {
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     }, 
     {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png",
+      name: "微信",
+      type: "select",
+      proxies: ["DIRECT","节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点"],
+    },
+    {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png",
       name: "游戏平台",
       type: "select",
@@ -230,7 +236,7 @@ function main(config) {
       filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media",
       name: "奈飞节点",
       type: "url-test",
-      //interval: 300,
+      interval: 300,
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
@@ -365,6 +371,14 @@ function main(config) {
       format: "text",
       type: "http",
     },
+    WeChat: {
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list",
+      path: "./ruleset/WeChat.list",
+      behavior: "classical",
+      interval: 86400,
+      format: "text",
+      type: "http",
+    },
     Adobe: {
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/adobe.yaml",
       path: "./ruleset/adobe.yaml",
@@ -381,7 +395,7 @@ function main(config) {
       format: "yaml",
       type: "http",
       },
-      telegram_ip: {
+    telegram_ip: {
       url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.yaml",
       path: "./ruleset/telegram_ip.yaml",
       behavior: "domain",
@@ -621,6 +635,7 @@ function main(config) {
     "RULE-SET,OneDrive,微软云盘",
     "RULE-SET,Microsoft,微软服务",
     "RULE-SET,Apple,苹果服务",
+    "RULE-SET,WeChat,微信",
     "RULE-SET,Adobe,Adobe",
     "RULE-SET,telegram_domain,Telegram",
     "RULE-SET,telegram_ip,Telegram",
