@@ -36,6 +36,12 @@ function main(config) {
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg",
+      name: "GitHub",
+      type: "select",
+      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
       icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png",
       name: "Telegram",
       type: "select",
@@ -396,7 +402,15 @@ function main(config) {
       path: "./ruleset/adobe.yaml",
       behavior: "domain",
       interval: 86400,
-      format: "text",
+      format: "yaml",
+      type: "http",
+    },
+    GitHub: {
+      url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml",
+      path: "./ruleset/GitHub.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
       type: "http",
     },
     telegram_domain: {
@@ -681,6 +695,7 @@ function main(config) {
     "RULE-SET,Gemini,AIGC",
     "RULE-SET,claude,AIGC",
     "RULE-SET,perplexity,AIGC",
+    "RULE-SET,GitHub,GitHub",
     "RULE-SET,NetEaseMusic,网易音乐",
     "RULE-SET,Epic,游戏平台",
     "RULE-SET,Origin,游戏平台",
