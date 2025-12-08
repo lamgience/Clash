@@ -38,6 +38,21 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
+  - name: 微信
+    icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换
+      - 节点选择
+      - 自动选择
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      
   - name: AIGC
     icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
     type: select
@@ -339,6 +354,7 @@ proxy-groups:
       - 电报消息
       - AIGC
       - Adobe
+      - 微信
       - 国外媒体
       - 国内媒体
       - 谷歌FCM
@@ -585,6 +601,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  WeChat:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list
+    path: ./ruleset/Bilibili.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
   ChinaMedia:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list
     path: ./ruleset/ChinaMedia.list
@@ -656,6 +679,7 @@ rules:
   - "RULE-SET,Gemini,AIGC"
   - "RULE-SET,claude,AIGC"
   - "RULE-SET,perplexity,AIGC"
+  - "RULE-SET,WeChat,微信"
   - "RULE-SET,NetEaseMusic,网易音乐"
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
