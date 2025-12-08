@@ -112,6 +112,7 @@ proxy-groups:
       - DIRECT
   - name: Spotify
     icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg
+    type: select
     proxies:
       - 节点选择
       - 自动选择
