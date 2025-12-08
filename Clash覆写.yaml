@@ -473,6 +473,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+freedom:
+    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/freedom.yaml
+    path: ./ruleset/freedom.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
   SteamCN:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list
     path: ./ruleset/SteamCN.list
@@ -732,13 +739,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  Custom:
-    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Custom%20rules.yaml
-    path: ./ruleset/Custom.yaml
-    behavior: domain
-    interval: 86400
-    format: yaml
-    type: http
+  
 
 rules:
   - "RULE-SET,LocalAreaNetwork,全球直连"
@@ -780,7 +781,7 @@ rules:
   - "RULE-SET,Bilibili,哔哩哔哩"
   - "RULE-SET,ChinaMedia,国内媒体"
   - "RULE-SET,ProxyMedia,国外媒体"
-  - "RULE-SET,Custom,自由意志"
+  - "RULE-SET,freedom,自由意志"
   - "RULE-SET,ProxyGFWlist,节点选择"
   - "RULE-SET,ChinaDomain,全球直连"
   - "RULE-SET,ChinaCompanyIp,全球直连"
