@@ -655,6 +655,13 @@ rule-providers:
     interval: 86400
     format: yaml
     type: http  
+  Threads:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Threads/Threads.yaml
+    path: ./ruleset/Threads.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http  
   Bahamut:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list
     path: ./ruleset/Bahamut.list
@@ -757,6 +764,7 @@ rules:
   - "RULE-SET,GitHub,GitHub"
   - "RULE-SET,x,国外社交"
   - "RULE-SET,Instagram,国外社交"
+  - "RULE-SET,Threads,国外社交"
   - "RULE-SET,Spotify,Spotify"
   - "RULE-SET,WeChat,微信"
   - "RULE-SET,NetEaseMusic,网易音乐"
