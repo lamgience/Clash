@@ -78,7 +78,7 @@ function main(config) {
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
-      icon: "https://img.icons8.com/?size=100&id=nv008Mv97LTG&format=png&color=000000",
+      icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg",
       name: "Adobe",
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
@@ -203,7 +203,7 @@ function main(config) {
       interval: 300,
     },
     {
-      icon: "https://img.icons8.com/?size=100&id=rcIHDZzZWKJ8&format=png&color=000000",
+      icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg",
       "include-all": true,
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
       filter: "(?i)俄罗斯|ru",
@@ -212,7 +212,7 @@ function main(config) {
       interval: 300,
     },
     {
-      icon: "https://img.icons8.com/?size=100&id=30630&format=png&color=000000",
+      icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/gb.svg",
       "include-all": true,
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
       filter: "(?i)英国|BG",
