@@ -150,7 +150,7 @@ proxy-groups:
       - 日本节点
       - 手动切换
   - name: 国外社交
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/threads-light.svg
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/twitter.svg
     type: select
     proxies:
       - 节点选择
