@@ -485,6 +485,14 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
+    Threads: {
+      url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Threads/Threads.yaml",
+      path: "./ruleset/Threads.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     Spotify: {
       url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml",
       path: "./ruleset/Spotify.yaml",
@@ -712,6 +720,7 @@ function main(config) {
     "RULE-SET,ProxyMedia,国外媒体",
     "RULE-SET,x,国外社交",
     "RULE-SET,Instagram,国外社交",
+    "RULE-SET,Threads,国外社交",
     "RULE-SET,Custom,自由意志",
     "RULE-SET,ProxyGFWlist,节点选择",
     "RULE-SET,ChinaDomain,全球直连",
