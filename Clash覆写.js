@@ -475,6 +475,14 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
+    Airport: {
+      url: "https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Airport.yaml",
+      path: "./ruleset/Airport.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     bing: {
       url: "https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml",
       path: "./ruleset/bing.yaml",
@@ -697,6 +705,7 @@ function main(config) {
     "RULE-SET,bing,微软Bing",
     "RULE-SET,Bing,微软Bing",
     "RULE-SET,OneDrive,微软云盘",
+    "RULE-SET,Airport,机场专线",
     "RULE-SET,Microsoft,微软服务",
     "RULE-SET,Apple,苹果服务",
     "RULE-SET,WeChat,微信",
