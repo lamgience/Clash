@@ -38,21 +38,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
-  - name: 微信
-    icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
-    type: select
-    proxies:
-      - DIRECT
-      - 手动切换
-      - 节点选择
-      - 自动选择
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      
+  
   - name: AIGC
     icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
     type: select
@@ -67,6 +53,19 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
+  - name: Adobe
+    icon: https://img.icons8.com/?size=100&id=nv008Mv97LTG&format=png&color=000000
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换    
   - name: 油管视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
@@ -96,21 +95,20 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
-  - name: 巴哈姆特
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
-    type: select
+  - name: Spotify
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg
     proxies:
-      - 台湾节点
       - 节点选择
+      - 自动选择
+      - 奈飞节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
       - 手动切换
       - DIRECT
-  - name: 哔哩哔哩
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
-    type: select
-    proxies:
-      - 全球直连
-      - 台湾节点
-      - 香港节点
   - name: 国外媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     type: select
@@ -135,6 +133,20 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 手动切换
+  - name: 国外社交
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/x-light.svg
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT   
   - name: 谷歌FCM
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
     type: select
@@ -148,19 +160,7 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
-  - name: Adobe
-    icon: https://img.icons8.com/?size=100&id=nv008Mv97LTG&format=png&color=000000
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
+  
   - name: 微软Bing
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png
     type: select
@@ -226,6 +226,35 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
+  - name: 巴哈姆特
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
+    type: select
+    proxies:
+      - 台湾节点
+      - 节点选择
+      - 手动切换
+      - DIRECT
+  - name: 哔哩哔哩
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    type: select
+    proxies:
+      - 全球直连
+      - 台湾节点
+      - 香港节点
+  - name: 微信
+    icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换
+      - 节点选择
+      - 自动选择
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点    
   - name: 网易音乐
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
     type: select
@@ -580,6 +609,27 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Spotify:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml
+    path: ./ruleset/Spotify.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  Instagram:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Instagram/Instagram.yaml
+    path: ./ruleset/Instagram.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http  
+  x:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml
+    path: ./ruleset/Twitter.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http  
   Bahamut:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list
     path: ./ruleset/Bahamut.list
@@ -679,6 +729,9 @@ rules:
   - "RULE-SET,Gemini,AIGC"
   - "RULE-SET,claude,AIGC"
   - "RULE-SET,perplexity,AIGC"
+  - "RULE-SET,x,国外社交"
+  - "RULE-SET,Instagram,国外社交"
+  - "RULE-SET,Spotify,Spotify"
   - "RULE-SET,WeChat,微信"
   - "RULE-SET,NetEaseMusic,网易音乐"
   - "RULE-SET,Epic,游戏平台"
