@@ -149,7 +149,7 @@ proxy-groups:
       - 日本节点
       - 手动切换
   - name: 国外社交
-    icon: https://img.icons8.com/?size=100&id=yoQabS8l0qpr&format=png&color=000000
+    icon: https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000
     type: select
     proxies:
       - 节点选择
