@@ -473,7 +473,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-freedom:
+  freedom:
     url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/freedom.yaml
     path: ./ruleset/freedom.yaml
     behavior: domain
