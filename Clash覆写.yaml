@@ -172,6 +172,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
+      - 自动选择
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -196,6 +197,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
+      - 自动选择
       - 节点选择
       - 美国节点
       - 香港节点
@@ -204,12 +206,26 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
-  
+  - name: MicrosoftEdge
+    icon: https://img.icons8.com/?size=100&id=-5h34CbaUb09&format=png&color=000000
+    type: select
+    proxies:
+      - DIRECT
+      - 自动选择
+      - 节点选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换
   - name: 微软Bing
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png
     type: select
     proxies:
       - DIRECT
+      - 自动选择
       - 节点选择
       - 美国节点
       - 香港节点
@@ -223,6 +239,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
+      - 自动选择
       - 节点选择
       - 美国节点
       - 香港节点
@@ -235,6 +252,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
     type: select
     proxies:
+      - 自动选择
       - 节点选择
       - DIRECT
       - 美国节点
@@ -249,6 +267,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
+      - 自动选择
       - 节点选择
       - 美国节点
       - 香港节点
@@ -262,6 +281,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
+      - 自动选择
       - 节点选择
       - 美国节点
       - 香港节点
@@ -560,6 +580,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  MicrosoftEdge:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/MicrosoftEdge/MicrosoftEdge.yaml
+    path: ./ruleset/MicrosoftEdge.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
   Apple:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list
     path: ./ruleset/Apple.list
@@ -801,6 +828,7 @@ rules:
   - "RULE-SET,GoogleFCM,谷歌FCM"
   - "RULE-SET,GoogleCN,全球直连"
   - "RULE-SET,SteamCN,全球直连"
+  - "RULE-SET,MicrosoftEdge,MicrosoftEdge"
   - "RULE-SET,Bing,微软Bing"
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
