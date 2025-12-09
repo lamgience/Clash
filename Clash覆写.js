@@ -521,6 +521,14 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
+    reddit: {
+      url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/reddit.yaml",
+      path: "./ruleset/reddit.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     Spotify: {
       url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml",
       path: "./ruleset/Spotify.yaml",
@@ -740,6 +748,7 @@ function main(config) {
     "RULE-SET,ChinaMedia,国内媒体",
     "RULE-SET,ProxyMedia,国外媒体",
     "RULE-SET,x,国外社交",
+    "RULE-SET,reddit,国外社交",
     "RULE-SET,Instagram,国外社交",
     "RULE-SET,Threads,国外社交",
     "RULE-SET,freedom,自由意志",
