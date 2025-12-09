@@ -700,6 +700,13 @@ rule-providers:
     interval: 86400
     format: yaml
     type: http  
+  reddit:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/reddit.yaml
+    path: ./ruleset/reddit.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http  
   Threads:
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Threads/Threads.yaml
     path: ./ruleset/Threads.yaml
@@ -802,6 +809,7 @@ rules:
   - "RULE-SET,perplexity,Perplexity"
   - "RULE-SET,GitHub,GitHub"
   - "RULE-SET,x,国外社交"
+  - "RULE-SET,reddit,国外社交"
   - "RULE-SET,Instagram,国外社交"
   - "RULE-SET,Threads,国外社交"
   - "RULE-SET,Spotify,Spotify"
