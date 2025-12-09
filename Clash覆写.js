@@ -481,6 +481,14 @@ function main(config) {
       format: "yaml",
       type: "http",
     },
+    direct_cus: {
+      url: "https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Direct_wi.yaml",
+      path: "./ruleset/Direct_wi.yaml",
+      behavior: "domain",
+      interval: 86400,
+      format: "yaml",
+      type: "http",
+    },
     Airport: {
       url: "https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Airport.yaml",
       path: "./ruleset/Airport.yaml",
@@ -714,6 +722,7 @@ function main(config) {
     "RULE-SET,BanAD,广告拦截",
     "RULE-SET,BanProgramAD,应用净化",
     "RULE-SET,GoogleFCM,谷歌",
+    "RULE-SET,direct_cus,DIRECT",
     "RULE-SET,GoogleCN,全球直连",
     "RULE-SET,SteamCN,全球直连",
     "RULE-SET,bing,微软Bing",
