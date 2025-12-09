@@ -24,6 +24,21 @@ proxy-groups:
     include-all: true
     interval: 300
     tolerance: 50
+  - name: 机场专线
+    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
+    type: select
+    proxies:
+      - DIRECT
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 英国节点
+      - 俄罗斯节点
+      - 韩国节点
+      - 手动切换
   - name: AIGC
     icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
     type: select
@@ -395,6 +410,7 @@ proxy-groups:
       - 自动选择
       - 节点选择
       - 手动切换
+      - 机场专线
       - AIGC
       - Adobe
       - GitHub
@@ -472,6 +488,13 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: text
+    type: http
+  Airport:
+    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Airport.yaml
+    path: ./ruleset/Airport.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
     type: http
   freedom:
     url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/freedom.yaml
@@ -782,6 +805,7 @@ rules:
   - "RULE-SET,ChinaMedia,国内媒体"
   - "RULE-SET,ProxyMedia,国外媒体"
   - "RULE-SET,freedom,自由意志"
+  - "RULE-SET,Airport,机场专线"
   - "RULE-SET,ProxyGFWlist,节点选择"
   - "RULE-SET,ChinaDomain,全球直连"
   - "RULE-SET,ChinaCompanyIp,全球直连"
