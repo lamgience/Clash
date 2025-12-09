@@ -45,11 +45,11 @@ proxy-groups:
     proxies:
       - 节点选择
       - 自动选择
+      - 美国节点
       - 狮城节点
       - 香港节点
       - 台湾节点
       - 日本节点
-      - 美国节点
       - 韩国节点
       - 手动切换
       - DIRECT
@@ -68,7 +68,7 @@ proxy-groups:
       - 手动切换  
       - DIRECT   
   - name: GitHub
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg
+    icon: https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000
     type: select
     proxies:
       - 自动选择
@@ -92,6 +92,20 @@ proxy-groups:
       - 台湾节点
       - 日本节点
       - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+  - name: Perplexity
+    icon: https://img.icons8.com/?size=100&id=kzJWN5jCDzpq&format=png&color=000000
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
       - 韩国节点
       - 手动切换
       - DIRECT
@@ -231,7 +245,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
   - name: 苹果服务
-    icon: https://img.icons8.com/?size=100&id=gXR9fwimIOsU&format=png&color=000000
+    icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
     type: select
     proxies:
       - DIRECT
@@ -414,6 +428,7 @@ proxy-groups:
       - AIGC
       - Adobe
       - GitHub
+      - Perplexity
       - 油管视频
       - 奈飞视频
       - Spotify
@@ -784,7 +799,7 @@ rules:
   - "RULE-SET,bard,AIGC"
   - "RULE-SET,Gemini,AIGC"
   - "RULE-SET,claude,AIGC"
-  - "RULE-SET,perplexity,AIGC"
+  - "RULE-SET,perplexity,Perplexity"
   - "RULE-SET,GitHub,GitHub"
   - "RULE-SET,x,国外社交"
   - "RULE-SET,Instagram,国外社交"
