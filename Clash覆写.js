@@ -108,6 +108,12 @@ function main(config) {
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
+      icon: "https://img.icons8.com/?size=100&id=-5h34CbaUb09&format=png&color=000000",
+      name: "MicrosoftEdge",
+      type: "select",
+      proxies: ["自动选择","节点选择","手动切换","DIRECT","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点"],
+    },
+    {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png",
       name: "微软云盘",
       type: "select",
@@ -391,6 +397,14 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
+      type: "http",
+    },
+    MicrosoftEdge: {
+      url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/MicrosoftEdge/MicrosoftEdge.yaml",
+      path: "./ruleset/MicrosoftEdge.yaml",
+      behavior: "classical",
+      interval: 86400,
+      format: "yaml",
       type: "http",
     },
     Apple: {
@@ -727,6 +741,7 @@ function main(config) {
     "RULE-SET,SteamCN,全球直连",
     "RULE-SET,bing,微软Bing",
     "RULE-SET,Bing,微软Bing",
+    "RULE-SET,MicrosoftEdge,MicrosoftEdge",
     "RULE-SET,OneDrive,微软云盘",
     "RULE-SET,Airport,机场专线",
     "RULE-SET,Microsoft,微软服务",
