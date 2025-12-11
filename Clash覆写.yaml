@@ -458,6 +458,7 @@ proxy-groups:
       - 国外社交
       - 谷歌FCM
       - 微软Bing
+      - MicrosoftEdge
       - 微软云盘
       - 微软服务
       - 苹果服务
