@@ -97,6 +97,20 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
+  - name: Gemini
+    icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
   - name: Perplexity
     icon: https://img.icons8.com/?size=100&id=kzJWN5jCDzpq&format=png&color=000000
     type: select
@@ -850,7 +864,7 @@ rules:
   - "RULE-SET,OpenAi,AIGC"
   - "RULE-SET,copilot,AIGC"
   - "RULE-SET,bard,AIGC"
-  - "RULE-SET,Gemini,AIGC"
+  - "RULE-SET,Gemini,Gemini"
   - "RULE-SET,claude,AIGC"
   - "RULE-SET,perplexity,Perplexity"
   - "RULE-SET,GitHub,GitHub"
