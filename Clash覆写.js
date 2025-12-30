@@ -78,6 +78,12 @@ function main(config) {
       proxies: ["自动选择","节点选择","手动切换","香港节点","美国节点","台湾节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
+      icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000",
+      name: "Gemini",
+      type: "select",
+      proxies: ["自动选择","节点选择","手动切换","香港节点","美国节点","台湾节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
+    },
+    {
       icon: "https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000",
       name: "国外社交",
       type: "select",
@@ -753,7 +759,7 @@ function main(config) {
     "RULE-SET,OpenAi,AIGC",
     "RULE-SET,copilot,AIGC",
     "RULE-SET,bard,AIGC",
-    "RULE-SET,Gemini,AIGC",
+    "RULE-SET,Gemini,Gemini",
     "RULE-SET,claude,AIGC",
     "RULE-SET,perplexity,Perplexity",
     "RULE-SET,GitHub,GitHub",
