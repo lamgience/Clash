@@ -687,7 +687,7 @@ function main(config) {
     },
     NetEaseMusic: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list",
-      path: "./ruleset/etEaseMusic.list",
+      path: "./ruleset/NetEaseMusic.list",
       behavior: "classical",
       interval: 86400,
       format: "text",
