@@ -12,6 +12,7 @@ proxy-groups:
       - 英国节点
       - 俄罗斯节点
       - 韩国节点
+      - 其他节点
       - 手动切换
       - DIRECT
   - name: 手动切换
@@ -42,7 +43,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
   - name: AIGC
-    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
+    icon: https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000
     type: select
     proxies:
       - 节点选择
@@ -99,6 +100,20 @@ proxy-groups:
       - DIRECT
   - name: Gemini
     icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+  - name: OpenAi
+    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
     type: select
     proxies:
       - 节点选择
@@ -442,8 +457,8 @@ proxy-groups:
   - name: 英国节点
     icon: https://img.icons8.com/?size=100&id=30630&format=png&color=000000
     include-all: true
-    filter: (?i)英国|BG
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
+    filter: (?i)英国|BG|GB
+    exclude-filter: (?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
     type: url-test
     interval: 300
     tolerance: 50
@@ -460,6 +475,12 @@ proxy-groups:
     include-all: true
     filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media
     type: select
+  - name: 其他节点
+    icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
+    include-all: true
+    filter: (?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|AU|澳大利亚|TH|泰国|KZ|哈萨克斯坦
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
+    type: select
   - name: GLOBAL
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
     include-all: true
@@ -469,6 +490,7 @@ proxy-groups:
       - 节点选择
       - 手动切换
       - 机场专线
+      - 其他节点
       - AIGC
       - Adobe
       - GitHub
@@ -647,10 +669,24 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Openai:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/openai.yaml
+    path: ./ruleset/OpenAi.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
   Gemini:
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.yaml
-    path: ./ruleset/gemini.yaml
+    path: ./ruleset/Gemini.yaml
     behavior: domain
+    interval: 86400
+    format: yaml
+    type: http  
+  gemini:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
+    path: ./ruleset/gemini.yaml
+    behavior: classical
     interval: 86400
     format: yaml
     type: http  
@@ -861,10 +897,12 @@ rules:
   - "RULE-SET,telegram_domain,电报消息"
   - "RULE-SET,telegram_ip,电报消息"
   - "RULE-SET,Adobe,Adobe"
-  - "RULE-SET,OpenAi,AIGC"
+  - "RULE-SET,OpenAi,OpenAi"
+  - "RULE-SET,Openai,OpenAi"
   - "RULE-SET,copilot,AIGC"
   - "RULE-SET,bard,AIGC"
   - "RULE-SET,Gemini,Gemini"
+  - "RULE-SET,gemini,Gemini"
   - "RULE-SET,claude,AIGC"
   - "RULE-SET,perplexity,Perplexity"
   - "RULE-SET,GitHub,GitHub"
