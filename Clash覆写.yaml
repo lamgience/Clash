@@ -557,6 +557,20 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  google_domain:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml
+    path: ./ruleset/google_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  google_ip:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml
+    path: ./ruleset/google_ip.yaml
+    behavior: ipcidr
+    interval: 86400
+    format: yaml
+    type: http
   GoogleFCM:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list
     path: ./ruleset/GoogleFCM.list
@@ -890,6 +904,8 @@ rules:
   - "RULE-SET,gemini,Gemini"
   - "RULE-SET,OpenAi,OpenAi"
   - "RULE-SET,Openai,OpenAi"
+  - "RULE-SET,google_domain,谷歌FCM"
+  - "RULE-SET,google_ip,谷歌FCM"
   - "RULE-SET,GoogleFCM,谷歌FCM"
   - "RULE-SET,Adobe,Adobe"
   - "RULE-SET,copilot,AIGC"
