@@ -311,7 +311,7 @@ function main(config) {
       icon: "https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000",
       "include-all": true,
       "exclude-filter": "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接",
-      filter: "(?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|C|瑞士|TH|泰国|KZ|哈萨克斯坦",
+      filter: "(?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|CH|瑞士|TH|泰国|KZ|哈萨克斯坦",
       name: "其他节点",
       type: "url-test",
       interval: 300,
