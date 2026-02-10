@@ -10,8 +10,9 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 英国节点
-      - 俄罗斯节点
+      - 澳大利亚节点
       - 韩国节点
+      - 俄罗斯节点
       - 其他节点
       - 手动切换
       - DIRECT
@@ -39,6 +40,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 英国节点
+      - 澳大利亚节点
       - 俄罗斯节点
       - 韩国节点
       - 手动切换
@@ -54,6 +56,7 @@ proxy-groups:
       - 台湾节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: Gemini
@@ -68,6 +71,7 @@ proxy-groups:
       - 台湾节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: OpenAi
@@ -82,6 +86,37 @@ proxy-groups:
       - 台湾节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
+      - 手动切换
+      - DIRECT
+  - name: Copilot
+    icon: https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 手动切换
+      - DIRECT
+  - name: Claude
+    icon: https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 狮城节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: 谷歌FCM
@@ -97,6 +132,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
   - name: Adobe
     icon: https://img.icons8.com/?size=100&id=nv008Mv97LTG&format=png&color=000000
@@ -321,6 +357,20 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
+  - name: 自由意志
+    icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
   - name: 巴哈姆特
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
     type: select
@@ -359,20 +409,7 @@ proxy-groups:
       - DIRECT
       - 节点选择
       - 自动选择
-  - name: 自由意志
-    icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
+  
   - name: 全球直连
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
     type: select
@@ -470,6 +507,14 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  - name: 澳大利亚节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    include-all: true
+    filter: (?i)澳大利亚|AU|澳洲|澳|Australia
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
+    type: url-test
+    interval: 300
+    tolerance: 50
   - name: 奈飞节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     include-all: true
@@ -478,7 +523,7 @@ proxy-groups:
   - name: 其他节点
     icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
     include-all: true
-    filter: (?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|AU|澳大利亚|TH|泰国|KZ|哈萨克斯坦
+    filter: (?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|CH|瑞士|TH|泰国|KZ|哈萨克斯坦
     exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
     type: select
   - name: GLOBAL
@@ -525,6 +570,7 @@ proxy-groups:
       - 俄罗斯节点
       - 英国节点
       - 韩国节点
+      - 澳大利亚节点
       - 奈飞节点
       - 自由意志
 
@@ -908,9 +954,9 @@ rules:
   - "RULE-SET,google_ip,谷歌FCM"
   - "RULE-SET,GoogleFCM,谷歌FCM"
   - "RULE-SET,Adobe,Adobe"
-  - "RULE-SET,copilot,AIGC"
+  - "RULE-SET,copilot,Copilot"
   - "RULE-SET,bard,AIGC"
-  - "RULE-SET,claude,AIGC"
+  - "RULE-SET,claude,Claude"
   - "RULE-SET,perplexity,Perplexity"
   - "RULE-SET,telegram_domain,电报消息"
   - "RULE-SET,telegram_ip,电报消息"
