@@ -508,7 +508,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
   - name: 澳大利亚节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
     include-all: true
     filter: (?i)澳大利亚|AU|澳洲|澳|Australia
     exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
