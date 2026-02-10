@@ -168,16 +168,30 @@ function main(config) {
       proxies: ["自动选择","节点选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
     {
-      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
-      name: "巴哈姆特",
-      type: "select",
-      proxies: ["节点选择","手动切换","台湾节点","DIRECT"],
-    },
-    {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png",
       name: "哔哩哔哩",
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","全球直连","DIRECT"],
+    },
+    {
+      icon: "https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000",
+      name: "微信",
+      type: "select",
+      proxies: ["DIRECT","节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png",
+      "include-all": true,
+      filter: "(?i)网易|音乐|NetEase|Music",
+      name: "网易音乐",
+      type: "select",
+      proxies: ["节点选择","自动选择","DIRECT"],
+    }, 
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
+      name: "巴哈姆特",
+      type: "select",
+      proxies: ["节点选择","手动切换","台湾节点","DIRECT"],
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png",
@@ -203,20 +217,6 @@ function main(config) {
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点","DIRECT"],
     },
-    {
-      icon: "https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000",
-      name: "微信",
-      type: "select",
-      proxies: ["DIRECT","节点选择","自动选择","手动切换","香港节点","台湾节点","美国节点","日本节点","狮城节点","英国节点","韩国节点","俄罗斯节点"],
-    },
-    {
-      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png",
-      "include-all": true,
-      filter: "(?i)网易|音乐|NetEase|Music",
-      name: "网易音乐",
-      type: "select",
-      proxies: ["节点选择","自动选择","DIRECT"],
-    }, 
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
       "include-all": true,
