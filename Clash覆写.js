@@ -169,6 +169,18 @@ function main(config) {
     },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png",
+      name: "哔哩哔哩港澳台",
+      type: "select",
+      proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","全球直连","DIRECT"],
+    },
+    {
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
+      name: "巴哈姆特",
+      type: "select",
+      proxies: ["节点选择","手动切换","台湾节点","DIRECT"],
+    },
+    {
+      icon: "https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000",
       name: "哔哩哔哩",
       type: "select",
       proxies: ["节点选择","自动选择","手动切换","香港节点","台湾节点","全球直连","DIRECT"],
@@ -187,12 +199,6 @@ function main(config) {
       type: "select",
       proxies: ["节点选择","自动选择","DIRECT"],
     }, 
-    {
-      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png",
-      name: "巴哈姆特",
-      type: "select",
-      proxies: ["节点选择","手动切换","台湾节点","DIRECT"],
-    },
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png",
       name: "全球直连",
@@ -714,11 +720,11 @@ function main(config) {
       type: "http",
     },
     Bahamut: {
-      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list",
-      path: "./ruleset/Bahamut.list",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml",
+      path: "./ruleset/Bahamut.yaml",
       behavior: "classical",
       interval: 86400,
-      format: "text",
+      format: "yaml",
       type: "http",
     },
     BilibiliHMT: {
@@ -730,11 +736,11 @@ function main(config) {
       type: "http",
     },
     Bilibili: {
-      url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bilibili.list",
-      path: "./ruleset/Bilibili.list",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml",
+      path: "./ruleset/Bilibili.yaml",
       behavior: "classical",
       interval: 86400,
-      format: "text",
+      format: "yaml",
       type: "http",
     },
     NetEaseMusic: {
@@ -835,7 +841,7 @@ function main(config) {
     "RULE-SET,Steam,游戏平台",
     "RULE-SET,Nintendo,游戏平台",
     "RULE-SET,Bahamut,巴哈姆特",
-    "RULE-SET,BilibiliHMT,哔哩哔哩",
+    "RULE-SET,BilibiliHMT,哔哩哔哩港澳台",
     "RULE-SET,Bilibili,哔哩哔哩",
     "RULE-SET,ChinaMedia,国内媒体",
     "RULE-SET,ProxyGFWlist,节点选择",
