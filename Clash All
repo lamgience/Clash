@@ -99,7 +99,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   Sub_PQJC:
     type: http
-    url: "https://dash.pqjc.site/api/v1/client/subscribe?token=c731d908609091b8a046b5b1aa536d00"
+    url: "https://dash.pqjc.site/api/v1/pq/c731d908609091b8a046b5b1aa536d00"
     interval: 3600
     path: ./proxies/pqjc.yaml
     health-check:
