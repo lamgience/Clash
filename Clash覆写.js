@@ -1,4 +1,107 @@
 function main(config) {
+  // ------------------------------------------------------
+  // 第一部分：插入你提供的 YAML 配置 (DNS, TUN, General)
+  // ------------------------------------------------------
+  const yamlConfig = {
+    "mode": "rule",
+    "mixed-port": 7897,
+    "allow-lan": false,
+    "log-level": "info",
+    "ipv6": true,
+    "external-controller": "",
+    "secret": "set-your-secret", // 注意：如果你有特定的密钥，请在此处修改
+    "unified-delay": true,
+    "dns": {
+      "default-nameserver": [
+        "system",
+        "223.6.6.6",
+        "8.8.8.8",
+        "2400:3200::1",
+        "2001:4860:4860::8888"
+      ],
+      "direct-nameserver": [],
+      "direct-nameserver-follow-policy": false,
+      "enable": true,
+      "enhanced-mode": "fake-ip",
+      "fake-ip-filter": [
+        "*.lan",
+        "*.local",
+        "*.arpa",
+        "time.*.com",
+        "ntp.*.com",
+        "+.market.xiaomi.com",
+        "localhost.ptlogin2.qq.com",
+        "*.msftncsi.com",
+        "www.msftconnecttest.com"
+      ],
+      "fake-ip-filter-mode": "blacklist",
+      "fake-ip-range": "198.18.0.1/16",
+      "fallback": [],
+      "fallback-filter": {
+        "domain": [
+          "+.google.com",
+          "+.facebook.com",
+          "+.youtube.com"
+        ],
+        "geoip": true,
+        "geoip-code": "CN",
+        "ipcidr": [
+          "240.0.0.0/4",
+          "0.0.0.0/32"
+        ]
+      },
+      "ipv6": true,
+      "listen": ":53",
+      "nameserver": [
+        "8.8.8.8",
+        "https://doh.pub/dns-query",
+        "https://dns.alidns.com/dns-query"
+      ],
+      "prefer-h3": false,
+      "proxy-server-nameserver": [
+        "https://doh.pub/dns-query",
+        "https://dns.alidns.com/dns-query",
+        "tls://223.5.5.5"
+      ],
+      "respect-rules": false,
+      "use-hosts": false,
+      "use-system-hosts": false
+    },
+    "profile": {
+      "store-selected": true
+    },
+    "tun": {
+      "auto-detect-interface": true,
+      "auto-route": true,
+      "device": "Mihomo",
+      "dns-hijack": [
+        "any:53"
+      ],
+      "mtu": 1500,
+      "stack": "mixed",
+      "strict-route": false,
+      "enable": true
+    },
+    "external-controller-cors": {
+      "allow-private-network": true,
+      "allow-origins": [
+        "tauri://localhost",
+        "http://tauri.localhost",
+        "https://yacd.metacubex.one",
+        "https://metacubex.github.io",
+        "https://board.zash.run.place"
+      ]
+    },
+    // 注意：JS字符串中反斜杠需要转义
+    "external-controller-pipe": "\\\\.\\pipe\\verge-mihomo"
+  };
+
+  // 将 YAML 配置合并覆盖到原始 config 中
+  config = Object.assign(config, yamlConfig);
+
+  // ------------------------------------------------------
+  // 第二部分：原有的代理组 (Proxy Groups)
+  // ------------------------------------------------------
   config["proxy-groups"] = [
     {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
@@ -331,6 +434,10 @@ function main(config) {
       type: "select",
     }
   ];
+
+  // ------------------------------------------------------
+  // 第三部分：原有的规则集 (Rule Providers)
+  // ------------------------------------------------------
   if (!config['rule-providers']) {
     config['rule-providers'] = {};
   }
@@ -793,6 +900,9 @@ function main(config) {
     },
   });
 
+  // ------------------------------------------------------
+  // 第四部分：原有的分流规则 (Rules)
+  // ------------------------------------------------------
   config["rules"] = [
     "RULE-SET,LocalAreaNetwork,全球直连",
     "RULE-SET,private,DIRECT",
@@ -854,5 +964,6 @@ function main(config) {
     "GEOIP,CN,全球直连",
     "MATCH,漏网之鱼" , 
   ];
+
   return config;
 }
