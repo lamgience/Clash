@@ -1,563 +1,710 @@
 proxy-groups:
   - name: 节点选择
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+    include-all: true
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
     proxies:
       - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
-      - 狮城节点
-      - 日本节点
       - 美国节点
+      - 日本节点
+      - 狮城节点
       - 英国节点
-      - 澳大利亚节点
       - 韩国节点
+      - 澳大利亚节点
       - 俄罗斯节点
       - 其他节点
-      - 手动切换
       - DIRECT
+
   - name: 手动切换
+    type: select
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: select
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
   - name: 自动选择
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
-    include-all: true
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     interval: 300
-    tolerance: 50
+    include-all: true
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
   - name: AIGC
+    type: select
     icon: https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 美国节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 手动切换
-      - DIRECT
-  - name: Gemini
-    icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 美国节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 手动切换
-      - DIRECT
-  - name: OpenAi
-    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 美国节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 手动切换
-      - DIRECT
-  - name: Copilot
-    icon: https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 美国节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 手动切换
-      - DIRECT
-  - name: Claude
-    icon: https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 美国节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 手动切换
-      - DIRECT
-  - name: 谷歌FCM
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 手动切换
-  - name: Adobe
-    icon: https://img.icons8.com/?size=100&id=nv008Mv97LTG&format=png&color=000000
-    type: select
     proxies:
       - 自动选择
       - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换  
-      - DIRECT   
-  - name: GitHub
-    icon: https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000
-    type: select
-    proxies:
-      - 自动选择
-      - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
       - 手动切换
-      - DIRECT   
-  - name: 电报消息
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
-  - name: Perplexity
-    icon: https://img.icons8.com/?size=100&id=kzJWN5jCDzpq&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 美国节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
-  - name: 油管视频
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
-  - name: 奈飞视频
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 奈飞节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
-  - name: Spotify
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 奈飞节点
-      - 狮城节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
-  - name: 国外媒体
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
-  - name: 国内媒体
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 手动切换
-  - name: 国外社交
-    icon: https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT   
-  - name: MicrosoftEdge
-    icon: https://img.icons8.com/?size=100&id=-5h34CbaUb09&format=png&color=000000
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
       - 美国节点
       - 香港节点
       - 台湾节点
-      - 狮城节点
       - 日本节点
-      - 韩国节点
-      - 手动切换
-  - name: 微软Bing
-    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
       - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
-  - name: 微软云盘
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
-  - name: 微软服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
-    type: select
-    proxies:
-      - 自动选择
-      - 节点选择
-      - DIRECT
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
-  - name: 苹果服务
-    icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
-  - name: 游戏平台
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
-  - name: 自由意志
-    icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - DIRECT
-  - name: 机场专线
-    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
       - 英国节点
+      - 韩国节点
       - 澳大利亚节点
       - 俄罗斯节点
-      - 韩国节点
-      - 手动切换
-  - name: 哔哩哔哩港澳台
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
-    type: select
-    proxies:
-      - 全球直连
-      - 台湾节点
-      - 香港节点
       - DIRECT
-  - name: 巴哈姆特
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
+
+  - name: Gemini
     type: select
+    icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
     proxies:
-      - 台湾节点
-      - 节点选择
-      - 手动切换
-      - DIRECT
-  - name: 哔哩哔哩
-    icon: https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000
-    type: select
-    proxies:
-      - 全球直连
-      - 台湾节点
-      - 香港节点
-      - DIRECT
-  - name: 微信
-    icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
-    type: select
-    proxies:
-      - DIRECT
-      - 手动切换
-      - 节点选择
       - 自动选择
-      - 狮城节点
+      - 节点选择
+      - 手动切换
       - 香港节点
+      - 美国节点
       - 台湾节点
       - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: OpenAi
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
       - 美国节点
-      - 韩国节点    
-  - name: 网易音乐
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
-    type: select
-    include-all: true
-    filter: (?i)网易|音乐|NetEase|Music
-    proxies:
+      - 台湾节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
       - DIRECT
-      - 节点选择
+
+  - name: Copilot
+    type: select
+    icon: https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000
+    proxies:
       - 自动选择
-  
-  - name: 全球直连
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
-    type: select
-    proxies:
-      - DIRECT
       - 节点选择
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 台湾节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: Claude
+    type: select
+    icon: https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000
+    proxies:
       - 自动选择
-  - name: 广告拦截
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 应用净化
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 漏网之鱼
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
-    type: select
-    proxies:
       - 节点选择
-      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 台湾节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
       - DIRECT
+
+  - name: 谷歌
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
       - 香港节点
       - 台湾节点
-      - 狮城节点
-      - 日本节点
       - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
       - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: Adobe
+    type: select
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg
+    proxies:
+      - 自动选择
+      - 节点选择
       - 手动切换
-  - name: 香港节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
-    include-all: true
-    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 台湾节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
-    include-all: true
-    filter: (?i)台|新北|彰化|TW|Taiwan
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 日本节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
-    include-all: true
-    filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 美国节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-    include-all: true
-    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 俄罗斯节点
-    icon: https://img.icons8.com/?size=100&id=rcIHDZzZWKJ8&format=png&color=000000
-    include-all: true
-    filter: (?i)俄罗斯|ru
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 狮城节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
-    include-all: true
-    filter: (?i)新加坡|坡|狮城|SG|Singapore
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 英国节点
-    icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
-    include-all: true
-    filter: (?i)英国|BG|GB
-    exclude-filter: (?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 韩国节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
-    include-all: true
-    filter: (?i)KR|Korea|KOR|首尔|韩|韓
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 澳大利亚节点
-    icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
-    include-all: true
-    filter: (?i)澳大利亚|AU|澳洲|澳|Australia
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 奈飞节点
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: GitHub
+    type: select
+    icon: https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: Telegram
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: YouTube
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: Netflix
+    type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    include-all: true
-    filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media
+    proxies:
+      - 奈飞节点
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: Spotify
     type: select
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: Perplexity
+    type: select
+    icon: https://img.icons8.com/?size=100&id=kzJWN5jCDzpq&format=png&color=000000
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 台湾节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 国外社交
+    type: select
+    icon: https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 国外媒体
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 国内媒体
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - DIRECT
+
+  - name: 微软Bing
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: MicrosoftEdge
+    type: select
+    icon: https://img.icons8.com/?size=100&id=-5h34CbaUb09&format=png&color=000000
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+
+  - name: 微软云盘
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 微软服务
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 苹果服务
+    type: select
+    icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
+    proxies:
+      - DIRECT
+      - 自动选择
+      - 手动切换
+      - 节点选择
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+
+  - name: 游戏平台
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 自由意志
+    type: select
+    icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
+    proxies:
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 机场专线
+    type: select
+    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
+    proxies:
+      - DIRECT
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+
+  - name: 哔哩哔哩港澳台
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 全球直连
+      - DIRECT
+
+  - name: 巴哈姆特
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
+    proxies:
+      - 节点选择
+      - 手动切换
+      - 台湾节点
+      - DIRECT
+
+  - name: 哔哩哔哩
+    type: select
+    icon: https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 全球直连
+      - DIRECT
+
+  - name: 微信
+    type: select
+    icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+
+  - name: 网易音乐
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
+    include-all: true
+    filter: "(?i)网易|音乐|NetEase|Music"
+    proxies:
+      - 节点选择
+      - 自动选择
+      - DIRECT
+
+  - name: 全球直连
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 自动选择
+
+  - name: 广告拦截
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 应用净化
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 漏网之鱼
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 狮城节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - DIRECT
+
+  - name: 香港节点
+    type: url-test
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    interval: 300
+    include-all: true
+    filter: "(?i)香港|Hong Kong|HK|🇭🇰|hk|HongKong|hongkong"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 美国节点
+    type: url-test
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    interval: 300
+    include-all: true
+    filter: "(?i)美国|USA|🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 台湾节点
+    type: url-test
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    interval: 300
+    include-all: true
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 狮城节点
+    type: url-test
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    interval: 300
+    include-all: true
+    filter: "(?i)新加坡|Singapore|🇸🇬|坡|狮城|SG"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 日本节点
+    type: url-test
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    interval: 300
+    include-all: true
+    filter: "(?i)日本|Japan|🇯🇵|川日|东京|大阪|泉日|埼玉|沪日|深日|JP"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 俄罗斯节点
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
+    interval: 300
+    include-all: true
+    filter: "(?i)俄罗斯|ru"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 英国节点
+    type: url-test
+    icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
+    interval: 300
+    include-all: true
+    filter: "(?i)英国|BG"
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 韩国节点
+    type: url-test
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    interval: 300
+    include-all: true
+    filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 澳大利亚节点
+    type: url-test
+    icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
+    interval: 300
+    include-all: true
+    filter: "(?i)澳大利亚|AU|澳洲|澳|Australia"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
+  - name: 奈飞节点
+    type: url-test
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    interval: 300
+    include-all: true
+    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
   - name: 其他节点
+    type: url-test
     icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
+    interval: 300
     include-all: true
-    filter: (?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|CH|瑞士|TH|泰国|KZ|哈萨克斯坦
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
-    type: select
+    filter: "(?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|CH|瑞士|TH|泰国|KZ|哈萨克斯坦"
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
+
   - name: GLOBAL
+    type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
     include-all: true
-    type: select
+    exclude-filter: "(?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接"
     proxies:
-      - 自动选择
       - 节点选择
+      - 自动选择
       - 手动切换
       - 全球直连
       - 广告拦截
       - 应用净化
+      - 漏网之鱼
+      - 奈飞节点
       - 香港节点
-      - 日本节点
-      - 美国节点
       - 台湾节点
+      - 美国节点
+      - 日本节点
       - 狮城节点
-      - 俄罗斯节点
       - 英国节点
       - 韩国节点
       - 澳大利亚节点
+      - 俄罗斯节点
       - 其他节点
+      - DIRECT
 
 rule-providers:
+  private:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.yaml
+    path: ./ruleset/private.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  cn_domain:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.yaml
+    path: ./ruleset/cn_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  ChinaDomain:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list
+    path: ./ruleset/ChinaDomain.list
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
+  ChinaCompanyIp:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list
+    path: ./ruleset/ChinaCompanyIp.list
+    behavior: ipcidr
+    interval: 86400
+    format: text
+    type: http
   LocalAreaNetwork:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
     path: ./ruleset/LocalAreaNetwork.list
@@ -586,20 +733,6 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  google_domain:
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml
-    path: ./ruleset/google_domain.yaml
-    behavior: domain
-    interval: 86400
-    format: yaml
-    type: http
-  google_ip:
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml
-    path: ./ruleset/google_ip.yaml
-    behavior: ipcidr
-    interval: 86400
-    format: yaml
-    type: http
   GoogleFCM:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list
     path: ./ruleset/GoogleFCM.list
@@ -614,27 +747,6 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  Airport:
-    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Airport.yaml
-    path: ./ruleset/Airport.yaml
-    behavior: domain
-    interval: 86400
-    format: yaml
-    type: http
-  freedom:
-    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/freedom.yaml
-    path: ./ruleset/freedom.yaml
-    behavior: domain
-    interval: 86400
-    format: yaml
-    type: http
-  direct_cus:
-    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Direct_wi.yaml
-    path: ./ruleset/Direct_wi.yaml
-    behavior: domain
-    interval: 86400
-    format: yaml
-    type: http
   SteamCN:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list
     path: ./ruleset/SteamCN.list
@@ -642,13 +754,6 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  GitHub:
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
-    path: ./ruleset/GitHub.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http  
   Bing:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list
     path: ./ruleset/Bing.list
@@ -684,10 +789,24 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  WeChat:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list
+    path: ./ruleset/WeChat.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
   Adobe:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/adobe.yaml
     path: ./ruleset/adobe.yaml
     behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  GitHub:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
+    path: ./ruleset/GitHub.yaml
+    behavior: classical
     interval: 86400
     format: yaml
     type: http
@@ -701,38 +820,101 @@ rule-providers:
   telegram_ip:
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.yaml
     path: ./ruleset/telegram_ip.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  google_domain:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml
+    path: ./ruleset/google_domain.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  "geolocation-!cn":
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.yaml
+    path: ./ruleset/geolocation-!cn.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  cn_ip:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.yaml
+    path: ./ruleset/cn_ip.yaml
     behavior: ipcidr
     interval: 86400
     format: yaml
     type: http
-  OpenAi:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list
-    path: ./ruleset/OpenAi.list
-    behavior: classical
+  google_ip:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml
+    path: ./ruleset/google_ip.yaml
+    behavior: ipcidr
     interval: 86400
-    format: text
+    format: yaml
     type: http
-  Openai:
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/openai.yaml
-    path: ./ruleset/OpenAi.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-  Gemini:
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.yaml
-    path: ./ruleset/Gemini.yaml
+  freedom:
+    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/freedom.yaml
+    path: ./ruleset/freedom.yaml
     behavior: domain
     interval: 86400
     format: yaml
-    type: http  
-  gemini:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
-    path: ./ruleset/gemini.yaml
+    type: http
+  direct_cus:
+    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Direct_wi.yaml
+    path: ./ruleset/Direct_wi.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  Airport:
+    url: https://raw.githubusercontent.com/lamgience/Clash/refs/heads/clash_rules/Airport.yaml
+    path: ./ruleset/Airport.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  bing:
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml
+    path: ./ruleset/bing.yaml
     behavior: classical
     interval: 86400
     format: yaml
-    type: http  
+    type: http
+  x:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml
+    path: ./ruleset/x.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  Instagram:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Instagram/Instagram.yaml
+    path: ./ruleset/Instagram.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  Threads:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Threads/Threads.yaml
+    path: ./ruleset/Threads.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  reddit:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/reddit.yaml
+    path: ./ruleset/reddit.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  Spotify:
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml
+    path: ./ruleset/Spotify.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
   copilot:
     url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml
     path: ./ruleset/copilot.yaml
@@ -754,6 +936,34 @@ rule-providers:
     interval: 86400
     format: yaml
     type: http
+  OpenAi:
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
+    path: ./ruleset/openai.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  Openai:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/openai.yaml
+    path: ./ruleset/Openai.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  Gemini:
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.yaml
+    path: ./ruleset/Gemini.yaml
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
+  gemini:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
+    path: ./ruleset/gemini.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
   perplexity:
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/perplexity.yaml
     path: ./ruleset/perplexity.yaml
@@ -761,12 +971,12 @@ rule-providers:
     interval: 86400
     format: yaml
     type: http
-  NetEaseMusic:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list
-    path: ./ruleset/NetEaseMusic.list
+  Steam:
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml
+    path: ./ruleset/steam.yaml
     behavior: classical
     interval: 86400
-    format: text
+    format: yaml
     type: http
   Epic:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list
@@ -775,23 +985,9 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  Origin:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list
-    path: ./ruleset/Origin.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
   Sony:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list
     path: ./ruleset/Sony.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-  Steam:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Steam.list
-    path: ./ruleset/Steam.list
     behavior: classical
     interval: 86400
     format: text
@@ -817,41 +1013,6 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  Spotify:
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml
-    path: ./ruleset/Spotify.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http
-  Instagram:
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Instagram/Instagram.yaml
-    path: ./ruleset/Instagram.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http  
-  x:
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml
-    path: ./ruleset/Twitter.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http  
-  reddit:
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/reddit.yaml
-    path: ./ruleset/reddit.yaml
-    behavior: domain
-    interval: 86400
-    format: yaml
-    type: http  
-  Threads:
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Threads/Threads.yaml
-    path: ./ruleset/Threads.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http  
   Bahamut:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
     path: ./ruleset/Bahamut.yaml
@@ -873,9 +1034,9 @@ rule-providers:
     interval: 86400
     format: yaml
     type: http
-  WeChat:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list
-    path: ./ruleset/Bilibili.list
+  NetEaseMusic:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list
+    path: ./ruleset/NetEaseMusic.list
     behavior: classical
     interval: 86400
     format: text
@@ -901,17 +1062,10 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  ChinaDomain:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list
-    path: ./ruleset/ChinaDomain.list
-    behavior: domain
-    interval: 86400
-    format: text
-    type: http
-  ChinaCompanyIp:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list
-    path: ./ruleset/ChinaCompanyIp.list
-    behavior: ipcidr
+  Origin:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list
+    path: ./ruleset/Origin.list
+    behavior: classical
     interval: 86400
     format: text
     type: http
@@ -922,60 +1076,64 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  
 
 rules:
-  - "RULE-SET,LocalAreaNetwork,全球直连"
-  - "RULE-SET,UnBan,全球直连"
-  - "RULE-SET,BanAD,广告拦截"
-  - "RULE-SET,BanProgramAD,应用净化"
-  - "RULE-SET,direct_cus,DIRECT"
-  - "RULE-SET,Airport,机场专线"
-  - "RULE-SET,Gemini,Gemini"
-  - "RULE-SET,gemini,Gemini"
-  - "RULE-SET,OpenAi,OpenAi"
-  - "RULE-SET,Openai,OpenAi"
-  - "RULE-SET,google_domain,谷歌FCM"
-  - "RULE-SET,google_ip,谷歌FCM"
-  - "RULE-SET,GoogleFCM,谷歌FCM"
-  - "RULE-SET,Adobe,Adobe"
-  - "RULE-SET,copilot,Copilot"
-  - "RULE-SET,bard,AIGC"
-  - "RULE-SET,claude,Claude"
-  - "RULE-SET,perplexity,Perplexity"
-  - "RULE-SET,telegram_domain,电报消息"
-  - "RULE-SET,telegram_ip,电报消息"
-  - "RULE-SET,GitHub,GitHub"
-  - "RULE-SET,YouTube,油管视频"
-  - "RULE-SET,Netflix,奈飞视频"
-  - "RULE-SET,freedom,自由意志"
-  - "RULE-SET,ProxyMedia,国外媒体"
-  - "RULE-SET,GoogleCN,全球直连"
-  - "RULE-SET,SteamCN,全球直连"
-  - "RULE-SET,MicrosoftEdge,MicrosoftEdge"
-  - "RULE-SET,Bing,微软Bing"
-  - "RULE-SET,OneDrive,微软云盘"
-  - "RULE-SET,Microsoft,微软服务"
-  - "RULE-SET,Apple,苹果服务"
-  - "RULE-SET,x,国外社交"
-  - "RULE-SET,reddit,国外社交"
-  - "RULE-SET,Instagram,国外社交"
-  - "RULE-SET,Threads,国外社交"
-  - "RULE-SET,Spotify,Spotify"
-  - "RULE-SET,WeChat,微信"
-  - "RULE-SET,NetEaseMusic,网易音乐"
-  - "RULE-SET,Bilibili,哔哩哔哩"
-  - "RULE-SET,Epic,游戏平台"
-  - "RULE-SET,Origin,游戏平台"
-  - "RULE-SET,Sony,游戏平台"
-  - "RULE-SET,Steam,游戏平台"
-  - "RULE-SET,Nintendo,游戏平台"
-  - "RULE-SET,Bahamut,巴哈姆特"
-  - "RULE-SET,BilibiliHMT,哔哩哔哩港澳台"
-  - "RULE-SET,ChinaMedia,国内媒体"
-  - "RULE-SET,ProxyGFWlist,节点选择"
-  - "RULE-SET,ChinaDomain,全球直连"
-  - "RULE-SET,ChinaCompanyIp,全球直连"
-  - "RULE-SET,Download,全球直连"
-  - "GEOIP,CN,全球直连"
-  - "MATCH,漏网之鱼"
+  - RULE-SET,LocalAreaNetwork,全球直连
+  - RULE-SET,private,DIRECT
+  - RULE-SET,UnBan,全球直连
+  - RULE-SET,BanAD,广告拦截
+  - RULE-SET,BanProgramAD,应用净化
+  - RULE-SET,direct_cus,DIRECT
+  - RULE-SET,Airport,机场专线
+  - RULE-SET,Gemini,Gemini
+  - RULE-SET,gemini,Gemini
+  - RULE-SET,GoogleFCM,谷歌
+  - RULE-SET,google_domain,谷歌
+  - RULE-SET,google_ip,谷歌
+  - RULE-SET,OpenAi,OpenAi
+  - RULE-SET,Openai,OpenAi
+  - RULE-SET,copilot,Copilot
+  - RULE-SET,bard,AIGC
+  - RULE-SET,claude,Claude
+  - RULE-SET,perplexity,Perplexity
+  - RULE-SET,Adobe,Adobe
+  - RULE-SET,telegram_domain,Telegram
+  - RULE-SET,telegram_ip,Telegram
+  - RULE-SET,GitHub,GitHub
+  - RULE-SET,YouTube,YouTube
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,ProxyMedia,国外媒体
+  - RULE-SET,x,国外社交
+  - RULE-SET,reddit,国外社交
+  - RULE-SET,Instagram,国外社交
+  - RULE-SET,Threads,国外社交
+  - RULE-SET,freedom,自由意志
+  - RULE-SET,GoogleCN,全球直连
+  - RULE-SET,SteamCN,全球直连
+  - RULE-SET,bing,微软Bing
+  - RULE-SET,Bing,微软Bing
+  - RULE-SET,MicrosoftEdge,MicrosoftEdge
+  - RULE-SET,OneDrive,微软云盘
+  - RULE-SET,Microsoft,微软服务
+  - RULE-SET,Apple,苹果服务
+  - RULE-SET,WeChat,微信
+  - RULE-SET,NetEaseMusic,网易音乐
+  - RULE-SET,Bilibili,哔哩哔哩
+  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Origin,游戏平台
+  - RULE-SET,Sony,游戏平台
+  - RULE-SET,Steam,游戏平台
+  - RULE-SET,Nintendo,游戏平台
+  - RULE-SET,Bahamut,巴哈姆特
+  - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
+  - RULE-SET,ChinaMedia,国内媒体
+  - RULE-SET,ProxyGFWlist,节点选择
+  - RULE-SET,ChinaDomain,全球直连
+  - RULE-SET,ChinaCompanyIp,全球直连
+  - RULE-SET,geolocation-!cn,节点选择
+  - RULE-SET,cn_domain,DIRECT
+  - RULE-SET,cn_ip,DIRECT
+  - RULE-SET,Download,全球直连
+  - GEOIP,CN,全球直连
+  - MATCH,漏网之鱼
