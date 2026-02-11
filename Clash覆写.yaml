@@ -28,22 +28,6 @@ proxy-groups:
     exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余流量|距离下次重置剩余|套餐到期|跳转域名|请勿连接
     interval: 300
     tolerance: 50
-  - name: 机场专线
-    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 英国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 韩国节点
-      - 手动切换
   - name: AIGC
     icon: https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000
     type: select
@@ -371,6 +355,30 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
+  - name: 机场专线
+    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
+    type: select
+    proxies:
+      - DIRECT
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 英国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - 韩国节点
+      - 手动切换
+  - name: 哔哩哔哩港澳台
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    type: select
+    proxies:
+      - 全球直连
+      - 台湾节点
+      - 香港节点
+      - DIRECT
   - name: 巴哈姆特
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
     type: select
@@ -380,12 +388,13 @@ proxy-groups:
       - 手动切换
       - DIRECT
   - name: 哔哩哔哩
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    icon: https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000
     type: select
     proxies:
       - 全球直连
       - 台湾节点
       - 香港节点
+      - DIRECT
   - name: 微信
     icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
     type: select
@@ -534,34 +543,9 @@ proxy-groups:
       - 自动选择
       - 节点选择
       - 手动切换
-      - 机场专线
-      - 其他节点
-      - AIGC
-      - Adobe
-      - GitHub
-      - Perplexity
-      - 油管视频
-      - 奈飞视频
-      - Spotify
-      - 电报消息
-      - 国外媒体
-      - 国内媒体
-      - 国外社交
-      - 谷歌FCM
-      - 微软Bing
-      - MicrosoftEdge
-      - 微软云盘
-      - 微软服务
-      - 苹果服务
-      - 微信
-      - 巴哈姆特
-      - 哔哩哔哩
-      - 游戏平台
-      - 网易音乐
       - 全球直连
       - 广告拦截
       - 应用净化
-      - 漏网之鱼
       - 香港节点
       - 日本节点
       - 美国节点
@@ -571,8 +555,7 @@ proxy-groups:
       - 英国节点
       - 韩国节点
       - 澳大利亚节点
-      - 奈飞节点
-      - 自由意志
+      - 其他节点
 
 rule-providers:
   LocalAreaNetwork:
@@ -870,11 +853,11 @@ rule-providers:
     format: yaml
     type: http  
   Bahamut:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list
-    path: ./ruleset/Bahamut.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+    path: ./ruleset/Bahamut.yaml
     behavior: classical
     interval: 86400
-    format: text
+    format: yaml
     type: http
   BilibiliHMT:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/BilibiliHMT.list
@@ -884,11 +867,11 @@ rule-providers:
     format: text
     type: http
   Bilibili:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bilibili.list
-    path: ./ruleset/Bilibili.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+    path: ./ruleset/Bilibili.yaml
     behavior: classical
     interval: 86400
-    format: text
+    format: yaml
     type: http
   WeChat:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list
@@ -946,6 +929,7 @@ rules:
   - "RULE-SET,UnBan,全球直连"
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
+  - "RULE-SET,Airport,机场专线"
   - "RULE-SET,Gemini,Gemini"
   - "RULE-SET,gemini,Gemini"
   - "RULE-SET,OpenAi,OpenAi"
@@ -964,6 +948,7 @@ rules:
   - "RULE-SET,YouTube,油管视频"
   - "RULE-SET,Netflix,奈飞视频"
   - "RULE-SET,freedom,自由意志"
+  - "RULE-SET,ProxyMedia,国外媒体"
   - "RULE-SET,GoogleCN,全球直连"
   - "RULE-SET,SteamCN,全球直连"
   - "RULE-SET,MicrosoftEdge,MicrosoftEdge"
@@ -978,17 +963,15 @@ rules:
   - "RULE-SET,Spotify,Spotify"
   - "RULE-SET,WeChat,微信"
   - "RULE-SET,NetEaseMusic,网易音乐"
+  - "RULE-SET,Bilibili,哔哩哔哩"
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
   - "RULE-SET,Sony,游戏平台"
   - "RULE-SET,Steam,游戏平台"
   - "RULE-SET,Nintendo,游戏平台"
   - "RULE-SET,Bahamut,巴哈姆特"
-  - "RULE-SET,BilibiliHMT,哔哩哔哩"
-  - "RULE-SET,Bilibili,哔哩哔哩"
+  - "RULE-SET,BilibiliHMT,哔哩哔哩港澳台"
   - "RULE-SET,ChinaMedia,国内媒体"
-  - "RULE-SET,ProxyMedia,国外媒体"
-  - "RULE-SET,Airport,机场专线"
   - "RULE-SET,direct_cus,DIRECT"
   - "RULE-SET,ProxyGFWlist,节点选择"
   - "RULE-SET,ChinaDomain,全球直连"
