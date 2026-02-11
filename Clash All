@@ -248,6 +248,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: GitHub
@@ -262,6 +263,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: 电报消息
@@ -276,6 +278,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: Perplexity
@@ -290,6 +293,7 @@ proxy-groups:
       - 台湾节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: 油管视频
@@ -304,6 +308,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: 奈飞视频
@@ -319,6 +324,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: Spotify
@@ -334,6 +340,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: 国外媒体
@@ -348,6 +355,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: 国内媒体
@@ -373,6 +381,7 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
       - DIRECT
   - name: MicrosoftEdge
@@ -388,6 +397,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
   - name: 微软Bing
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png
@@ -402,6 +412,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
   - name: 微软云盘
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
@@ -416,6 +427,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
   - name: 微软服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
@@ -430,6 +442,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 韩国节点
+      - 澳大利亚节点
       - 手动切换
   - name: 苹果服务
     icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
@@ -480,14 +493,14 @@ proxy-groups:
       - DIRECT
       - 自动选择
       - 香港节点
+      - 美国节点
       - 台湾节点
       - 狮城节点
       - 日本节点
-      - 美国节点
+      - 韩国节点
       - 英国节点
       - 澳大利亚节点
       - 俄罗斯节点
-      - 韩国节点
       - 手动切换
   - name: 哔哩哔哩港澳台
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
@@ -715,15 +728,15 @@ proxy-groups:
       - 全球直连
       - 广告拦截
       - 应用净化
-      - 香港节点
-      - 日本节点
       - 美国节点
       - 台湾节点
+      - 香港节点
+      - 日本节点
       - 狮城节点
-      - 俄罗斯节点
       - 英国节点
       - 韩国节点
       - 澳大利亚节点
+      - 俄罗斯节点
       - 其他节点
 
 # 规则集配置
