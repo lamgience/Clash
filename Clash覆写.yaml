@@ -809,10 +809,10 @@ rules:
   - RULE-SET,perplexity,AIGC
   
   # [优先级 3] Google 生态
+  - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleFCM,谷歌
   - RULE-SET,google_domain,谷歌
   - RULE-SET,google_ip,谷歌
-  - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleCN,谷歌
   
   # [优先级 4] 生产力工具
