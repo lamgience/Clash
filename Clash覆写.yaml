@@ -1,10 +1,14 @@
 # ------------------------------------------------------
-# Clash Verge / Mihomo 扩展覆写配置 (Final Flag Complete)
+# Clash Verge / Mihomo 扩展覆写配置 (Ultimate Version)
 # ------------------------------------------------------
-# 更新日志：
-# 1. "其他节点" 正则增强：补充了所有包含国家的旗标
-#    (🇫🇷/🇲🇾/🇧🇷/🇨🇦/🇪🇸/🇮🇳/🇲🇽/🇱🇺/🇹🇷/🇮🇱/🇮🇹/🇳🇱/🇩🇪/🇨🇭/🇹🇭/🇰🇿)
-# 2. 保持所有其他功能完全不变
+# 版本特性：
+# 1. 自动吸入：include-all 自动加载订阅节点
+# 2. 策略优化：
+#    - 国外应用 -> 优先自动选择 (Auto > Select > Manual)
+#    - AI 服务  -> 优先美国节点 (US > JP/SG > ...)
+#    - 手动切换 -> 内置地区分组 + 所有节点
+# 3. 正则增强：全地区旗标支持 (🇭🇰/🇺🇸/🇯🇵等)，防误判优化
+# 4. 内核调优：DNS 防泄漏、Chrome 指纹、严格进程匹配
 # ------------------------------------------------------
 
 # ==================== 1. 基础内核设置 ====================
@@ -14,9 +18,9 @@ allow-lan: false
 log-level: info
 ipv6: true
 unified-delay: true
-# 严格进程匹配，解决游戏分流问题
+# 严格进程匹配：解决游戏/应用分流不准的问题
 find-process-mode: strict
-# 模拟 Chrome 指纹，防止被 Cloudflare 拦截
+# TLS 指纹：模拟 Chrome，防止 Cloudflare 验证失败
 global-client-fingerprint: chrome
 
 # ==================== 2. DNS 深度优化 ====================
@@ -49,7 +53,7 @@ dns:
     geoip: true
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
-  # 核心优化：国内域名走国内 DNS，国外域名走 Google/Cloudflare
+  # 分流策略：国内域名走阿里/腾讯 DNS，国外走 Google/Cloudflare
   nameserver-policy:
     "geosite:cn,private":
       - https://doh.pub/dns-query
@@ -59,12 +63,13 @@ dns:
       - https://1.1.1.1/dns-query
 
 # ==================== 3. 锚点定义 (配置复用) ====================
-# 定义通用过滤规则
+
+# [锚点] 通用过滤规则：去除广告、到期、重置等无效节点
 p: &common_filter
   include-all: true
   exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网"
 
-# 定义通用代理列表 (自动选择优先)
+# [锚点] 通用代理列表：自动选择优先 (Auto > Select > Manual > Regions)
 pg_auto: &pg_auto
   - 自动选择
   - 节点选择
@@ -81,7 +86,7 @@ pg_auto: &pg_auto
   - 其他节点
   - DIRECT
 
-# 定义 AI 专用代理列表 (美国节点优先)
+# [锚点] AI 专用列表：美国节点优先 (US > JP/SG > ...)
 pg_ai: &pg_ai
   - 美国节点
   - 日本节点
@@ -100,6 +105,7 @@ pg_ai: &pg_ai
 
 # ==================== 4. 规则集源 (Providers) ====================
 rule-providers:
+  # --- 基础/去广告/局域网 ---
   LocalAreaNetwork:
     type: http
     behavior: classical
@@ -124,6 +130,8 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list"
     path: ./ruleset/BanProgramAD.list
     interval: 86400
+    
+  # --- Google/Microsoft/Apple ---
   GoogleFCM:
     type: http
     behavior: classical
@@ -161,6 +169,8 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list"
     path: ./ruleset/Apple.list
     interval: 86400
+    
+  # --- 社交/应用/媒体 ---
   WeChat:
     type: http
     behavior: classical
@@ -213,6 +223,8 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/OneDrive.list"
     path: ./ruleset/OneDrive.list
     interval: 86400
+    
+  # --- AI 服务 ---
   OpenAi:
     type: http
     behavior: classical
@@ -269,6 +281,8 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/perplexity.yaml"
     path: ./ruleset/perplexity.yaml
     interval: 86400
+    
+  # --- 平台与应用 ---
   telegram_ip:
     type: http
     behavior: ipcidr
@@ -388,6 +402,8 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list"
     path: ./ruleset/Nintendo.list
     interval: 86400
+    
+  # --- 地区/杂项 ---
   private:
     type: http
     behavior: domain
@@ -483,13 +499,24 @@ rule-providers:
 
 # ==================== 5. 代理组 (Proxy Groups) ====================
 proxy-groups:
-
   # --- 核心控制组 ---
 
   - name: 手动切换
     type: select
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     <<: *common_filter
+    # 【新增】将所有地区分组加入手动切换，方便快速筛选
+    proxies:
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 新加坡节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - 其他节点
 
   - name: 自动选择
     type: url-test
@@ -518,7 +545,7 @@ proxy-groups:
       - 其他节点
       - DIRECT
 
-  # --- AI 应用组 (使用 *pg_ai 锚点: 美国节点优先) ---
+  # --- AI 应用组 (使用 *pg_ai: 美国节点优先) ---
   
   - name: AIGC
     type: select
@@ -545,7 +572,7 @@ proxy-groups:
     icon: https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000
     proxies: *pg_ai
 
-  # --- 通用应用组 (使用 *pg_auto 锚点: 自动选择优先) ---
+  # --- 通用应用组 (使用 *pg_auto: 自动选择优先) ---
 
   - name: 谷歌
     type: select
@@ -636,25 +663,6 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
     proxies: *pg_auto
 
-  - name: 机场专线
-    type: select
-    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
-
   - name: 游戏平台
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
@@ -742,106 +750,24 @@ proxy-groups:
       - 台湾节点
       - DIRECT
 
-  # --- 地区自动测速组 (核心组件) ---
-  - name: 香港节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
-    filter: "(?i)香港|Hong Kong|HK|🇭🇰|hk|HongKong|hongkong"
-    <<: *common_filter
-
-  - name: 美国节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-    filter: "(?i)美国|USA|🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
-    <<: *common_filter
-
-  - name: 台湾节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
-    filter: "(?i)台|新北|彰化|TW|Taiwan|🇹🇼"
-    <<: *common_filter
-
-  - name: 新加坡节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
-    filter: "(?i)新加坡|Singapore|🇸🇬|坡|狮城|SG"
-    <<: *common_filter
-
-  - name: 日本节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
-    filter: "(?i)日本|Japan|🇯🇵|川日|东京|大阪|泉日|埼玉|沪日|深日|JP"
-    <<: *common_filter
-
-  - name: 俄罗斯节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
-    filter: "(?i)俄罗斯|Russia|Moscow|Saint Petersburg|Saint.Petersburg|St Petersburg|Novosibirsk|Khabarovsk|Vladivostok|🇷🇺"
-    <<: *common_filter
-
-  - name: 英国节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
-    filter: "(?i)英国|UK|United Kingdom|London|England|GB|🇬🇧"
-    <<: *common_filter
-
-  - name: 韩国节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
-    filter: "(?i)KR|Korea|KOR|首尔|韩|韓|🇰🇷"
-    <<: *common_filter
-
-  - name: 澳大利亚节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
-    filter: "(?i)澳大利亚|澳洲|Australia|Sydney|Melbourne|Brisbane|Perth|Canberra|Adelaide|🇦🇺"
-    <<: *common_filter
-
-  - name: 奈飞节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media"
-    <<: *common_filter
-
-  # 【优化】其他节点：增加所有对应国家的旗标
-  - name: 其他节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
-    filter: "(?i)FR|法国|MY|马来西亚|BR|巴西|CA|加拿大|ES|西班牙|IN|印度|MX|墨西哥|LU|卢森堡|TR|土耳其|IL|以色列|IT|意大利|NL|荷兰|DE|德国|CH|瑞士|TH|泰国|KZ|哈萨克斯坦|🇫🇷|🇲🇾|🇧🇷|🇨🇦|🇪🇸|🇮🇳|🇲🇽|🇱🇺|🇹🇷|🇮🇱|🇮🇹|🇳🇱|🇩🇪|🇨🇭|🇹🇭|🇰🇿"
-    <<: *common_filter
+  - name: 机场专线
+    type: select
+    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
+    proxies:
+      - DIRECT
+      - 自动选择
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 美国节点
+      - 日本节点
+      - 新加坡节点
+      - 英国节点
+      - 韩国节点
+      - 澳大利亚节点
+      - 俄罗斯节点
+      - 其他节点
 
   - name: 全球直连
     type: select
@@ -869,6 +795,110 @@ proxy-groups:
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     proxies: *pg_auto
+
+# --- 地区自动测速组 (include-all 自动吸入) ---
+  
+  - name: 香港节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    filter: "(?i)香港|Hong Kong|HK|🇭🇰|hk|HongKong|hongkong"
+    <<: *common_filter
+
+  - name: 美国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    filter: "(?i)美国|USA|🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+    <<: *common_filter
+
+  - name: 台湾节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    filter: "(?i)台湾|臺灣|Taiwan|TW|🇹🇼"
+    <<: *common_filter
+
+  - name: 新加坡节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    filter: "(?i)新加坡|Singapore|SG|🇸🇬|坡|狮城"
+    <<: *common_filter
+
+  - name: 日本节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    filter: "(?i)日本|Japan|JP|🇯🇵|川日|东京|大阪|泉日|埼玉|沪日|深日"
+    <<: *common_filter
+
+  - name: 俄罗斯节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
+    # 防误判：增加主要城市和旗标，移除单字 "ru"
+    filter: "(?i)俄罗斯|Russia|Moscow|Saint Petersburg|Saint.Petersburg|St Petersburg|Novosibirsk|Khabarovsk|Vladivostok|🇷🇺"
+    <<: *common_filter
+
+  - name: 英国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
+    filter: "(?i)英国|UK|United Kingdom|London|England|GB|🇬🇧"
+    <<: *common_filter
+
+  - name: 韩国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    filter: "(?i)韩国|Korea|KR|🇰🇷|KOR|首尔|韩"
+    <<: *common_filter
+
+  - name: 澳大利亚节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
+    # 防误判：增加主要城市，移除 "AU" 和 "澳"
+    filter: "(?i)澳大利亚|澳洲|Australia|Sydney|Melbourne|Brisbane|Perth|Canberra|Adelaide|🇦🇺"
+    <<: *common_filter
+
+  - name: 奈飞节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media"
+    <<: *common_filter
+
+  - name: 其他节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
+    # 增加全球主要国家关键词与旗标，确保冷门节点不遗漏
+    filter: "(?i)FR|法国|🇫🇷|MY|马来西亚|🇲🇾|BR|巴西|🇧🇷|CA|加拿大|🇨🇦|ES|西班牙|🇪🇸|IN|印度|🇮🇳|MX|墨西哥|🇲🇽|LU|卢森堡|🇱🇺|TR|土耳其|🇹🇷|IL|以色列|🇮🇱|IT|意大利|🇮🇹|NL|荷兰|🇳🇱|DE|德国|🇩🇪|CH|瑞士|🇨🇭|TH|泰国|🇹🇭|VN|越南|🇻🇳|PH|菲律宾|🇵🇭|AR|阿根廷|🇦🇷|KZ|哈萨克斯坦"
+    <<: *common_filter
 
 # ==================== 6. 分流规则 (Rules) ====================
 rules:
