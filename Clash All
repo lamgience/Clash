@@ -893,3 +893,187 @@ proxy-groups:
   
   - name: 香港节点
     type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    filter: "(?i)香港|Hong Kong|HK|🇭🇰|HongKong|HGC|WTT|HKBN|PCCW"
+    <<: *common_filter
+
+  - name: 台湾节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    filter: "(?i)台湾|臺灣|Taiwan|TW|🇹🇼|TaiWan|Hinet|TFN"
+    <<: *common_filter
+
+  - name: 美国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    filter: "(?i)美国|USA|United States|US|🇺🇸|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara"
+    <<: *common_filter
+
+  - name: 日本节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    filter: "(?i)日本|Japan|JP|🇯🇵|Tokyo|Osaka|Saitama|Kawaguchi"
+    <<: *common_filter
+
+  - name: 新加坡节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    filter: "(?i)新加坡|Singapore|SG|🇸🇬|狮城|Lion City"
+    <<: *common_filter
+
+  - name: 英国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
+    filter: "(?i)英国|UK|United Kingdom|GB|🇬🇧|London|England"
+    <<: *common_filter
+
+  - name: 韩国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    filter: "(?i)韩国|Korea|KR|🇰🇷|Seoul|KOR"
+    <<: *common_filter
+
+  - name: 澳大利亚节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
+    filter: "(?i)澳大利亚|Australia|AU|🇦🇺|Sydney|Melbourne"
+    <<: *common_filter
+
+  - name: 俄罗斯节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
+    filter: "(?i)俄罗斯|Russia|RU|🇷🇺|Moscow|Saint Petersburg"
+    <<: *common_filter
+
+  - name: 奈飞节点
+    type: url-test
+    url: https://www.netflix.com
+    interval: 300
+    tolerance: 50
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media"
+    <<: *common_filter
+
+  - name: 其他节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
+    # 正则兜底：匹配主要国家缩写、中文名及国旗
+    filter: "(?i)阿根廷|AR|🇦🇷|奥地利|AT|🇦🇹|巴西|BR|🇧🇷|加拿大|CA|🇨🇦|瑞士|CH|🇨🇭|智利|CL|🇨🇱|德国|Germany|DE|🇩🇪|西班牙|ES|🇪🇸|芬兰|FI|🇫🇮|法国|France|FR|🇫🇷|印尼|ID|🇮🇩|爱尔兰|IE|🇮🇪|印度|IN|🇮🇳|意大利|IT|🇮🇹|卢森堡|LU|🇱🇺|马来西亚|MY|🇲🇾|荷兰|NL|🇳🇱|菲律宾|PH|🇵🇭|泰国|TH|🇹🇭|土耳其|TR|🇹🇷|越南|VN|🇻🇳|南非|ZA|🇿🇦"
+    <<: *common_filter
+
+# ==================== 7. 分流规则 (Rules) ====================
+# 匹配逻辑：从上到下逐行匹配，一旦命中则停止，不再向下继续
+rules:
+  # 1. 基础/局域网/去广告 (最高优先级，保证内网不绕路，广告直接断)
+  - RULE-SET,LocalAreaNetwork,全球直连
+  - RULE-SET,private,DIRECT
+  - RULE-SET,UnBan,全球直连
+  - RULE-SET,BanAD,广告拦截
+  - RULE-SET,BanProgramAD,应用净化
+  
+  # 2. AI 服务 (优先级高于谷歌/微软通用规则，确保走 AI 专线)
+  - RULE-SET,OpenAi,OpenAi
+  - RULE-SET,Openai,OpenAi
+  - RULE-SET,Gemini,Gemini
+  - RULE-SET,gemini,Gemini
+  - RULE-SET,claude,Claude
+  - RULE-SET,copilot,Copilot
+  - RULE-SET,bard,AIGC
+  - RULE-SET,perplexity,AIGC
+  
+  # 3. 谷歌生态 (搜索、FCM 推送、YouTube)
+  - RULE-SET,GoogleFCM,谷歌
+  - RULE-SET,google_domain,谷歌
+  - RULE-SET,google_ip,谷歌
+  - RULE-SET,YouTube,YouTube
+  - RULE-SET,GoogleCN,谷歌
+  
+  # 4. 生产力 & 开发者工具
+  - RULE-SET,Notion,Notion
+  - RULE-SET,GitHub,GitHub
+  - RULE-SET,Adobe,Adobe
+  - RULE-SET,MicrosoftEdge,微软
+  - RULE-SET,OneDrive,微软
+  - RULE-SET,Microsoft,微软
+  - RULE-SET,bing,微软
+  - RULE-SET,Bing,微软
+  
+  # 5. 社交网络
+  - RULE-SET,Discord,国外社交
+  - RULE-SET,telegram_domain,Telegram
+  - RULE-SET,telegram_ip,Telegram
+  - RULE-SET,x,国外社交
+  - RULE-SET,reddit,国外社交
+  - RULE-SET,Instagram,国外社交
+  - RULE-SET,Threads,国外社交
+  
+  # 6. 流媒体 (Netflix 单独分流，其他归类)
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,TikTok,国外媒体
+  - RULE-SET,Disney,国外媒体
+  - RULE-SET,PrimeVideo,国外媒体
+  - RULE-SET,HBO,国外媒体
+  - RULE-SET,GlobalMedia,国外媒体
+  - RULE-SET,ProxyMedia,国外媒体
+  
+  # 7. 游戏 (平台下载直连优化)
+  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Origin,游戏平台
+  - RULE-SET,Sony,游戏平台
+  - RULE-SET,Steam,游戏平台
+  - RULE-SET,Nintendo,游戏平台
+  - RULE-SET,Bahamut,巴哈姆特
+  - RULE-SET,Bilibili,哔哩哔哩
+  - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
+  - RULE-SET,NetEaseMusic,网易音乐
+  
+  # 8. 国内服务与 GEOIP 兜底
+  - RULE-SET,WeChat,微信
+  - RULE-SET,Apple,苹果服务
+  - RULE-SET,freedom,自由意志
+  - RULE-SET,direct_cus,DIRECT
+  - RULE-SET,Airport,机场专线
+  - RULE-SET,SteamCN,全球直连
+  - RULE-SET,ChinaMedia,国内媒体
+  - RULE-SET,ProxyGFWlist,节点选择
+  - RULE-SET,ChinaDomain,全球直连
+  - RULE-SET,ChinaCompanyIp,全球直连
+  - RULE-SET,geolocation-!cn,节点选择
+  - RULE-SET,cn_domain,DIRECT
+  - RULE-SET,cn_ip,DIRECT
+  - RULE-SET,Download,全球直连
+  - GEOIP,CN,全球直连
+  
+  # 9. 最终兜底 (未匹配流量全部走代理)
+  - MATCH,漏网之鱼
