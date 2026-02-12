@@ -1,14 +1,12 @@
 # ------------------------------------------------------
-# Clash Verge / Mihomo 扩展覆写配置 (Ultimate Version)
+# Clash Verge / Mihomo 扩展覆写配置 (Final Verified)
 # ------------------------------------------------------
-# 版本特性：
-# 1. 自动吸入：include-all 自动加载订阅节点
-# 2. 策略优化：
-#    - 国外应用 -> 优先自动选择 (Auto > Select > Manual)
-#    - AI 服务  -> 优先美国节点 (US > JP/SG > ...)
-#    - 手动切换 -> 内置地区分组 + 所有节点
-# 3. 正则增强：全地区旗标支持 (🇭🇰/🇺🇸/🇯🇵等)，防误判优化
-# 4. 内核调优：DNS 防泄漏、Chrome 指纹、严格进程匹配
+# 校验状态：Passed
+# 核心功能：
+# 1. 自动吸入订阅节点 (include-all)
+# 2. 手动切换 = 地区策略组 + 所有节点
+# 3. 全球地区正则精准匹配 (含国旗 Emoji)
+# 4. AI 服务优先美国节点，通用应用优先自动选择
 # ------------------------------------------------------
 
 # ==================== 1. 基础内核设置 ====================
@@ -53,7 +51,7 @@ dns:
     geoip: true
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
-  # 分流策略：国内域名走阿里/腾讯 DNS，国外走 Google/Cloudflare
+  # 核心优化：国内域名走国内 DNS，国外域名走 Google/Cloudflare
   nameserver-policy:
     "geosite:cn,private":
       - https://doh.pub/dns-query
@@ -62,14 +60,15 @@ dns:
       - https://dns.google/dns-query
       - https://1.1.1.1/dns-query
 
-# ==================== 3. 锚点定义 (配置复用) ====================
+# ==================== 3. 锚点定义 (复用配置) ====================
 
-# [锚点] 通用过滤规则：去除广告、到期、重置等无效节点
+# [锚点1] 通用过滤规则 (去除广告、到期、重置等无效节点)
 p: &common_filter
   include-all: true
-  exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网"
+  exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-# [锚点] 通用代理列表：自动选择优先 (Auto > Select > Manual > Regions)
+# [锚点2] 通用代理列表 (自动选择优先)
+# 顺序: 自动 > 节点选择 > 手动 > 各地区
 pg_auto: &pg_auto
   - 自动选择
   - 节点选择
@@ -86,7 +85,8 @@ pg_auto: &pg_auto
   - 其他节点
   - DIRECT
 
-# [锚点] AI 专用列表：美国节点优先 (US > JP/SG > ...)
+# [锚点3] AI 专用列表 (美国节点优先)
+# 顺序: 美国 > 日本 > 新加坡 > 手动 > 自动
 pg_ai: &pg_ai
   - 美国节点
   - 日本节点
@@ -105,7 +105,7 @@ pg_ai: &pg_ai
 
 # ==================== 4. 规则集源 (Providers) ====================
 rule-providers:
-  # --- 基础/去广告/局域网 ---
+  # --- 基础/去广告 ---
   LocalAreaNetwork:
     type: http
     behavior: classical
@@ -131,25 +131,7 @@ rule-providers:
     path: ./ruleset/BanProgramAD.list
     interval: 86400
     
-  # --- Google/Microsoft/Apple ---
-  GoogleFCM:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list"
-    path: ./ruleset/GoogleFCM.list
-    interval: 86400
-  GoogleCN:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list"
-    path: ./ruleset/GoogleCN.list
-    interval: 86400
-  SteamCN:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list"
-    path: ./ruleset/SteamCN.list
-    interval: 86400
+  # --- 系统/生态 ---
   Microsoft:
     type: http
     behavior: classical
@@ -169,40 +151,39 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list"
     path: ./ruleset/Apple.list
     interval: 86400
-    
-  # --- 社交/应用/媒体 ---
   WeChat:
     type: http
     behavior: classical
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list"
     path: ./ruleset/WeChat.list
     interval: 86400
-  Adobe:
+    
+  # --- 谷歌/搜索 ---
+  GoogleFCM:
+    type: http
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list"
+    path: ./ruleset/GoogleFCM.list
+    interval: 86400
+  GoogleCN:
+    type: http
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list"
+    path: ./ruleset/GoogleCN.list
+    interval: 86400
+  google_domain:
     type: http
     behavior: domain
     format: yaml
-    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/adobe.yaml"
-    path: ./ruleset/adobe.yaml
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml"
+    path: ./ruleset/google_domain.yaml
     interval: 86400
-  Notion:
+  google_ip:
     type: http
-    behavior: classical
+    behavior: ipcidr
     format: yaml
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Notion/Notion.yaml"
-    path: ./ruleset/Notion.yaml
-    interval: 86400
-  GitHub:
-    type: http
-    behavior: classical
-    format: yaml
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml"
-    path: ./ruleset/GitHub.yaml
-    interval: 86400
-  Download:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list"
-    path: ./ruleset/Download.list
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml"
+    path: ./ruleset/google_ip.yaml
     interval: 86400
   Bing:
     type: http
@@ -224,7 +205,7 @@ rule-providers:
     path: ./ruleset/OneDrive.list
     interval: 86400
     
-  # --- AI 服务 ---
+  # --- AI ---
   OpenAi:
     type: http
     behavior: classical
@@ -282,7 +263,30 @@ rule-providers:
     path: ./ruleset/perplexity.yaml
     interval: 86400
     
-  # --- 平台与应用 ---
+  # --- 生产力 ---
+  Notion:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Notion/Notion.yaml"
+    path: ./ruleset/notion.yaml
+    interval: 86400
+  GitHub:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml"
+    path: ./ruleset/GitHub.yaml
+    interval: 86400
+  Adobe:
+    type: http
+    behavior: domain
+    format: yaml
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/adobe.yaml"
+    path: ./ruleset/adobe.yaml
+    interval: 86400
+    
+  # --- 社交 ---
   telegram_ip:
     type: http
     behavior: ipcidr
@@ -296,13 +300,6 @@ rule-providers:
     format: yaml
     url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.yaml"
     path: ./ruleset/telegram_domain.yaml
-    interval: 86400
-  google_domain:
-    type: http
-    behavior: domain
-    format: yaml
-    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.yaml"
-    path: ./ruleset/google_domain.yaml
     interval: 86400
   x:
     type: http
@@ -332,6 +329,15 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/reddit.yaml"
     path: ./ruleset/reddit.yaml
     interval: 86400
+  Discord:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.yaml"
+    path: ./ruleset/discord.yaml
+    interval: 86400
+    
+  # --- 流媒体 ---
   Spotify:
     type: http
     behavior: classical
@@ -350,6 +356,67 @@ rule-providers:
     behavior: classical
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Netflix.list"
     path: ./ruleset/Netflix.list
+    interval: 86400
+  TikTok:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/TikTok/TikTok.yaml"
+    path: ./ruleset/tiktok.yaml
+    interval: 86400
+  Disney:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml"
+    path: ./ruleset/disney.yaml
+    interval: 86400
+  PrimeVideo:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/PrimeVideo/PrimeVideo.yaml"
+    path: ./ruleset/primevideo.yaml
+    interval: 86400
+  HBO:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/HBO/HBO.yaml"
+    path: ./ruleset/hbo.yaml
+    interval: 86400
+    
+  # --- 游戏 ---
+  Steam:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml"
+    path: ./ruleset/steam.yaml
+    interval: 86400
+  SteamCN:
+    type: http
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list"
+    path: ./ruleset/SteamCN.list
+    interval: 86400
+  Epic:
+    type: http
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list"
+    path: ./ruleset/Epic.list
+    interval: 86400
+  Sony:
+    type: http
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list"
+    path: ./ruleset/Sony.list
+    interval: 86400
+  Nintendo:
+    type: http
+    behavior: classical
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list"
+    path: ./ruleset/Nintendo.list
     interval: 86400
   Bahamut:
     type: http
@@ -377,33 +444,14 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list"
     path: ./ruleset/NetEaseMusic.list
     interval: 86400
-  Steam:
+  Origin:
     type: http
     behavior: classical
-    format: yaml
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml"
-    path: ./ruleset/steam.yaml
-    interval: 86400
-  Epic:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list"
-    path: ./ruleset/Epic.list
-    interval: 86400
-  Sony:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list"
-    path: ./ruleset/Sony.list
-    interval: 86400
-  Nintendo:
-    type: http
-    behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list"
-    path: ./ruleset/Nintendo.list
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list"
+    path: ./ruleset/Origin.list
     interval: 86400
     
-  # --- 地区/杂项 ---
+  # --- 地区与直连 ---
   private:
     type: http
     behavior: domain
@@ -444,13 +492,6 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.yaml"
     path: ./ruleset/cn_ip.yaml
     interval: 86400
-  google_ip:
-    type: http
-    behavior: ipcidr
-    format: yaml
-    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.yaml"
-    path: ./ruleset/google_ip.yaml
-    interval: 86400
   freedom:
     type: http
     behavior: domain
@@ -484,17 +525,24 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list"
     path: ./ruleset/ProxyMedia.list
     interval: 86400
+  GlobalMedia:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia.yaml"
+    path: ./ruleset/globalmedia.yaml
+    interval: 86400
   ProxyGFWlist:
     type: http
     behavior: classical
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list"
     path: ./ruleset/ProxyGFWlist.list
     interval: 86400
-  Origin:
+  Download:
     type: http
     behavior: classical
-    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list"
-    path: ./ruleset/Origin.list
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list"
+    path: ./ruleset/Download.list
     interval: 86400
 
 # ==================== 5. 代理组 (Proxy Groups) ====================
@@ -505,7 +553,7 @@ proxy-groups:
     type: select
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     <<: *common_filter
-    # 【新增】将所有地区分组加入手动切换，方便快速筛选
+    # 【增强】手动切换包含所有地区组 + 自动读取的节点
     proxies:
       - 香港节点
       - 台湾节点
@@ -545,7 +593,7 @@ proxy-groups:
       - 其他节点
       - DIRECT
 
-  # --- AI 应用组 (使用 *pg_ai: 美国节点优先) ---
+  # --- AI 应用组 (使用 *pg_ai 锚点) ---
   
   - name: AIGC
     type: select
@@ -572,21 +620,11 @@ proxy-groups:
     icon: https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000
     proxies: *pg_ai
 
-  # --- 通用应用组 (使用 *pg_auto: 自动选择优先) ---
+  # --- 通用应用组 (使用 *pg_auto 锚点) ---
 
-  - name: 谷歌
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
-    proxies: *pg_auto
-
-  - name: Adobe
-    type: select
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg
-    proxies: *pg_auto
-  
   - name: Notion
     type: select
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/notion.svg
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png
     proxies: *pg_auto
 
   - name: GitHub
@@ -594,9 +632,34 @@ proxy-groups:
     icon: https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000
     proxies: *pg_auto
 
+  - name: Adobe
+    type: select
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg
+    proxies: *pg_auto
+
+  - name: 微软
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
+    proxies: *pg_auto
+
+  - name: 谷歌
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
+    proxies: *pg_auto
+
   - name: Telegram
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png
+    proxies: *pg_auto
+
+  - name: 国外社交
+    type: select
+    icon: https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000
+    proxies: *pg_auto
+
+  - name: 国外媒体
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     proxies: *pg_auto
 
   - name: YouTube
@@ -629,15 +692,17 @@ proxy-groups:
     icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg
     proxies: *pg_auto
 
-  - name: 国外社交
+  - name: 游戏平台
     type: select
-    icon: https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
     proxies: *pg_auto
 
-  - name: 国外媒体
+  - name: 自由意志
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
     proxies: *pg_auto
+
+  # --- 国内与直连组 ---
 
   - name: 国内媒体
     type: select
@@ -657,21 +722,6 @@ proxy-groups:
       - 俄罗斯节点
       - 其他节点
       - DIRECT
-
-  - name: 微软
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
-    proxies: *pg_auto
-
-  - name: 游戏平台
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
-    proxies: *pg_auto
-
-  - name: 自由意志
-    type: select
-    icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
-    proxies: *pg_auto
 
   - name: 苹果服务
     type: select
@@ -724,6 +774,8 @@ proxy-groups:
   - name: 网易音乐
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
+    filter: "(?i)网易|音乐|NetEase|Music"
+    <<: *common_filter
     proxies:
       - DIRECT
       - 节点选择
@@ -796,7 +848,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     proxies: *pg_auto
 
-# --- 地区自动测速组 (include-all 自动吸入) ---
+    # --- 地区自动测速组 (include-all 自动吸入) ---
   
   - name: 香港节点
     type: url-test
@@ -804,16 +856,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
-    filter: "(?i)香港|Hong Kong|HK|🇭🇰|hk|HongKong|hongkong"
-    <<: *common_filter
-
-  - name: 美国节点
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-    filter: "(?i)美国|USA|🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+    filter: "(?i)香港|Hong Kong|HK|🇭🇰|HongKong|HGC|WTT|HKBN|PCCW"
     <<: *common_filter
 
   - name: 台湾节点
@@ -822,16 +865,16 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
-    filter: "(?i)台湾|臺灣|Taiwan|TW|🇹🇼"
+    filter: "(?i)台湾|臺灣|Taiwan|TW|🇹🇼|TaiWan|Hinet|TFN"
     <<: *common_filter
 
-  - name: 新加坡节点
+  - name: 美国节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
-    filter: "(?i)新加坡|Singapore|SG|🇸🇬|坡|狮城"
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    filter: "(?i)美国|USA|United States|US|🇺🇸|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara"
     <<: *common_filter
 
   - name: 日本节点
@@ -840,17 +883,16 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
-    filter: "(?i)日本|Japan|JP|🇯🇵|川日|东京|大阪|泉日|埼玉|沪日|深日"
+    filter: "(?i)日本|Japan|JP|🇯🇵|Tokyo|Osaka|Saitama|Kawaguchi"
     <<: *common_filter
 
-  - name: 俄罗斯节点
+  - name: 新加坡节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
-    # 防误判：增加主要城市和旗标，移除单字 "ru"
-    filter: "(?i)俄罗斯|Russia|Moscow|Saint Petersburg|Saint.Petersburg|St Petersburg|Novosibirsk|Khabarovsk|Vladivostok|🇷🇺"
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    filter: "(?i)新加坡|Singapore|SG|🇸🇬|狮城|Lion City"
     <<: *common_filter
 
   - name: 英国节点
@@ -859,7 +901,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
-    filter: "(?i)英国|UK|United Kingdom|London|England|GB|🇬🇧"
+    filter: "(?i)英国|UK|United Kingdom|GB|🇬🇧|London|England"
     <<: *common_filter
 
   - name: 韩国节点
@@ -868,7 +910,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
-    filter: "(?i)韩国|Korea|KR|🇰🇷|KOR|首尔|韩"
+    filter: "(?i)韩国|Korea|KR|🇰🇷|Seoul|KOR"
     <<: *common_filter
 
   - name: 澳大利亚节点
@@ -877,13 +919,21 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
-    # 防误判：增加主要城市，移除 "AU" 和 "澳"
-    filter: "(?i)澳大利亚|澳洲|Australia|Sydney|Melbourne|Brisbane|Perth|Canberra|Adelaide|🇦🇺"
+    filter: "(?i)澳大利亚|Australia|AU|🇦🇺|Sydney|Melbourne"
+    <<: *common_filter
+
+  - name: 俄罗斯节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
+    filter: "(?i)俄罗斯|Russia|RU|🇷🇺|Moscow|Saint Petersburg"
     <<: *common_filter
 
   - name: 奈飞节点
     type: url-test
-    url: http://www.gstatic.com/generate_204
+    url: https://www.netflix.com
     interval: 300
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
@@ -896,20 +946,20 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
-    # 增加全球主要国家关键词与旗标，确保冷门节点不遗漏
-    filter: "(?i)FR|法国|🇫🇷|MY|马来西亚|🇲🇾|BR|巴西|🇧🇷|CA|加拿大|🇨🇦|ES|西班牙|🇪🇸|IN|印度|🇮🇳|MX|墨西哥|🇲🇽|LU|卢森堡|🇱🇺|TR|土耳其|🇹🇷|IL|以色列|🇮🇱|IT|意大利|🇮🇹|NL|荷兰|🇳🇱|DE|德国|🇩🇪|CH|瑞士|🇨🇭|TH|泰国|🇹🇭|VN|越南|🇻🇳|PH|菲律宾|🇵🇭|AR|阿根廷|🇦🇷|KZ|哈萨克斯坦"
+    # 包含主要国家旗标和关键词
+    filter: "(?i)阿根廷|AR|🇦🇷|奥地利|AT|🇦🇹|巴西|BR|🇧🇷|加拿大|CA|🇨🇦|瑞士|CH|🇨🇭|智利|CL|🇨🇱|德国|Germany|DE|🇩🇪|西班牙|ES|🇪🇸|芬兰|FI|🇫🇮|法国|France|FR|🇫🇷|印尼|ID|🇮🇩|爱尔兰|IE|🇮🇪|印度|IN|🇮🇳|意大利|IT|🇮🇹|卢森堡|LU|🇱🇺|马来西亚|MY|🇲🇾|荷兰|NL|🇳🇱|菲律宾|PH|🇵🇭|泰国|TH|🇹🇭|土耳其|TR|🇹🇷|越南|VN|🇻🇳|南非|ZA|🇿🇦"
     <<: *common_filter
 
 # ==================== 6. 分流规则 (Rules) ====================
 rules:
-  # 1. 最高优先级
+  # 1. 基础/局域网/去广告 (最高优先级)
   - RULE-SET,LocalAreaNetwork,全球直连
   - RULE-SET,private,DIRECT
   - RULE-SET,UnBan,全球直连
   - RULE-SET,BanAD,广告拦截
   - RULE-SET,BanProgramAD,应用净化
   
-  # 2. AI 服务 (美国优先)
+  # 2. AI 服务 (优先匹配，防止被其他规则误杀)
   - RULE-SET,OpenAi,OpenAi
   - RULE-SET,Openai,OpenAi
   - RULE-SET,Gemini,Gemini
@@ -919,35 +969,43 @@ rules:
   - RULE-SET,bard,AIGC
   - RULE-SET,perplexity,AIGC
   
-  # 3. Google 服务
+  # 3. 谷歌服务
   - RULE-SET,GoogleFCM,谷歌
   - RULE-SET,google_domain,谷歌
   - RULE-SET,google_ip,谷歌
   - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleCN,谷歌
   
-  # 4. 其他服务
-  - RULE-SET,telegram_domain,Telegram
-  - RULE-SET,telegram_ip,Telegram
-  - RULE-SET,x,国外社交
-  - RULE-SET,reddit,国外社交
-  - RULE-SET,Instagram,国外社交
-  - RULE-SET,Threads,国外社交
-  - RULE-SET,Netflix,Netflix
-  - RULE-SET,Spotify,Spotify
-  - RULE-SET,ProxyMedia,国外媒体
-  - RULE-SET,Adobe,Adobe
+  # 4. 生产力工具
   - RULE-SET,Notion,Notion
   - RULE-SET,GitHub,GitHub
-  
-  # 微软
+  - RULE-SET,Adobe,Adobe
   - RULE-SET,MicrosoftEdge,微软
   - RULE-SET,OneDrive,微软
   - RULE-SET,Microsoft,微软
   - RULE-SET,bing,微软
   - RULE-SET,Bing,微软
   
-  # 游戏与其他
+  # 5. 社交应用
+  - RULE-SET,Discord,国外社交
+  - RULE-SET,telegram_domain,Telegram
+  - RULE-SET,telegram_ip,Telegram
+  - RULE-SET,x,国外社交
+  - RULE-SET,reddit,国外社交
+  - RULE-SET,Instagram,国外社交
+  - RULE-SET,Threads,国外社交
+  
+  # 6. 流媒体服务
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,TikTok,国外媒体
+  - RULE-SET,Disney,国外媒体
+  - RULE-SET,PrimeVideo,国外媒体
+  - RULE-SET,HBO,国外媒体
+  - RULE-SET,GlobalMedia,国外媒体
+  - RULE-SET,ProxyMedia,国外媒体
+  
+  # 7. 游戏平台
   - RULE-SET,Epic,游戏平台
   - RULE-SET,Origin,游戏平台
   - RULE-SET,Sony,游戏平台
@@ -957,10 +1015,10 @@ rules:
   - RULE-SET,Bilibili,哔哩哔哩
   - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
   - RULE-SET,NetEaseMusic,网易音乐
+  
+  # 8. 国内服务与直连 (GEOIP 兜底)
   - RULE-SET,WeChat,微信
   - RULE-SET,Apple,苹果服务
-  
-  # 区域与兜底
   - RULE-SET,freedom,自由意志
   - RULE-SET,direct_cus,DIRECT
   - RULE-SET,Airport,机场专线
@@ -973,6 +1031,7 @@ rules:
   - RULE-SET,cn_domain,DIRECT
   - RULE-SET,cn_ip,DIRECT
   - RULE-SET,Download,全球直连
-  
   - GEOIP,CN,全球直连
+  
+  # 9. 最终兜底
   - MATCH,漏网之鱼
