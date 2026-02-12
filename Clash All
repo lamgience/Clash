@@ -847,10 +847,10 @@ rules:
   - RULE-SET,perplexity,AIGC
   
   # [Level 3] Google 生态
+  - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleFCM,谷歌
   - RULE-SET,google_domain,谷歌
   - RULE-SET,google_ip,谷歌
-  - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleCN,谷歌
   
   # [Level 4] 生产力 & 开发者工具
