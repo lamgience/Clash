@@ -1,13 +1,6 @@
 # =======================================================
-# Clash Verge / Mihomo 旗舰级配置文件 (Rev. 2026)
-# =======================================================
-# 核心架构：
-# 1. 模块化设计：使用 YAML 锚点 (Anchors) 复用策略，修改一处即可全局生效
-# 2. 智能分流：
-#    - AI 服务：强制优选美国 > 日本 > 新加坡节点 (防风控)
-#    - 流媒体：自动测速与手动选择双重保障
-#    - DNS：国内外精准分流，防污染且速度快
-# 3. 自动维护：正则 (Regex) 自动从订阅中提取节点到对应国家组
+# Clash Verge / Mihomo 旗舰级配置文件 (已修复 payload 报错)
+# 修复内容：给所有 .list 规则集添加 format: text
 # =======================================================
 
 # ==================== 1. 内核基础设置 (Base) ====================
@@ -17,11 +10,7 @@ allow-lan: false
 log-level: info
 ipv6: true
 unified-delay: true
-# 进程匹配模式：Strict (严格)
-# 作用：解决 Android/PC 上部分应用无法正确匹配进程名导致分流失败的问题
 find-process-mode: strict
-# TLS 指纹模拟：Chrome
-# 作用：模拟浏览器指纹，防止被 Cloudflare 等防火墙识别为机器人而阻断连接
 global-client-fingerprint: chrome
 
 # ==================== 2. DNS 深度优化 (Split-DNS) ====================
@@ -29,13 +18,9 @@ dns:
   enable: true
   listen: :53
   ipv6: true
-  # 模式：Fake-IP (增强模式)
-  # 作用：返回虚拟 IP 秒开网页，解决 DNS 污染，并在本地缓存映射关系
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
-  # Fake-IP 过滤列表
-  # 作用：以下域名强制走真实 DNS 解析，解决局域网、连通性测试、STUN 等兼容性问题
   fake-ip-filter:
     - "*.lan"
     - "*.local"
@@ -58,8 +43,6 @@ dns:
     geoip: true
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
-  # 核心策略：DNS 分流
-  # 逻辑：国内域名 -> 阿里/腾讯 DoH；国外域名 -> Google/Cloudflare DoH
   nameserver-policy:
     "geosite:cn,private":
       - https://doh.pub/dns-query
@@ -69,16 +52,10 @@ dns:
       - https://1.1.1.1/dns-query
 
 # ==================== 3. 配置锚点 (Anchors) ====================
-# 说明：以下带 & 符号的块是“模板”，后续配置中用 * 符号引用，方便统一管理
-
-# [模板 1] 通用节点过滤
-# 作用：从订阅中剔除无效、过期、广告或非节点类的条目
 p: &common_filter
   include-all: true
   exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-# [模板 2] 通用优选策略
-# 逻辑：优先自动测速，其次手动干预，最后按地区兜底
 pg_auto: &pg_auto
   - 自动选择
   - 节点选择
@@ -95,8 +72,6 @@ pg_auto: &pg_auto
   - 其他节点
   - DIRECT
 
-# [模板 3] AI 专用高优先级策略
-# 逻辑：美国优先 (OpenAI/Claude 最佳实践) > 日本/新加坡 (低延迟备选)
 pg_ai: &pg_ai
   - 美国节点
   - 日本节点
@@ -119,24 +94,28 @@ rule-providers:
   LocalAreaNetwork:
     type: http
     behavior: classical
+    format: text  # 已修复：指定为文本格式
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list"
     path: ./ruleset/LocalAreaNetwork.list
     interval: 86400
   UnBan:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list"
     path: ./ruleset/UnBan.list
     interval: 86400
   BanAD:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list"
     path: ./ruleset/BanAD.list
     interval: 86400
   BanProgramAD:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list"
     path: ./ruleset/BanProgramAD.list
     interval: 86400
@@ -145,6 +124,7 @@ rule-providers:
   Microsoft:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list"
     path: ./ruleset/Microsoft.list
     interval: 86400
@@ -158,12 +138,14 @@ rule-providers:
   Apple:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list"
     path: ./ruleset/Apple.list
     interval: 86400
   WeChat:
     type: http
     behavior: classical
+    format: text
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list"
     path: ./ruleset/WeChat.list
     interval: 86400
@@ -172,12 +154,14 @@ rule-providers:
   GoogleFCM:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list"
     path: ./ruleset/GoogleFCM.list
     interval: 86400
   GoogleCN:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list"
     path: ./ruleset/GoogleCN.list
     interval: 86400
@@ -198,6 +182,7 @@ rule-providers:
   Bing:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list"
     path: ./ruleset/Bing.list
     interval: 86400
@@ -211,6 +196,7 @@ rule-providers:
   OneDrive:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/OneDrive.list"
     path: ./ruleset/OneDrive.list
     interval: 86400
@@ -358,12 +344,14 @@ rule-providers:
   YouTube:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTube.list"
     path: ./ruleset/YouTube.list
     interval: 86400
   Netflix:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Netflix.list"
     path: ./ruleset/Netflix.list
     interval: 86400
@@ -407,24 +395,28 @@ rule-providers:
   SteamCN:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list"
     path: ./ruleset/SteamCN.list
     interval: 86400
   Epic:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list"
     path: ./ruleset/Epic.list
     interval: 86400
   Sony:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list"
     path: ./ruleset/Sony.list
     interval: 86400
   Nintendo:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list"
     path: ./ruleset/Nintendo.list
     interval: 86400
@@ -438,6 +430,7 @@ rule-providers:
   BilibiliHMT:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/BilibiliHMT.list"
     path: ./ruleset/BilibiliHMT.list
     interval: 86400
@@ -451,12 +444,14 @@ rule-providers:
   NetEaseMusic:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list"
     path: ./ruleset/NetEaseMusic.list
     interval: 86400
   Origin:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list"
     path: ./ruleset/Origin.list
     interval: 86400
@@ -479,12 +474,14 @@ rule-providers:
   ChinaDomain:
     type: http
     behavior: domain
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list"
     path: ./ruleset/ChinaDomain.list
     interval: 86400
   ChinaCompanyIp:
     type: http
     behavior: ipcidr
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list"
     path: ./ruleset/ChinaCompanyIp.list
     interval: 86400
@@ -526,12 +523,14 @@ rule-providers:
   ChinaMedia:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list"
     path: ./ruleset/ChinaMedia.list
     interval: 86400
   ProxyMedia:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list"
     path: ./ruleset/ProxyMedia.list
     interval: 86400
@@ -545,36 +544,25 @@ rule-providers:
   ProxyGFWlist:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list"
     path: ./ruleset/ProxyGFWlist.list
     interval: 86400
   Download:
     type: http
     behavior: classical
+    format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list"
     path: ./ruleset/Download.list
     interval: 86400
 
 # ==================== 5. 策略组 (Proxy Groups) ====================
 proxy-groups:
-  # --- 1. 核心控制组 ---
-
   - name: 手动切换
     type: select
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     <<: *common_filter
-    # 【Master 组】包含所有地区组 + 自动读取的订阅全量节点
-    proxies:
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
+    proxies: [香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
 
   - name: 自动选择
     type: url-test
@@ -588,279 +576,65 @@ proxy-groups:
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     <<: *common_filter
-    proxies:
-      - 自动选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
-      - DIRECT
+    proxies: [自动选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
 
-  # --- 2. AI 专用组 (引用 *pg_ai 模板) ---
+  - {name: AIGC, type: select, icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000", proxies: *pg_ai}
+  - {name: Gemini, type: select, icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000", proxies: *pg_ai}
+  - {name: OpenAi, type: select, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png", proxies: *pg_ai}
+  - {name: Copilot, type: select, icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000", proxies: *pg_ai}
+  - {name: Claude, type: select, icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000", proxies: *pg_ai}
+
+  - {name: Notion, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png", proxies: *pg_auto}
+  - {name: GitHub, type: select, icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000", proxies: *pg_auto}
+  - {name: Adobe, type: select, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg", proxies: *pg_auto}
+  - {name: 微软, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png", proxies: *pg_auto}
+  - {name: 谷歌, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png", proxies: *pg_auto}
+  - {name: Telegram, type: select, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png", proxies: *pg_auto}
+  - {name: 国外社交, type: select, icon: "https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000", proxies: *pg_auto}
+  - {name: 国外媒体, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png", proxies: *pg_auto}
+  - {name: YouTube, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png", proxies: *pg_auto}
   
-  - name: AIGC
-    type: select
-    icon: https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000
-    proxies: *pg_ai
-
-  - name: Gemini
-    type: select
-    icon: https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000
-    proxies: *pg_ai
-
-  - name: OpenAi
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
-    proxies: *pg_ai
-
-  - name: Copilot
-    type: select
-    icon: https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000
-    proxies: *pg_ai
-
-  - name: Claude
-    type: select
-    icon: https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000
-    proxies: *pg_ai
-
-  # --- 3. 通用应用组 (引用 *pg_auto 模板) ---
-
-  - name: Notion
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png
-    proxies: *pg_auto
-
-  - name: GitHub
-    type: select
-    icon: https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000
-    proxies: *pg_auto
-
-  - name: Adobe
-    type: select
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg
-    proxies: *pg_auto
-
-  - name: 微软
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
-    proxies: *pg_auto
-
-  - name: 谷歌
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
-    proxies: *pg_auto
-
-  - name: Telegram
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png
-    proxies: *pg_auto
-
-  - name: 国外社交
-    type: select
-    icon: https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000
-    proxies: *pg_auto
-
-  - name: 国外媒体
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
-    proxies: *pg_auto
-
-  - name: YouTube
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
-    proxies: *pg_auto
-
   - name: Netflix
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    proxies:
-      - 奈飞节点
-      - 自动选择
-      - 节点选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
-      - DIRECT
+    proxies: [奈飞节点, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
 
-  - name: Spotify
-    type: select
-    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg
-    proxies: *pg_auto
-
-  - name: 游戏平台
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
-    proxies: *pg_auto
-
-  - name: 自由意志
-    type: select
-    icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
-    proxies: *pg_auto
-
-  # --- 4. 国内与直连组 ---
+  - {name: Spotify, type: select, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", proxies: *pg_auto}
+  - {name: 游戏平台, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png", proxies: *pg_auto}
+  - {name: 自由意志, type: select, icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000", proxies: *pg_auto}
 
   - name: 国内媒体
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
-      - DIRECT
+    proxies: [节点选择, 自动选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, DIRECT]
 
   - name: 苹果服务
     type: select
     icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
+    proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
 
   - name: 微信
     type: select
     icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
+    proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
 
-  - name: 哔哩哔哩
-    type: select
-    icon: https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-
+  - {name: 哔哩哔哩, type: select, icon: "https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000", proxies: [DIRECT, 节点选择, 自动选择, 香港节点, 台湾节点]}
+  
   - name: 网易音乐
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
     filter: "(?i)网易|音乐|NetEase|Music"
     <<: *common_filter
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 自动选择
+    proxies: [DIRECT, 节点选择, 自动选择]
 
-  - name: 哔哩哔哩港澳台
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 全球直连
-      - DIRECT
+  - {name: 哔哩哔哩港澳台, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png", proxies: [节点选择, 自动选择, 手动切换, 香港节点, 台湾节点, 全球直连, DIRECT]}
+  - {name: 巴哈姆特, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png", proxies: [节点选择, 手动切换, 台湾节点, DIRECT]}
+  - {name: 机场专线, type: select, icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000", proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]}
+  - {name: 全球直连, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png", proxies: [DIRECT, 节点选择, 自动选择]}
+  - {name: 广告拦截, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png", proxies: [REJECT, DIRECT]}
+  - {name: 应用净化, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png", proxies: [REJECT, DIRECT]}
+  - {name: 漏网之鱼, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png", proxies: *pg_auto}
 
-  - name: 巴哈姆特
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
-    proxies:
-      - 节点选择
-      - 手动切换
-      - 台湾节点
-      - DIRECT
-
-  - name: 机场专线
-    type: select
-    icon: https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 节点选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 美国节点
-      - 日本节点
-      - 新加坡节点
-      - 英国节点
-      - 韩国节点
-      - 澳大利亚节点
-      - 俄罗斯节点
-      - 其他节点
-
-  - name: 全球直连
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 自动选择
-
-  - name: 广告拦截
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
-    proxies:
-      - REJECT
-      - DIRECT
-
-  - name: 应用净化
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
-    proxies:
-      - REJECT
-      - DIRECT
-
-  - name: 漏网之鱼
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
-    proxies: *pg_auto
-
-    # --- 5. 自动地区分组 (正则筛选) ---
-    # 核心原理：使用正则表达式 ((?i)关键词) 扫描所有订阅节点，符合条件的自动归入该组
-  
   - name: 香港节点
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -957,21 +731,16 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
-    # 正则兜底：匹配主要国家缩写、中文名及国旗
     filter: "(?i)阿根廷|AR|🇦🇷|奥地利|AT|🇦🇹|巴西|BR|🇧🇷|加拿大|CA|🇨🇦|瑞士|CH|🇨🇭|智利|CL|🇨🇱|德国|Germany|DE|🇩🇪|西班牙|ES|🇪🇸|芬兰|FI|🇫🇮|法国|France|FR|🇫🇷|印尼|ID|🇮🇩|爱尔兰|IE|🇮🇪|印度|IN|🇮🇳|意大利|IT|🇮🇹|卢森堡|LU|🇱🇺|马来西亚|MY|🇲🇾|荷兰|NL|🇳🇱|菲律宾|PH|🇵🇭|泰国|TH|🇹🇭|土耳其|TR|🇹🇷|越南|VN|🇻🇳|南非|ZA|🇿🇦"
     <<: *common_filter
 
 # ==================== 6. 分流规则 (Rules) ====================
-# 匹配逻辑：从上到下逐行匹配，一旦命中则停止，不再向下继续
 rules:
-  # 1. 基础/局域网/去广告 (最高优先级，保证内网不绕路，广告直接断)
   - RULE-SET,LocalAreaNetwork,全球直连
   - RULE-SET,private,DIRECT
   - RULE-SET,UnBan,全球直连
   - RULE-SET,BanAD,广告拦截
   - RULE-SET,BanProgramAD,应用净化
-  
-  # 2. AI 服务 (优先级高于谷歌/微软通用规则，确保走 AI 专线)
   - RULE-SET,OpenAi,OpenAi
   - RULE-SET,Openai,OpenAi
   - RULE-SET,Gemini,Gemini
@@ -980,15 +749,11 @@ rules:
   - RULE-SET,copilot,Copilot
   - RULE-SET,bard,AIGC
   - RULE-SET,perplexity,AIGC
-  
-  # 3. 谷歌生态 (搜索、FCM 推送、YouTube)
   - RULE-SET,GoogleFCM,谷歌
   - RULE-SET,google_domain,谷歌
   - RULE-SET,google_ip,谷歌
   - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleCN,谷歌
-  
-  # 4. 生产力 & 开发者工具
   - RULE-SET,Notion,Notion
   - RULE-SET,GitHub,GitHub
   - RULE-SET,Adobe,Adobe
@@ -997,8 +762,6 @@ rules:
   - RULE-SET,Microsoft,微软
   - RULE-SET,bing,微软
   - RULE-SET,Bing,微软
-  
-  # 5. 社交网络
   - RULE-SET,Discord,国外社交
   - RULE-SET,telegram_domain,Telegram
   - RULE-SET,telegram_ip,Telegram
@@ -1006,8 +769,6 @@ rules:
   - RULE-SET,reddit,国外社交
   - RULE-SET,Instagram,国外社交
   - RULE-SET,Threads,国外社交
-  
-  # 6. 流媒体 (Netflix 单独分流，其他归类)
   - RULE-SET,Netflix,Netflix
   - RULE-SET,Spotify,Spotify
   - RULE-SET,TikTok,国外媒体
@@ -1016,8 +777,6 @@ rules:
   - RULE-SET,HBO,国外媒体
   - RULE-SET,GlobalMedia,国外媒体
   - RULE-SET,ProxyMedia,国外媒体
-  
-  # 7. 游戏 (平台下载直连优化)
   - RULE-SET,Epic,游戏平台
   - RULE-SET,Origin,游戏平台
   - RULE-SET,Sony,游戏平台
@@ -1027,8 +786,6 @@ rules:
   - RULE-SET,Bilibili,哔哩哔哩
   - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
   - RULE-SET,NetEaseMusic,网易音乐
-  
-  # 8. 国内服务与 GEOIP 兜底
   - RULE-SET,WeChat,微信
   - RULE-SET,Apple,苹果服务
   - RULE-SET,freedom,自由意志
@@ -1044,6 +801,4 @@ rules:
   - RULE-SET,cn_ip,DIRECT
   - RULE-SET,Download,全球直连
   - GEOIP,CN,全球直连
-  
-  # 9. 最终兜底 (未匹配流量全部走代理)
   - MATCH,漏网之鱼
