@@ -1,34 +1,41 @@
-# ------------------------------------------------------
-# Clash Verge / Mihomo 扩展覆写配置 (Final Verified)
-# ------------------------------------------------------
-# 校验状态：Passed
-# 核心功能：
-# 1. 自动吸入订阅节点 (include-all)
-# 2. 手动切换 = 地区策略组 + 所有节点
-# 3. 全球地区正则精准匹配 (含国旗 Emoji)
-# 4. AI 服务优先美国节点，通用应用优先自动选择
-# ------------------------------------------------------
+# =======================================================
+# Clash Verge / Mihomo 旗舰级配置文件 (Rev. 2026)
+# =======================================================
+# 核心架构：
+# 1. 模块化设计：使用 YAML 锚点 (Anchors) 复用策略，修改一处即可全局生效
+# 2. 智能分流：
+#    - AI 服务：强制优选美国 > 日本 > 新加坡节点 (防风控)
+#    - 流媒体：自动测速与手动选择双重保障
+#    - DNS：国内外精准分流，防污染且速度快
+# 3. 自动维护：正则 (Regex) 自动从订阅中提取节点到对应国家组
+# =======================================================
 
-# ==================== 1. 基础内核设置 ====================
+# ==================== 1. 内核基础设置 (Base) ====================
 mode: rule
 mixed-port: 7897
 allow-lan: false
 log-level: info
 ipv6: true
 unified-delay: true
-# 严格进程匹配：解决游戏/应用分流不准的问题
+# 进程匹配模式：Strict (严格)
+# 作用：解决 Android/PC 上部分应用无法正确匹配进程名导致分流失败的问题
 find-process-mode: strict
-# TLS 指纹：模拟 Chrome，防止 Cloudflare 验证失败
+# TLS 指纹模拟：Chrome
+# 作用：模拟浏览器指纹，防止被 Cloudflare 等防火墙识别为机器人而阻断连接
 global-client-fingerprint: chrome
 
-# ==================== 2. DNS 深度优化 ====================
+# ==================== 2. DNS 深度优化 (Split-DNS) ====================
 dns:
   enable: true
   listen: :53
   ipv6: true
+  # 模式：Fake-IP (增强模式)
+  # 作用：返回虚拟 IP 秒开网页，解决 DNS 污染，并在本地缓存映射关系
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
+  # Fake-IP 过滤列表
+  # 作用：以下域名强制走真实 DNS 解析，解决局域网、连通性测试、STUN 等兼容性问题
   fake-ip-filter:
     - "*.lan"
     - "*.local"
@@ -51,7 +58,8 @@ dns:
     geoip: true
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
-  # 核心优化：国内域名走国内 DNS，国外域名走 Google/Cloudflare
+  # 核心策略：DNS 分流
+  # 逻辑：国内域名 -> 阿里/腾讯 DoH；国外域名 -> Google/Cloudflare DoH
   nameserver-policy:
     "geosite:cn,private":
       - https://doh.pub/dns-query
@@ -60,15 +68,17 @@ dns:
       - https://dns.google/dns-query
       - https://1.1.1.1/dns-query
 
-# ==================== 3. 锚点定义 (复用配置) ====================
+# ==================== 3. 配置锚点 (Anchors) ====================
+# 说明：以下带 & 符号的块是“模板”，后续配置中用 * 符号引用，方便统一管理
 
-# [锚点1] 通用过滤规则 (去除广告、到期、重置等无效节点)
+# [模板 1] 通用节点过滤
+# 作用：从订阅中剔除无效、过期、广告或非节点类的条目
 p: &common_filter
   include-all: true
   exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-# [锚点2] 通用代理列表 (自动选择优先)
-# 顺序: 自动 > 节点选择 > 手动 > 各地区
+# [模板 2] 通用优选策略
+# 逻辑：优先自动测速，其次手动干预，最后按地区兜底
 pg_auto: &pg_auto
   - 自动选择
   - 节点选择
@@ -85,8 +95,8 @@ pg_auto: &pg_auto
   - 其他节点
   - DIRECT
 
-# [锚点3] AI 专用列表 (美国节点优先)
-# 顺序: 美国 > 日本 > 新加坡 > 手动 > 自动
+# [模板 3] AI 专用高优先级策略
+# 逻辑：美国优先 (OpenAI/Claude 最佳实践) > 日本/新加坡 (低延迟备选)
 pg_ai: &pg_ai
   - 美国节点
   - 日本节点
@@ -103,9 +113,9 @@ pg_ai: &pg_ai
   - 其他节点
   - DIRECT
 
-# ==================== 4. 规则集源 (Providers) ====================
+# ==================== 4. 规则集源 (Rule Providers) ====================
 rule-providers:
-  # --- 基础/去广告 ---
+  # --- 1. 基础防护 & 广告拦截 ---
   LocalAreaNetwork:
     type: http
     behavior: classical
@@ -131,7 +141,7 @@ rule-providers:
     path: ./ruleset/BanProgramAD.list
     interval: 86400
     
-  # --- 系统/生态 ---
+  # --- 2. 操作系统 & 生态 ---
   Microsoft:
     type: http
     behavior: classical
@@ -158,7 +168,7 @@ rule-providers:
     path: ./ruleset/WeChat.list
     interval: 86400
     
-  # --- 谷歌/搜索 ---
+  # --- 3. Google & 搜索服务 ---
   GoogleFCM:
     type: http
     behavior: classical
@@ -205,7 +215,7 @@ rule-providers:
     path: ./ruleset/OneDrive.list
     interval: 86400
     
-  # --- AI ---
+  # --- 4. AIGC (人工智能) ---
   OpenAi:
     type: http
     behavior: classical
@@ -263,7 +273,7 @@ rule-providers:
     path: ./ruleset/perplexity.yaml
     interval: 86400
     
-  # --- 生产力 ---
+  # --- 5. 生产力 & 办公 ---
   Notion:
     type: http
     behavior: classical
@@ -286,7 +296,7 @@ rule-providers:
     path: ./ruleset/adobe.yaml
     interval: 86400
     
-  # --- 社交 ---
+  # --- 6. 社交网络 ---
   telegram_ip:
     type: http
     behavior: ipcidr
@@ -337,7 +347,7 @@ rule-providers:
     path: ./ruleset/discord.yaml
     interval: 86400
     
-  # --- 流媒体 ---
+  # --- 7. 流媒体 ---
   Spotify:
     type: http
     behavior: classical
@@ -386,7 +396,7 @@ rule-providers:
     path: ./ruleset/hbo.yaml
     interval: 86400
     
-  # --- 游戏 ---
+  # --- 8. 游戏 ---
   Steam:
     type: http
     behavior: classical
@@ -451,7 +461,7 @@ rule-providers:
     path: ./ruleset/Origin.list
     interval: 86400
     
-  # --- 地区与直连 ---
+  # --- 9. 地区与直连 (GEOIP) ---
   private:
     type: http
     behavior: domain
@@ -545,15 +555,15 @@ rule-providers:
     path: ./ruleset/Download.list
     interval: 86400
 
-# ==================== 5. 代理组 (Proxy Groups) ====================
+# ==================== 5. 策略组 (Proxy Groups) ====================
 proxy-groups:
-  # --- 核心控制组 ---
+  # --- 1. 核心控制组 ---
 
   - name: 手动切换
     type: select
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     <<: *common_filter
-    # 【增强】手动切换包含所有地区组 + 自动读取的节点
+    # 【Master 组】包含所有地区组 + 自动读取的订阅全量节点
     proxies:
       - 香港节点
       - 台湾节点
@@ -593,7 +603,7 @@ proxy-groups:
       - 其他节点
       - DIRECT
 
-  # --- AI 应用组 (使用 *pg_ai 锚点) ---
+  # --- 2. AI 专用组 (引用 *pg_ai 模板) ---
   
   - name: AIGC
     type: select
@@ -620,7 +630,7 @@ proxy-groups:
     icon: https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000
     proxies: *pg_ai
 
-  # --- 通用应用组 (使用 *pg_auto 锚点) ---
+  # --- 3. 通用应用组 (引用 *pg_auto 模板) ---
 
   - name: Notion
     type: select
@@ -702,7 +712,7 @@ proxy-groups:
     icon: https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000
     proxies: *pg_auto
 
-  # --- 国内与直连组 ---
+  # --- 4. 国内与直连组 ---
 
   - name: 国内媒体
     type: select
@@ -848,7 +858,8 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     proxies: *pg_auto
 
-    # --- 地区自动测速组 (include-all 自动吸入) ---
+    # --- 5. 自动地区分组 (正则筛选) ---
+    # 核心原理：使用正则表达式 ((?i)关键词) 扫描所有订阅节点，符合条件的自动归入该组
   
   - name: 香港节点
     type: url-test
@@ -946,20 +957,21 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
-    # 包含主要国家旗标和关键词
+    # 正则兜底：匹配主要国家缩写、中文名及国旗
     filter: "(?i)阿根廷|AR|🇦🇷|奥地利|AT|🇦🇹|巴西|BR|🇧🇷|加拿大|CA|🇨🇦|瑞士|CH|🇨🇭|智利|CL|🇨🇱|德国|Germany|DE|🇩🇪|西班牙|ES|🇪🇸|芬兰|FI|🇫🇮|法国|France|FR|🇫🇷|印尼|ID|🇮🇩|爱尔兰|IE|🇮🇪|印度|IN|🇮🇳|意大利|IT|🇮🇹|卢森堡|LU|🇱🇺|马来西亚|MY|🇲🇾|荷兰|NL|🇳🇱|菲律宾|PH|🇵🇭|泰国|TH|🇹🇭|土耳其|TR|🇹🇷|越南|VN|🇻🇳|南非|ZA|🇿🇦"
     <<: *common_filter
 
 # ==================== 6. 分流规则 (Rules) ====================
+# 匹配逻辑：从上到下逐行匹配，一旦命中则停止，不再向下继续
 rules:
-  # 1. 基础/局域网/去广告 (最高优先级)
+  # 1. 基础/局域网/去广告 (最高优先级，保证内网不绕路，广告直接断)
   - RULE-SET,LocalAreaNetwork,全球直连
   - RULE-SET,private,DIRECT
   - RULE-SET,UnBan,全球直连
   - RULE-SET,BanAD,广告拦截
   - RULE-SET,BanProgramAD,应用净化
   
-  # 2. AI 服务 (优先匹配，防止被其他规则误杀)
+  # 2. AI 服务 (优先级高于谷歌/微软通用规则，确保走 AI 专线)
   - RULE-SET,OpenAi,OpenAi
   - RULE-SET,Openai,OpenAi
   - RULE-SET,Gemini,Gemini
@@ -969,14 +981,14 @@ rules:
   - RULE-SET,bard,AIGC
   - RULE-SET,perplexity,AIGC
   
-  # 3. 谷歌服务
+  # 3. 谷歌生态 (搜索、FCM 推送、YouTube)
   - RULE-SET,GoogleFCM,谷歌
   - RULE-SET,google_domain,谷歌
   - RULE-SET,google_ip,谷歌
   - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleCN,谷歌
   
-  # 4. 生产力工具
+  # 4. 生产力 & 开发者工具
   - RULE-SET,Notion,Notion
   - RULE-SET,GitHub,GitHub
   - RULE-SET,Adobe,Adobe
@@ -986,7 +998,7 @@ rules:
   - RULE-SET,bing,微软
   - RULE-SET,Bing,微软
   
-  # 5. 社交应用
+  # 5. 社交网络
   - RULE-SET,Discord,国外社交
   - RULE-SET,telegram_domain,Telegram
   - RULE-SET,telegram_ip,Telegram
@@ -995,7 +1007,7 @@ rules:
   - RULE-SET,Instagram,国外社交
   - RULE-SET,Threads,国外社交
   
-  # 6. 流媒体服务
+  # 6. 流媒体 (Netflix 单独分流，其他归类)
   - RULE-SET,Netflix,Netflix
   - RULE-SET,Spotify,Spotify
   - RULE-SET,TikTok,国外媒体
@@ -1005,7 +1017,7 @@ rules:
   - RULE-SET,GlobalMedia,国外媒体
   - RULE-SET,ProxyMedia,国外媒体
   
-  # 7. 游戏平台
+  # 7. 游戏 (平台下载直连优化)
   - RULE-SET,Epic,游戏平台
   - RULE-SET,Origin,游戏平台
   - RULE-SET,Sony,游戏平台
@@ -1016,7 +1028,7 @@ rules:
   - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
   - RULE-SET,NetEaseMusic,网易音乐
   
-  # 8. 国内服务与直连 (GEOIP 兜底)
+  # 8. 国内服务与 GEOIP 兜底
   - RULE-SET,WeChat,微信
   - RULE-SET,Apple,苹果服务
   - RULE-SET,freedom,自由意志
@@ -1033,5 +1045,5 @@ rules:
   - RULE-SET,Download,全球直连
   - GEOIP,CN,全球直连
   
-  # 9. 最终兜底
+  # 9. 最终兜底 (未匹配流量全部走代理)
   - MATCH,漏网之鱼
