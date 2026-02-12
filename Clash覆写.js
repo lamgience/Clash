@@ -319,10 +319,10 @@ function main(config) {
     "RULE-SET,perplexity,AIGC",
     
     // 3. 谷歌生态
+    "RULE-SET,YouTube,YouTube",
     "RULE-SET,GoogleFCM,谷歌",
     "RULE-SET,google_domain,谷歌",
     "RULE-SET,google_ip,谷歌",
-    "RULE-SET,YouTube,YouTube",
     "RULE-SET,GoogleCN,谷歌",
     
     // 4. 生产力 & 开发者
