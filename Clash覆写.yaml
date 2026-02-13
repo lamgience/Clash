@@ -16,7 +16,10 @@
 # ------------------------------------------------------------------------------
 mode: rule
 mixed-port: 7897
-allow-lan: false
+# [修改] 开启局域网共享，允许局域网内的设备（如 Xbox, PS5, 手机）连接此代理
+allow-lan: true
+# [新增] 绑定所有 IP 接口，确保局域网设备能搜索到
+bind-address: "*"
 log-level: info
 ipv6: true
 unified-delay: true
@@ -85,13 +88,26 @@ dns:
     - "*.lan"
     - "*.local"
     - "*.arpa"
+    # === NTP 时间同步 (优化：防止时间不同步导致连接失败) ===
     - "time.*.com"
     - "ntp.*.com"
+    - "+.pool.ntp.org"
+    # === 游戏与 STUN/ICE 穿透 (优化：解决 NAT 类型检测失败) ===
+    - "stun.*"        # Google STUN
+    - "+.stun.*.*"    # [新增] 深度泛域名 STUN
+    - "+.stun.*"      # [新增] 泛域名 STUN
+    - "+.ice.*.*"     # [新增] ICE 协议 (WebRTC/VoIP)
+    - "xbox.*.com"    # Xbox 验证服务
+    - "xboxlive.com"  # Xbox Live
+    # === 微软连接检测 (优化：防止 Windows 误判无网络) ===
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "www.msftconnecttest.com"
+    # === 其他兼容性 ===
     - "+.market.xiaomi.com"
     - "localhost.ptlogin2.qq.com"
-    - "*.msftncsi.com"
-    - "www.msftconnecttest.com"
-  
+    - "+.360.cn"      # [新增] 360 安全卫士兼容
+
   # [Bootstrap] 用于解析 DoH 域名本身的 DNS (阿里/腾讯)
   default-nameserver:
     - 223.5.5.5
