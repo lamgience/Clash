@@ -137,7 +137,7 @@ sniffer:
       ports: [80, 8080-8880]
       override-destination: true
     QUIC:
-      ports: [443, 8443]
+      ports: [443, 8443, 3478]
       
   # [白名单] 跳过嗅探的敏感域名
   # 说明：Mijia/Apple 等服务对证书校验严格，嗅探可能导致连接重置
