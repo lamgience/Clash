@@ -1,17 +1,18 @@
 # ==============================================================================
-# Clash Verge / Mihomo 旗舰级配置文件 (Pro Edition)
+# Clash Verge / Mihomo 旗舰级配置文件 (Ultimate Plus 2.0 Refined)
 # ==============================================================================
-# [配置亮点]
-# 1. 模块化设计：使用 YAML 锚点 (Anchors) 复用策略，修改一处即可全局生效
-# 2. 智能分流：
-#    - AI 专线：强制优选美国 > 日本 > 新加坡节点 (OpenAI/Claude 最佳实践)
-#    - Split-DNS：国内域名走阿里/腾讯，国外域名走 Google/Cloudflare (防污染+低延迟)
-#    - 自动归类：利用正则表达式自动将订阅节点分配至对应国家分组
-# 3. 兼容性修复：已对所有 .list 规则集强制指定 format: text，修复 payload 报错
+# [版本特性]
+# 1. 持久化控制：重启后自动恢复上次手动选择的节点 (profile.store-selected)
+# 2. 系统级修复：强制 NTP 时间同步流量直连，解决系统时间校准失败问题
+# 3. 智能流量整形：
+#    - Sniffer：精准还原纯 IP 请求域名，修复网易云/游戏分流
+#    - Speedtest：强制直连，防止测速消耗代理流量
+# 4. AI 专属优化：OpenAI 等流量自动路由至最优策略组
+# 5. 网络层增强：开启 TCP 并发与 Chrome 指纹，内置 GeoX 国内加速源
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# 1. 核心基础设置 (Core Settings)
+# 1. 核心与内核设置 (Core & Kernel)
 # ------------------------------------------------------------------------------
 mode: rule
 mixed-port: 7897
@@ -20,28 +21,66 @@ log-level: info
 ipv6: true
 unified-delay: true
 
-# [进程匹配] Strict 模式
-# 作用：解决 Android/Windows 上部分游戏或应用无法正确匹配进程名导致分流失败的问题
+# [持久化] 重启 Clash 后保持策略组的选择，而非恢复默认
+profile:
+  store-selected: true
+
+# [性能] 开启 TCP 并发连接，向所有解析 IP 握手并取最快者，显著降低首包延迟
+tcp-concurrent: true
+
+# [匹配] 启用严格进程匹配模式，解决 Android 模拟器/部分游戏进程名识别错误
 find-process-mode: strict
 
-# [指纹模拟] Chrome
-# 作用：模拟浏览器 TLS 指纹，防止被 Cloudflare 等防火墙识别为“非浏览器流量”而阻断
+# [指纹] 模拟 Chrome 浏览器的 TLS 指纹，规避 Cloudflare 等反爬虫/反代理检测
 global-client-fingerprint: chrome
 
+# [资源] 使用国内 CDN 加速下载 GeoIP/GeoSite 数据库，确保规则库更新 100% 成功
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+
 # ------------------------------------------------------------------------------
-# 2. DNS 深度优化 (DNS Configuration)
+# 2. 本地 Hosts 映射 (Local Hosts)
+# ------------------------------------------------------------------------------
+hosts:
+  # 示例：强制将路由器域名解析到内网 IP
+  "router.asus.com": 192.168.50.1
+  
+
+  # [优化] Google MTalk (FCM 推送服务)
+  # 说明：通常走代理更稳定。仅在推送严重延迟时，可尝试取消注释以强制解析特定 IP
+  "mtalk.google.com": 108.177.125.188
+  "services.googleapis.com": 172.217.163.42
+
+  # [加速] GitHub 静态资源
+  # 说明：GitHub IP 变动频繁，默认推荐走规则代理。仅在直连需求强烈时开启
+  # "github.com": 20.205.243.166
+  # "raw.githubusercontent.com": 185.199.108.133
+  # "assets-cdn.github.com": 185.199.108.153
+
+  # [安全] 屏蔽特定恶意域名 (指向本地回环)
+  "flash.cn": 127.0.0.1
+
+# ------------------------------------------------------------------------------
+# 3. DNS 深度优化 (Split-DNS)
 # ------------------------------------------------------------------------------
 dns:
   enable: true
   listen: :53
   ipv6: true
+  
   # [模式] Fake-IP (增强模式)
-  # 作用：返回虚拟 IP 实现秒开网页，并在本地缓存映射关系
+  # 作用：立即返回虚拟 IP 实现秒开网页，并在后台异步解析真实 IP
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
-  # [黑名单] 强制走真实 IP 解析的域名
-  # 作用：解决局域网设备发现、连通性测试、STUN、微软服务等兼容性问题
+  
+  # [黑名单] 强制走真实 DNS 解析的域名
+  # 作用：解决局域网发现、连通性测试、STUN、微软系服务的兼容性问题
   fake-ip-filter:
     - "*.lan"
     - "*.local"
@@ -53,26 +92,26 @@ dns:
     - "*.msftncsi.com"
     - "www.msftconnecttest.com"
   
-  # [默认 DNS] 用于解析 DoH 域名的 Bootstrap DNS
+  # [Bootstrap] 用于解析 DoH 域名本身的 DNS (阿里/腾讯)
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
   
-  # [国外 DNS] 用于解析国外域名 (DoH)
+  # [国外 DNS] 用于解析非国内域名 (DoH 加密)
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
     - 8.8.8.8
   
-  # [Fallback] 回退 DNS 配置
+  # [Fallback] 回退 DNS (配合 GeoIP 使用)
   fallback: []
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
   
-  # [分流策略] Split-DNS (核心优化)
-  # 逻辑：Geosite 匹配到的 CN 域名 -> 国内 DNS；其他 -> 国外 DNS
+  # [策略] Split-DNS 核心分流逻辑
+  # 逻辑：匹配 geosite:cn 的域名走国内 DoH，其余走 Google DoH
   nameserver-policy:
     "geosite:cn,private":
       - https://doh.pub/dns-query
@@ -82,18 +121,54 @@ dns:
       - https://1.1.1.1/dns-query
 
 # ------------------------------------------------------------------------------
-# 3. 配置锚点与模板 (Anchors & Templates)
+# 4. 流量嗅探 (Sniffer)
 # ------------------------------------------------------------------------------
-# 说明：以下带 & 的块是“模板”，后续配置中用 * 引用，避免重复代码
+sniffer:
+  enable: true
+  parse-pure-ip: true        # 对未匹配域名的纯 IP 请求强制嗅探
+  force-dns-mapping: true    # 将嗅探到的域名回填至 DNS 映射表，修复 Fake-IP 兼容性
+  override-destination: true # 将连接目标重写为嗅探到的域名，确保规则匹配生效
+  
+  # 嗅探协议配置
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    QUIC:
+      ports: [443, 8443]
+      
+  # [白名单] 跳过嗅探的敏感域名
+  # 说明：Mijia/Apple 等服务对证书校验严格，嗅探可能导致连接重置
+  skip-domain:
+    - "Mijia Cloud"
+    - "dlg.io.mi.com"
+    - "+.apple.com"
+    - "apple.com"
+    - "+.push.apple.com"
+    - "+.icloud.com"
+    - "+.system.apple.com"
+    - "+.c.163.com"
+    - "+.music.126.net"
+    - "*.122.com"
+    - "localhost"
+    - "*.local"
+    - "*.lan"
 
-# [模板 1] 通用节点过滤正则
+# ------------------------------------------------------------------------------
+# 5. 配置锚点与模板 (Anchors)
+# ------------------------------------------------------------------------------
+# 说明：定义可复用的配置块，通过 *引用名 调用，保持代码整洁
+
+# [锚点] 通用节点过滤正则
 # 作用：自动剔除订阅中的无效节点、剩余流量提示、官网链接等垃圾信息
 p: &common_filter
   include-all: true
   exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-# [模板 2] 通用优选策略组
-# 逻辑：优先自动测速 -> 节点选择(手动) -> 手动切换 -> 各地区兜底
+# [锚点] 通用优选策略 (Auto-First)
+# 逻辑：自动选择(最快) > 节点选择(手动) > 手动切换 > 各地区兜底
 pg_auto: &pg_auto
   - 自动选择
   - 节点选择
@@ -110,8 +185,8 @@ pg_auto: &pg_auto
   - 其他节点
   - DIRECT
 
-# [模板 3] AI 专用高优先级策略
-# 逻辑：严格锁定 美国 > 日本 > 新加坡，防止 AI 账号因 IP 变动被风控
+# [锚点] AI 专用策略 (US-First)
+# 逻辑：严格锁定 美国 > 日本 > 新加坡，防止账号因 IP 频繁变动或地区不支持而被风控
 pg_ai: &pg_ai
   - 美国节点
   - 日本节点
@@ -129,9 +204,8 @@ pg_ai: &pg_ai
   - DIRECT
 
 # ------------------------------------------------------------------------------
-# 4. 规则集源 (Rule Providers)
+# 6. 规则集源 (Rule Providers)
 # ------------------------------------------------------------------------------
-# 注意：ACL4SSR 的规则多为文本格式，必须显式指定 format: text
 rule-providers:
   # === 基础防护 & 广告拦截 ===
   LocalAreaNetwork:
@@ -161,6 +235,15 @@ rule-providers:
     format: text
     url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list"
     path: ./ruleset/BanProgramAD.list
+    interval: 86400
+    
+  # === 测速 & AI 社区 ===
+  Speedtest:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Speedtest/Speedtest.yaml"
+    path: ./ruleset/Speedtest.yaml
     interval: 86400
     
   # === 操作系统 & 生态 ===
@@ -600,7 +683,7 @@ rule-providers:
     interval: 86400
 
 # ------------------------------------------------------------------------------
-# 5. 策略组 (Proxy Groups)
+# 7. 策略组 (Proxy Groups)
 # ------------------------------------------------------------------------------
 proxy-groups:
   # === 核心控制组 ===
@@ -685,7 +768,7 @@ proxy-groups:
   - {name: 漏网之鱼, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png", proxies: *pg_auto}
 
   # === 自动地区分组 (正则筛选) ===
-  # 原理：根据 filter 字段中的正则表达式，自动从所有订阅节点中提取并归类
+  # 原理：根据 filter 正则表达式，自动从所有订阅节点中提取并归类到对应地区
   
   - name: 香港节点
     type: url-test
@@ -787,45 +870,49 @@ proxy-groups:
     <<: *common_filter
 
 # ------------------------------------------------------------------------------
-# 6. 分流规则 (Rules)
+# 8. 分流规则 (Rules)
 # ------------------------------------------------------------------------------
-# 匹配逻辑：从上到下逐行匹配，一旦命中立即执行，后续规则不再生效
+# 匹配逻辑：从上到下逐行匹配，命中即停止，不再匹配后续规则
 rules:
-  # [优先级 1] 局域网 & 去广告 (直接阻断或直连，不经过代理核心)
-  - RULE-SET,LocalAreaNetwork,全球直连
-  - RULE-SET,private,DIRECT
-  - RULE-SET,UnBan,全球直连
-  - RULE-SET,BanAD,广告拦截
-  - RULE-SET,BanProgramAD,应用净化
+  # [优先级 1] 核心基础 & 系统服务 (强制直连)
+  - DST-PORT,123,DIRECT                  # NTP 时间同步
+  - RULE-SET,LocalAreaNetwork,全球直连    # 局域网
+  - RULE-SET,private,DIRECT              # 私有地址
+  - RULE-SET,UnBan,全球直连               # 误杀恢复
+  - RULE-SET,BanAD,广告拦截               # 广告拦截
+  - RULE-SET,BanProgramAD,应用净化        # 应用内广告
   
-  # [优先级 2] AI 人工智能 (优先级高于 Google 规则，防止误分流)
-  - RULE-SET,OpenAi,OpenAi
-  - RULE-SET,Openai,OpenAi
-  - RULE-SET,Gemini,Gemini
-  - RULE-SET,gemini,Gemini
-  - RULE-SET,claude,Claude
-  - RULE-SET,copilot,Copilot
-  - RULE-SET,bard,AIGC
-  - RULE-SET,perplexity,AIGC
+  # [优先级 2] 网络工具 (防止消耗代理流量)
+  - RULE-SET,Speedtest,全球直连           # 测速工具
   
-  # [优先级 3] Google 生态
-  - RULE-SET,YouTube,YouTube
-  - RULE-SET,GoogleFCM,谷歌
-  - RULE-SET,google_domain,谷歌
-  - RULE-SET,google_ip,谷歌
-  - RULE-SET,GoogleCN,谷歌
+  # [优先级 3] AI 生产力 (必须优先匹配，防止被 Google 规则误杀)
+  - RULE-SET,OpenAi,OpenAi               # ChatGPT
+  - RULE-SET,Openai,OpenAi               # 域名规则补充
+  - RULE-SET,Gemini,Gemini               # Google Gemini
+  - RULE-SET,gemini,Gemini               # 规则补充
+  - RULE-SET,claude,Claude               # Anthropic Claude
+  - RULE-SET,copilot,Copilot             # GitHub/MS Copilot
+  - RULE-SET,bard,AIGC                   # Google Bard (旧)
+  - RULE-SET,perplexity,AIGC             # Perplexity 搜索
   
-  # [优先级 4] 生产力工具
-  - RULE-SET,Notion,Notion
-  - RULE-SET,GitHub,GitHub
-  - RULE-SET,Adobe,Adobe
-  - RULE-SET,MicrosoftEdge,微软
-  - RULE-SET,OneDrive,微软
-  - RULE-SET,Microsoft,微软
-  - RULE-SET,bing,微软
-  - RULE-SET,Bing,微软
+  # [优先级 4] Google 生态
+  - RULE-SET,YouTube,YouTube             # 视频
+  - RULE-SET,GoogleFCM,谷歌               # 推送
+  - RULE-SET,google_domain,谷歌           # 域名
+  - RULE-SET,google_ip,谷歌               # IP段
+  - RULE-SET,GoogleCN,谷歌                # 国内服务
   
-  # [优先级 5] 社交平台
+  # [优先级 5] 办公与协作
+  - RULE-SET,Notion,Notion               # 笔记
+  - RULE-SET,GitHub,GitHub               # 代码托管
+  - RULE-SET,Adobe,Adobe                 # 设计软件
+  - RULE-SET,MicrosoftEdge,微软           # 浏览器
+  - RULE-SET,OneDrive,微软                # 云盘
+  - RULE-SET,Microsoft,微软               # 系统服务
+  - RULE-SET,bing,微软                    # 必应搜索
+  - RULE-SET,Bing,微软                    # 规则补充
+  
+  # [优先级 6] 社交网络
   - RULE-SET,Discord,国外社交
   - RULE-SET,telegram_domain,Telegram
   - RULE-SET,telegram_ip,Telegram
@@ -834,7 +921,7 @@ rules:
   - RULE-SET,Instagram,国外社交
   - RULE-SET,Threads,国外社交
   
-  # [优先级 6] 流媒体服务
+  # [优先级 7] 国际流媒体
   - RULE-SET,Netflix,Netflix
   - RULE-SET,Spotify,Spotify
   - RULE-SET,TikTok,国外媒体
@@ -844,7 +931,7 @@ rules:
   - RULE-SET,GlobalMedia,国外媒体
   - RULE-SET,ProxyMedia,国外媒体
   
-  # [优先级 7] 游戏与娱乐
+  # [优先级 8] 游戏平台
   - RULE-SET,Epic,游戏平台
   - RULE-SET,Origin,游戏平台
   - RULE-SET,Sony,游戏平台
@@ -855,7 +942,7 @@ rules:
   - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
   - RULE-SET,NetEaseMusic,网易音乐
   
-  # [优先级 8] 国内服务 & 特殊修正
+  # [优先级 9] 国内服务 & 特殊修正
   - RULE-SET,WeChat,微信
   - RULE-SET,Apple,苹果服务
   - RULE-SET,freedom,自由意志
@@ -872,5 +959,5 @@ rules:
   - RULE-SET,Download,全球直连
   - GEOIP,CN,全球直连
   
-  # [优先级 9] 兜底策略 (未匹配流量)
+  # [优先级 10] 兜底策略 (未匹配流量)
   - MATCH,漏网之鱼
