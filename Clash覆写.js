@@ -142,7 +142,7 @@ function main(config) {
 
     "mixed-port": 7897,
 
-    "allow-lan": false,
+    "allow-lan": true,                     // [优化] 开启局域网连接，允许其他设备接入(主机加速必要条件)
 
     "log-level": "info",
 
@@ -206,7 +206,7 @@ function main(config) {
 
       "force-dns-mapping": true,    // 强制重置 DNS 映射，这对 Fake-IP 模式至关重要
 
-      "parse-pure-ip": true,        // 对直接使用 IP 的请求进行嗅探
+      "parse-pure-ip": true,        // [优化] 保持开启：对直接使用 IP 的请求进行嗅探
 
       "override-destination": true, // 将嗅探到的域名覆盖目标地址
 
@@ -284,11 +284,25 @@ function main(config) {
 
       "fake-ip-filter": [
 
-        "*.lan", "*.local", "*.arpa", "time.*.com", "ntp.*.com", 
+        // --- 基础 ---
+
+        "*.lan", "*.local", "*.arpa", 
 
         "+.market.xiaomi.com", "localhost.ptlogin2.qq.com", 
 
-        "*.msftncsi.com", "www.msftconnecttest.com"
+        // --- NTP 时间服务 (优化) ---
+
+        "time.*.com", "ntp.*.com", "+.pool.ntp.org",
+
+        // --- Windows/Xbox 连接性测试 (优化) ---
+
+        "*.msftncsi.com", "www.msftconnecttest.com", "+.msftconnecttest.com", 
+
+        "xbox.*.com", "xboxlive.com",
+
+        // --- STUN/UDP 穿透服务 (NAT 优化核心) ---
+
+        "stun.*", "+.stun.*.*", "+.stun.*", "+.ice.*.*", "+.360.cn"
 
       ],
 
@@ -867,3 +881,4 @@ function main(config) {
   return config;
 
 }
+
