@@ -216,7 +216,7 @@ function main(config) {
 
         "HTTP": { "ports": [80, 8080, 8880] },
 
-        "QUIC": { "ports": [443, 8443] }
+        "QUIC": { "ports": [443, 8443, 3478] }
 
       },
 
