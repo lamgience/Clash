@@ -886,10 +886,10 @@ rules:
   - RULE-SET,Speedtest,全球直连           # 测速工具
   
   # [优先级 3] AI 生产力 (必须优先匹配，防止被 Google 规则误杀)
-  - RULE-SET,OpenAi,OpenAi               # ChatGPT
-  - RULE-SET,Openai,OpenAi               # 域名规则补充
   - RULE-SET,Gemini,Gemini               # Google Gemini
   - RULE-SET,gemini,Gemini               # 规则补充
+  - RULE-SET,OpenAi,OpenAi               # ChatGPT
+  - RULE-SET,Openai,OpenAi               # 域名规则补充
   - RULE-SET,claude,Claude               # Anthropic Claude
   - RULE-SET,copilot,Copilot             # GitHub/MS Copilot
   - RULE-SET,bard,AIGC                   # Google Bard (旧)
