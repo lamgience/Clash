@@ -694,7 +694,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
     proxies: [🎯 节点选择, 🚀 自动选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, DIRECT]
 
-  - name: 🍎 苹果服务
+  - name: 🍏 苹果服务
     type: select
     icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
     proxies: [DIRECT, 🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点]
@@ -919,7 +919,7 @@ rules:
   - RULE-SET,BilibiliHMT,📺 哔哩哔哩港澳台
   - RULE-SET,NetEaseMusic,🎵 网易音乐
   - RULE-SET,WeChat,💬 微信
-  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,Apple,🍏 苹果服务
   - RULE-SET,freedom,🕊️ 自由意志
   - RULE-SET,direct_cus,DIRECT
   - RULE-SET,Airport,✈️ 机场专线
