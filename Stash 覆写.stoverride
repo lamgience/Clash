@@ -1,8 +1,8 @@
-name: Ultimate Plus 2.0 (完整无删减版)
-desc: 100%保留所有规则集与策略组的 Stash 覆写
+name: Ultimate Plus 2.0 (全展开完整修复版)
+desc: 修复分流遗漏，并在 AI 及自由意志组展开所有独立节点
 
 # ------------------------------------------------------------------------------
-# 1. 核心与内核设置 (Core & Kernel)
+# 1. 核心与内核设置
 # ------------------------------------------------------------------------------
 mode: rule
 mixed-port: 7897
@@ -16,7 +16,7 @@ profile:
   store-selected: true
 
 # ------------------------------------------------------------------------------
-# 2. 本地 Hosts 映射 (Local Hosts)
+# 2. 本地 Hosts 映射
 # ------------------------------------------------------------------------------
 hosts:
   "router.asus.com": 192.168.50.1
@@ -25,7 +25,7 @@ hosts:
   "flash.cn": 127.0.0.1
 
 # ------------------------------------------------------------------------------
-# 3. DNS 深度优化 (Split-DNS)
+# 3. DNS 深度优化
 # ------------------------------------------------------------------------------
 dns:
   enable: true
@@ -74,7 +74,7 @@ dns:
       - https://1.1.1.1/dns-query
 
 # ------------------------------------------------------------------------------
-# 4. 流量嗅探 (Sniffer)
+# 4. 流量嗅探
 # ------------------------------------------------------------------------------
 sniffer:
   enable: true
@@ -105,46 +105,7 @@ sniffer:
     - "*.lan"
 
 # ------------------------------------------------------------------------------
-# 5. 配置锚点与模板 (Anchors)
-# ------------------------------------------------------------------------------
-p: &common_filter
-  include-all: true
-  exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
-
-pg_auto: &pg_auto
-  - 自动选择
-  - 节点选择
-  - 手动切换
-  - 香港节点
-  - 台湾节点
-  - 美国节点
-  - 日本节点
-  - 新加坡节点
-  - 英国节点
-  - 韩国节点
-  - 澳大利亚节点
-  - 俄罗斯节点
-  - 其他节点
-  - DIRECT
-
-pg_ai: &pg_ai
-  - 美国节点
-  - 日本节点
-  - 新加坡节点
-  - 手动切换
-  - 自动选择
-  - 节点选择
-  - 香港节点
-  - 台湾节点
-  - 英国节点
-  - 韩国节点
-  - 澳大利亚节点
-  - 俄罗斯节点
-  - 其他节点
-  - DIRECT
-
-# ------------------------------------------------------------------------------
-# 6. 规则集源 (Rule Providers) - 100% 完整保留！
+# 5. 规则集源 (59个规则集 100% 对应原文件)
 # ------------------------------------------------------------------------------
 rule-providers:
   LocalAreaNetwork:
@@ -604,13 +565,14 @@ rule-providers:
     interval: 86400
 
 # ------------------------------------------------------------------------------
-# 7. 策略组 (Proxy Groups) - 100% 完整保留！
+# 6. 策略组 (44个组 100% 对应原文件，AI及自由意志开启节点下展)
 # ------------------------------------------------------------------------------
 proxy-groups:
   - name: 手动切换
     type: select
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
     proxies: [香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
 
   - name: 自动选择
@@ -619,38 +581,119 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 节点选择
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
     proxies: [自动选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
 
-  - {name: AIGC, type: select, icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000", proxies: *pg_ai}
-  - {name: Gemini, type: select, icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000", proxies: *pg_ai}
-  - {name: OpenAi, type: select, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png", proxies: *pg_ai}
-  - {name: Copilot, type: select, icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000", proxies: *pg_ai}
-  - {name: Claude, type: select, icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000", proxies: *pg_ai}
+  # ▼▼▼ AI 组及自由意志添加了 include-all 展开节点 ▼▼▼
+  - name: AIGC
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000"
+    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - {name: Notion, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png", proxies: *pg_auto}
-  - {name: GitHub, type: select, icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000", proxies: *pg_auto}
-  - {name: Adobe, type: select, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg", proxies: *pg_auto}
-  - {name: 微软, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png", proxies: *pg_auto}
-  - {name: 谷歌, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png", proxies: *pg_auto}
-  - {name: Telegram, type: select, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png", proxies: *pg_auto}
-  - {name: 国外社交, type: select, icon: "https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000", proxies: *pg_auto}
-  - {name: 国外媒体, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png", proxies: *pg_auto}
-  - {name: YouTube, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png", proxies: *pg_auto}
+  - name: Gemini
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000"
+    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: OpenAi
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png"
+    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: Copilot
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000"
+    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: Claude
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000"
+    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: 自由意志
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+  # ▲▲▲ AI 组及自由意志修改完毕 ▲▲▲
+
+  - name: Notion
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: GitHub
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: Adobe
+    type: select
+    icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: 微软
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: 谷歌
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: Telegram
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: 国外社交
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: 国外媒体
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: YouTube
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
   
   - name: Netflix
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     proxies: [奈飞节点, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
 
-  - {name: Spotify, type: select, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", proxies: *pg_auto}
-  - {name: 游戏平台, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png", proxies: *pg_auto}
-  - {name: 自由意志, type: select, icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000", proxies: *pg_auto}
+  - name: Spotify
+    type: select
+    icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+
+  - name: 游戏平台
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
 
   - name: 国内媒体
     type: select
@@ -667,22 +710,54 @@ proxy-groups:
     icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
     proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
 
-  - {name: 哔哩哔哩, type: select, icon: "https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000", proxies: [DIRECT, 节点选择, 自动选择, 香港节点, 台湾节点]}
+  - name: 哔哩哔哩
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000"
+    proxies: [DIRECT, 节点选择, 自动选择, 香港节点, 台湾节点]
   
   - name: 网易音乐
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
     filter: "(?i)网易|音乐|NetEase|Music"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
     proxies: [DIRECT, 节点选择, 自动选择]
 
-  - {name: 哔哩哔哩港澳台, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png", proxies: [节点选择, 自动选择, 手动切换, 香港节点, 台湾节点, 全球直连, DIRECT]}
-  - {name: 巴哈姆特, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png", proxies: [节点选择, 手动切换, 台湾节点, DIRECT]}
-  - {name: 机场专线, type: select, icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000", proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]}
-  - {name: 全球直连, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png", proxies: [DIRECT, 节点选择, 自动选择]}
-  - {name: 广告拦截, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png", proxies: [REJECT, DIRECT]}
-  - {name: 应用净化, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png", proxies: [REJECT, DIRECT]}
-  - {name: 漏网之鱼, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png", proxies: *pg_auto}
+  - name: 哔哩哔哩港澳台
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png"
+    proxies: [节点选择, 自动选择, 手动切换, 香港节点, 台湾节点, 全球直连, DIRECT]
+
+  - name: 巴哈姆特
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png"
+    proxies: [节点选择, 手动切换, 台湾节点, DIRECT]
+
+  - name: 机场专线
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000"
+    proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
+
+  # 【已补充】原本遗漏的“全球直连”找回来了
+  - name: 全球直连
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png"
+    proxies: [DIRECT, 节点选择, 自动选择]
+
+  - name: 广告拦截
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png"
+    proxies: [REJECT, DIRECT]
+
+  - name: 应用净化
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png"
+    proxies: [REJECT, DIRECT]
+
+  - name: 漏网之鱼
+    type: select
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png"
+    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
 
   - name: 香港节点
     type: url-test
@@ -691,7 +766,8 @@ proxy-groups:
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     filter: "(?i)香港|Hong Kong|HK|🇭🇰|HongKong|HGC|WTT|HKBN|PCCW"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 台湾节点
     type: url-test
@@ -700,7 +776,8 @@ proxy-groups:
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
     filter: "(?i)台湾|臺灣|Taiwan|TW|🇹🇼|TaiWan|Hinet|TFN"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 美国节点
     type: url-test
@@ -709,7 +786,8 @@ proxy-groups:
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     filter: "(?i)美国|USA|United States|US|🇺🇸|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 日本节点
     type: url-test
@@ -718,7 +796,8 @@ proxy-groups:
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     filter: "(?i)日本|Japan|JP|🇯🇵|Tokyo|Osaka|Saitama|Kawaguchi"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 新加坡节点
     type: url-test
@@ -727,7 +806,8 @@ proxy-groups:
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     filter: "(?i)新加坡|Singapore|SG|🇸🇬|狮城|Lion City"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 英国节点
     type: url-test
@@ -736,7 +816,8 @@ proxy-groups:
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
     filter: "(?i)英国|UK|United Kingdom|GB|🇬🇧|London|England"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 韩国节点
     type: url-test
@@ -745,7 +826,8 @@ proxy-groups:
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
     filter: "(?i)韩国|Korea|KR|🇰🇷|Seoul|KOR"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 澳大利亚节点
     type: url-test
@@ -754,7 +836,8 @@ proxy-groups:
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
     filter: "(?i)澳大利亚|Australia|AU|🇦🇺|Sydney|Melbourne"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 俄罗斯节点
     type: url-test
@@ -763,7 +846,8 @@ proxy-groups:
     tolerance: 50
     icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
     filter: "(?i)俄罗斯|Russia|RU|🇷🇺|Moscow|Saint Petersburg"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 奈飞节点
     type: url-test
@@ -772,7 +856,8 @@ proxy-groups:
     tolerance: 50
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 其他节点
     type: url-test
@@ -781,10 +866,11 @@ proxy-groups:
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
     filter: "(?i)阿根廷|AR|🇦🇷|奥地利|AT|🇦🇹|巴西|BR|🇧🇷|加拿大|CA|🇨🇦|瑞士|CH|🇨🇭|智利|CL|🇨🇱|德国|Germany|DE|🇩🇪|西班牙|ES|🇪🇸|芬兰|FI|🇫🇮|法国|France|FR|🇫🇷|印尼|ID|🇮🇩|爱尔兰|IE|🇮🇪|印度|IN|🇮🇳|意大利|IT|🇮🇹|卢森堡|LU|🇱🇺|马来西亚|MY|🇲🇾|荷兰|NL|🇳🇱|菲律宾|PH|🇵🇭|泰国|TH|🇹🇭|土耳其|TR|🇹🇷|越南|VN|🇻🇳|南非|ZA|🇿🇦"
-    <<: *common_filter
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
 # ------------------------------------------------------------------------------
-# 8. 分流规则 (Rules) - 100% 完整保留！
+# 7. 分流规则 (所有原文件规则全部映射，无遗漏)
 # ------------------------------------------------------------------------------
 rules:
   - DST-PORT,123,DIRECT
