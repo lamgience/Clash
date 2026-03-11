@@ -1,5 +1,5 @@
 name: Stash 覆写 2.0
-desc: 修复DNS策略报错，并在 AI 及自由意志组展开所有独立节点
+desc: 修复组名冲突，AI/自由意志展开节点，精确保留65个规则集与68条分流规则
 
 # ------------------------------------------------------------------------------
 # 1. 核心与内核设置
@@ -65,11 +65,9 @@ dns:
     geoip: true
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
-  # ▼▼▼ 修复报错：Stash 仅支持单个字符串地址 ▼▼▼
   nameserver-policy:
     "geosite:cn,private": "https://doh.pub/dns-query"
     "geosite:geolocation-!cn": "https://dns.google/dns-query"
-  # ▲▲▲ 修复完成 ▲▲▲
 
 # ------------------------------------------------------------------------------
 # 4. 流量嗅探
@@ -103,7 +101,7 @@ sniffer:
     - "*.lan"
 
 # ------------------------------------------------------------------------------
-# 5. 规则集源 (59个规则集 100% 对应原文件)
+# 5. 规则集源 (精确核对：共计 65 个源)
 # ------------------------------------------------------------------------------
 rule-providers:
   LocalAreaNetwork:
@@ -563,17 +561,17 @@ rule-providers:
     interval: 86400
 
 # ------------------------------------------------------------------------------
-# 6. 策略组 (44个组 100% 对应原文件，AI及自由意志开启节点下展)
+# 6. 策略组 (全 44 组，Emoji防冲突 + AI/自由意志节点展开)
 # ------------------------------------------------------------------------------
 proxy-groups:
-  - name: 手动切换
+  - name: 🖐️ 手动切换
     type: select
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
-    proxies: [香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
+    proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点]
 
-  - name: 自动选择
+  - name: 🚀 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -582,179 +580,179 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 节点选择
+  - name: 🎯 节点选择
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
-    proxies: [自动选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: AIGC
+  - name: 🤖 AIGC
     type: select
     icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000"
-    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🖐️ 手动切换, 🚀 自动选择, 🎯 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: Gemini
+  - name: ✨ Gemini
     type: select
     icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000"
-    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🖐️ 手动切换, 🚀 自动选择, 🎯 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: OpenAi
+  - name: 🧠 OpenAi
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png"
-    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🖐️ 手动切换, 🚀 自动选择, 🎯 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: Copilot
+  - name: 🧑‍💻 Copilot
     type: select
     icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000"
-    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🖐️ 手动切换, 🚀 自动选择, 🎯 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: Claude
+  - name: 🪄 Claude
     type: select
     icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000"
-    proxies: [美国节点, 日本节点, 新加坡节点, 手动切换, 自动选择, 节点选择, 香港节点, 台湾节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🖐️ 手动切换, 🚀 自动选择, 🎯 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 自由意志
+  - name: 🕊️ 自由意志
     type: select
     icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: Notion
+  - name: 📝 Notion
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: GitHub
+  - name: 🐙 GitHub
     type: select
     icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: Adobe
+  - name: 🎨 Adobe
     type: select
     icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: 微软
+  - name: 🪟 微软
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: 谷歌
+  - name: 🔍 谷歌
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: Telegram
+  - name: ✈️ Telegram
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: 国外社交
+  - name: 💬 国外社交
     type: select
     icon: "https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: 国外媒体
+  - name: 📰 国外媒体
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: YouTube
+  - name: ▶️ YouTube
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
   
-  - name: Netflix
+  - name: 🎬 Netflix
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    proxies: [奈飞节点, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🍿 奈飞节点, 🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: Spotify
+  - name: 🎵 Spotify
     type: select
     icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: 游戏平台
+  - name: 🎮 游戏平台
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: 国内媒体
+  - name: 📺 国内媒体
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
-    proxies: [节点选择, 自动选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, DIRECT]
+    proxies: [🎯 节点选择, 🚀 自动选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, DIRECT]
 
-  - name: 苹果服务
+  - name: 🍎 苹果服务
     type: select
     icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
-    proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
+    proxies: [DIRECT, 🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点]
 
-  - name: 微信
+  - name: 💬 微信
     type: select
     icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
-    proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
+    proxies: [DIRECT, 🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点]
 
-  - name: 哔哩哔哩
+  - name: 📺 哔哩哔哩
     type: select
     icon: "https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000"
-    proxies: [DIRECT, 节点选择, 自动选择, 香港节点, 台湾节点]
+    proxies: [DIRECT, 🎯 节点选择, 🚀 自动选择, 🇭🇰 香港节点, 🇹🇼 台湾节点]
   
-  - name: 网易音乐
+  - name: 🎵 网易音乐
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
     filter: "(?i)网易|音乐|NetEase|Music"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
-    proxies: [DIRECT, 节点选择, 自动选择]
+    proxies: [DIRECT, 🎯 节点选择, 🚀 自动选择]
 
-  - name: 哔哩哔哩港澳台
+  - name: 📺 哔哩哔哩港澳台
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png"
-    proxies: [节点选择, 自动选择, 手动切换, 香港节点, 台湾节点, 全球直连, DIRECT]
+    proxies: [🎯 节点选择, 🚀 自动选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🌐 全球直连, DIRECT]
 
-  - name: 巴哈姆特
+  - name: 🐉 巴哈姆特
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png"
-    proxies: [节点选择, 手动切换, 台湾节点, DIRECT]
+    proxies: [🎯 节点选择, 🖐️ 手动切换, 🇹🇼 台湾节点, DIRECT]
 
-  - name: 机场专线
+  - name: ✈️ 机场专线
     type: select
     icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000"
-    proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
+    proxies: [DIRECT, 🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点]
 
-  - name: 全球直连
+  - name: 🌐 全球直连
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png"
-    proxies: [DIRECT, 节点选择, 自动选择]
+    proxies: [DIRECT, 🎯 节点选择, 🚀 自动选择]
 
-  - name: 广告拦截
+  - name: 🛑 广告拦截
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png"
     proxies: [REJECT, DIRECT]
 
-  - name: 应用净化
+  - name: 🧹 应用净化
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png"
     proxies: [REJECT, DIRECT]
 
-  - name: 漏网之鱼
+  - name: 🐟 漏网之鱼
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png"
-    proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
+    proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
 
-  - name: 香港节点
+  - name: 🇭🇰 香港节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -764,7 +762,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 台湾节点
+  - name: 🇹🇼 台湾节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -774,7 +772,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 美国节点
+  - name: 🇺🇸 美国节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -784,7 +782,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 日本节点
+  - name: 🇯🇵 日本节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -794,7 +792,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 新加坡节点
+  - name: 🇸🇬 新加坡节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -804,7 +802,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 英国节点
+  - name: 🇬🇧 英国节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -814,7 +812,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 韩国节点
+  - name: 🇰🇷 韩国节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -824,7 +822,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 澳大利亚节点
+  - name: 🇦🇺 澳大利亚节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -834,7 +832,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 俄罗斯节点
+  - name: 🇷🇺 俄罗斯节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -844,7 +842,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 奈飞节点
+  - name: 🍿 奈飞节点
     type: url-test
     url: https://www.netflix.com
     interval: 300
@@ -854,7 +852,7 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
-  - name: 其他节点
+  - name: 🌍 其他节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -865,74 +863,74 @@ proxy-groups:
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
 # ------------------------------------------------------------------------------
-# 7. 分流规则 (所有原文件规则全部映射，无遗漏)
+# 8. 分流规则 (精确核对：共计 68 条规则，指向全匹配)
 # ------------------------------------------------------------------------------
 rules:
   - DST-PORT,123,DIRECT
-  - RULE-SET,LocalAreaNetwork,全球直连
+  - RULE-SET,LocalAreaNetwork,🌐 全球直连
   - RULE-SET,private,DIRECT
-  - RULE-SET,UnBan,全球直连
-  - RULE-SET,BanAD,广告拦截
-  - RULE-SET,BanProgramAD,应用净化
-  - RULE-SET,Speedtest,全球直连
-  - RULE-SET,Gemini,Gemini
-  - RULE-SET,gemini,Gemini
-  - RULE-SET,OpenAi,OpenAi
-  - RULE-SET,Openai,OpenAi
-  - RULE-SET,claude,Claude
-  - RULE-SET,copilot,Copilot
-  - RULE-SET,bard,AIGC
-  - RULE-SET,perplexity,AIGC
-  - RULE-SET,YouTube,YouTube
-  - RULE-SET,GoogleFCM,谷歌
-  - RULE-SET,google_domain,谷歌
-  - RULE-SET,google_ip,谷歌
-  - RULE-SET,GoogleCN,谷歌
-  - RULE-SET,Notion,Notion
-  - RULE-SET,GitHub,GitHub
-  - RULE-SET,Adobe,Adobe
-  - RULE-SET,MicrosoftEdge,微软
-  - RULE-SET,OneDrive,微软
-  - RULE-SET,Microsoft,微软
-  - RULE-SET,bing,微软
-  - RULE-SET,Bing,微软
-  - RULE-SET,Discord,国外社交
-  - RULE-SET,telegram_domain,Telegram
-  - RULE-SET,telegram_ip,Telegram
-  - RULE-SET,x,国外社交
-  - RULE-SET,reddit,国外社交
-  - RULE-SET,Instagram,国外社交
-  - RULE-SET,Threads,国外社交
-  - RULE-SET,Netflix,Netflix
-  - RULE-SET,Spotify,Spotify
-  - RULE-SET,TikTok,国外媒体
-  - RULE-SET,Disney,国外媒体
-  - RULE-SET,PrimeVideo,国外媒体
-  - RULE-SET,HBO,国外媒体
-  - RULE-SET,GlobalMedia,国外媒体
-  - RULE-SET,ProxyMedia,国外媒体
-  - RULE-SET,Epic,游戏平台
-  - RULE-SET,Origin,游戏平台
-  - RULE-SET,Sony,游戏平台
-  - RULE-SET,Steam,游戏平台
-  - RULE-SET,Nintendo,游戏平台
-  - RULE-SET,Bahamut,巴哈姆特
-  - RULE-SET,Bilibili,哔哩哔哩
-  - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
-  - RULE-SET,NetEaseMusic,网易音乐
-  - RULE-SET,WeChat,微信
-  - RULE-SET,Apple,苹果服务
-  - RULE-SET,freedom,自由意志
+  - RULE-SET,UnBan,🌐 全球直连
+  - RULE-SET,BanAD,🛑 广告拦截
+  - RULE-SET,BanProgramAD,🧹 应用净化
+  - RULE-SET,Speedtest,🌐 全球直连
+  - RULE-SET,Gemini,✨ Gemini
+  - RULE-SET,gemini,✨ Gemini
+  - RULE-SET,OpenAi,🧠 OpenAi
+  - RULE-SET,Openai,🧠 OpenAi
+  - RULE-SET,claude,🪄 Claude
+  - RULE-SET,copilot,🧑‍💻 Copilot
+  - RULE-SET,bard,🤖 AIGC
+  - RULE-SET,perplexity,🤖 AIGC
+  - RULE-SET,YouTube,▶️ YouTube
+  - RULE-SET,GoogleFCM,🔍 谷歌
+  - RULE-SET,google_domain,🔍 谷歌
+  - RULE-SET,google_ip,🔍 谷歌
+  - RULE-SET,GoogleCN,🔍 谷歌
+  - RULE-SET,Notion,📝 Notion
+  - RULE-SET,GitHub,🐙 GitHub
+  - RULE-SET,Adobe,🎨 Adobe
+  - RULE-SET,MicrosoftEdge,🪟 微软
+  - RULE-SET,OneDrive,🪟 微软
+  - RULE-SET,Microsoft,🪟 微软
+  - RULE-SET,bing,🪟 微软
+  - RULE-SET,Bing,🪟 微软
+  - RULE-SET,Discord,💬 国外社交
+  - RULE-SET,telegram_domain,✈️ Telegram
+  - RULE-SET,telegram_ip,✈️ Telegram
+  - RULE-SET,x,💬 国外社交
+  - RULE-SET,reddit,💬 国外社交
+  - RULE-SET,Instagram,💬 国外社交
+  - RULE-SET,Threads,💬 国外社交
+  - RULE-SET,Netflix,🎬 Netflix
+  - RULE-SET,Spotify,🎵 Spotify
+  - RULE-SET,TikTok,📰 国外媒体
+  - RULE-SET,Disney,📰 国外媒体
+  - RULE-SET,PrimeVideo,📰 国外媒体
+  - RULE-SET,HBO,📰 国外媒体
+  - RULE-SET,GlobalMedia,📰 国外媒体
+  - RULE-SET,ProxyMedia,📰 国外媒体
+  - RULE-SET,Epic,🎮 游戏平台
+  - RULE-SET,Origin,🎮 游戏平台
+  - RULE-SET,Sony,🎮 游戏平台
+  - RULE-SET,Steam,🎮 游戏平台
+  - RULE-SET,Nintendo,🎮 游戏平台
+  - RULE-SET,Bahamut,🐉 巴哈姆特
+  - RULE-SET,Bilibili,📺 哔哩哔哩
+  - RULE-SET,BilibiliHMT,📺 哔哩哔哩港澳台
+  - RULE-SET,NetEaseMusic,🎵 网易音乐
+  - RULE-SET,WeChat,💬 微信
+  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,freedom,🕊️ 自由意志
   - RULE-SET,direct_cus,DIRECT
-  - RULE-SET,Airport,机场专线
-  - RULE-SET,SteamCN,全球直连
-  - RULE-SET,ChinaMedia,国内媒体
-  - RULE-SET,ProxyGFWlist,节点选择
-  - RULE-SET,ChinaDomain,全球直连
-  - RULE-SET,ChinaCompanyIp,全球直连
-  - RULE-SET,geolocation-!cn,节点选择
+  - RULE-SET,Airport,✈️ 机场专线
+  - RULE-SET,SteamCN,🌐 全球直连
+  - RULE-SET,ChinaMedia,📺 国内媒体
+  - RULE-SET,ProxyGFWlist,🎯 节点选择
+  - RULE-SET,ChinaDomain,🌐 全球直连
+  - RULE-SET,ChinaCompanyIp,🌐 全球直连
+  - RULE-SET,geolocation-!cn,🎯 节点选择
   - RULE-SET,cn_domain,DIRECT
   - RULE-SET,cn_ip,DIRECT
-  - RULE-SET,Download,全球直连
-  - GEOIP,CN,全球直连
-  - MATCH,漏网之鱼
+  - RULE-SET,Download,🌐 全球直连
+  - GEOIP,CN,🌐 全球直连
+  - MATCH,🐟 漏网之鱼
