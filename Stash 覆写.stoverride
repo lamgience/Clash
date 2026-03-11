@@ -1,5 +1,5 @@
 name: Ultimate Plus 2.0 (全展开完整修复版)
-desc: 修复分流遗漏，并在 AI 及自由意志组展开所有独立节点
+desc: 修复DNS策略报错，并在 AI 及自由意志组展开所有独立节点
 
 # ------------------------------------------------------------------------------
 # 1. 核心与内核设置
@@ -65,13 +65,11 @@ dns:
     geoip: true
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
+  # ▼▼▼ 修复报错：Stash 仅支持单个字符串地址 ▼▼▼
   nameserver-policy:
-    "geosite:cn,private":
-      - https://doh.pub/dns-query
-      - https://dns.alidns.com/dns-query
-    "geosite:geolocation-!cn":
-      - https://dns.google/dns-query
-      - https://1.1.1.1/dns-query
+    "geosite:cn,private": "https://doh.pub/dns-query"
+    "geosite:geolocation-!cn": "https://dns.google/dns-query"
+  # ▲▲▲ 修复完成 ▲▲▲
 
 # ------------------------------------------------------------------------------
 # 4. 流量嗅探
@@ -591,7 +589,6 @@ proxy-groups:
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
     proxies: [自动选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
 
-  # ▼▼▼ AI 组及自由意志添加了 include-all 展开节点 ▼▼▼
   - name: AIGC
     type: select
     icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000"
@@ -633,7 +630,6 @@ proxy-groups:
     proxies: [自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
-  # ▲▲▲ AI 组及自由意志修改完毕 ▲▲▲
 
   - name: Notion
     type: select
@@ -738,7 +734,6 @@ proxy-groups:
     icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000"
     proxies: [DIRECT, 自动选择, 节点选择, 手动切换, 香港节点, 台湾节点, 美国节点, 日本节点, 新加坡节点, 英国节点, 韩国节点, 澳大利亚节点, 俄罗斯节点, 其他节点]
 
-  # 【已补充】原本遗漏的“全球直连”找回来了
   - name: 全球直连
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png"
