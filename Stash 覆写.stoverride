@@ -747,7 +747,7 @@ proxy-groups:
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png"
     proxies: [REJECT, DIRECT]
 
-  - name: 🐟 漏网之鱼
+  - name: 🐠 漏网之鱼
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png"
     proxies: [🚀 自动选择, 🎯 节点选择, 🖐️ 手动切换, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇬🇧 英国节点, 🇰🇷 韩国节点, 🇦🇺 澳大利亚节点, 🇷🇺 俄罗斯节点, 🌍 其他节点, DIRECT]
@@ -933,4 +933,4 @@ rules:
   - RULE-SET,cn_ip,DIRECT
   - RULE-SET,Download,🌐 全球直连
   - GEOIP,CN,🌐 全球直连
-  - MATCH,🐟 漏网之鱼
+  - MATCH,🐠 漏网之鱼
