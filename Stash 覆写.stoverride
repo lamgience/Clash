@@ -25,10 +25,9 @@ geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
-  - "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/{name}.yaml"
-  - "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/{name}.yaml"
-  - "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/{name}.yaml"
-  - "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/{name}.yaml"
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/GeoLite2-Country.mmdb"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/Country.mmdb"
 
 # ------------------------------------------------------------------------------
 # 2. 本地 Hosts 映射
