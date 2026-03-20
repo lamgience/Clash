@@ -10,10 +10,25 @@ allow-lan: true
 bind-address: "*"
 log-level: info
 ipv6: true
+tcp-concurrent: true
+find-process-mode: strict
+global-client-fingerprint: chrome
 unified-delay: true
 
 profile:
   store-selected: true
+
+# ------------------------------------------------------------------------------
+# 1.5 Geodata 配置
+# ------------------------------------------------------------------------------
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  - "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/{name}.yaml"
+  - "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/{name}.yaml"
+  - "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/{name}.yaml"
+  - "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/{name}.yaml"
 
 # ------------------------------------------------------------------------------
 # 2. 本地 Hosts 映射
@@ -53,6 +68,7 @@ dns:
     - "+.market.xiaomi.com"
     - "localhost.ptlogin2.qq.com"
     - "+.360.cn"
+    - "+.system.apple.com"
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
@@ -66,8 +82,16 @@ dns:
     geoip-code: CN
     ipcidr: [240.0.0.0/4]
   nameserver-policy:
-    "geosite:cn,private": "https://doh.pub/dns-query"
-    "geosite:geolocation-!cn": "https://dns.google/dns-query"
+    "geosite:cn,private":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+      - 223.5.5.5
+      - 119.29.29.29
+    "geosite:geolocation-!cn":
+      - https://dns.google/dns-query
+      - https://1.1.1.1/dns-query
+      - 8.8.8.8
+      - 1.1.1.1
 
 # ------------------------------------------------------------------------------
 # 4. 流量嗅探
@@ -279,6 +303,34 @@ rule-providers:
     format: yaml
     url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/perplexity.yaml"
     path: ./ruleset/perplexity.yaml
+    interval: 86400
+  Cursor:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Cursor/Cursor.yaml"
+    path: ./ruleset/Cursor.yaml
+    interval: 86400
+  Grok:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/xAI/xAI.yaml"
+    path: ./ruleset/Grok.yaml
+    interval: 86400
+  Midjourney:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Midjourney/Midjourney.yaml"
+    path: ./ruleset/Midjourney.yaml
+    interval: 86400
+  HuggingFace:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/HuggingFace/HuggingFace.yaml"
+    path: ./ruleset/HuggingFace.yaml
     interval: 86400
   Notion:
     type: http
@@ -623,6 +675,34 @@ proxy-groups:
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
+  - name: 🖥️ Cursor 组
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=DiGZkjCzyZXn&format=png&color=000000"
+    proxies: [🇺🇸 美国地区, 🇯🇵 日本地区, 🇸🇬 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, 🇭🇰 香港地区, 🇹🇼 台湾地区, 🇬🇧 英国地区, 🇰🇷 韩国地区, 🇦🇺 澳洲地区, 🇷🇺 俄国地区, 🌍 其他地区, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: 🤖 Grok 组
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=USGXKHXKl9X7&format=png&color=000000"
+    proxies: [🇺🇸 美国地区, 🇯🇵 日本地区, 🇸🇬 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, 🇭🇰 香港地区, 🇹🇼 台湾地区, 🇬🇧 英国地区, 🇰🇷 韩国地区, 🇦🇺 澳洲地区, 🇷🇺 俄国地区, 🌍 其他地区, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: 🎨 Midjourney 组
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=PBeVLDM6af80&format=png&color=000000"
+    proxies: [🇺🇸 美国地区, 🇯🇵 日本地区, 🇸🇬 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, 🇭🇰 香港地区, 🇹🇼 台湾地区, 🇬🇧 英国地区, 🇰🇷 韩国地区, 🇦🇺 澳洲地区, 🇷🇺 俄国地区, 🌍 其他地区, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: 🤗 HuggingFace 组
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=LMTLvMIHsh1F&format=png&color=000000"
+    proxies: [🇺🇸 美国地区, 🇯🇵 日本地区, 🇸🇬 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, 🇭🇰 香港地区, 🇹🇼 台湾地区, 🇬🇧 英国地区, 🇰🇷 韩国地区, 🇦🇺 澳洲地区, 🇷🇺 俄国地区, 🌍 其他地区, DIRECT]
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
   - name: 🪄 Claude 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000"
@@ -880,36 +960,34 @@ rules:
   - RULE-SET,UnBan,🌐 全局直连
   - RULE-SET,BanAD,🛑 广告拦截
   - RULE-SET,BanProgramAD,🧹 应用净化
-  - RULE-SET,Speedtest,🌐 全局直连
-  
-  # ▼ 修复点对应的规则名修改 ▼
+
   - RULE-SET,Gemini_Domain,✨ Gemini 组
   - RULE-SET,Gemini_Yaml,✨ Gemini 组
   - RULE-SET,OpenAi_Yaml,🧠 OpenAI 组
   - RULE-SET,OpenAi_Domain,🧠 OpenAI 组
-  # ▲ 修复完毕 ▲
-  
   - RULE-SET,claude,🪄 Claude 组
   - RULE-SET,copilot,🧑‍💻 Copilot 组
   - RULE-SET,bard,🤖 AIGC 服务
   - RULE-SET,perplexity,🤖 AIGC 服务
+  - RULE-SET,Cursor,🖥️ Cursor 组
+  - RULE-SET,Grok,🤖 Grok 组
+  - RULE-SET,Midjourney,🎨 Midjourney 组
+  - RULE-SET,HuggingFace,🤗 HuggingFace 组
+
   - RULE-SET,YouTube,▶️ YouTube 组
   - RULE-SET,GoogleFCM,🔍 谷歌服务
   - RULE-SET,google_domain,🔍 谷歌服务
   - RULE-SET,google_ip,🔍 谷歌服务
   - RULE-SET,GoogleCN,🔍 谷歌服务
-  - RULE-SET,Notion,📝 Notion 组
-  - RULE-SET,GitHub,🐙 GitHub 组
-  - RULE-SET,Adobe,🎨 Adobe 组
   - RULE-SET,MicrosoftEdge,🪟 微软服务
   - RULE-SET,OneDrive,🪟 微软服务
   - RULE-SET,Microsoft,🪟 微软服务
-  
-  # ▼ 修复点对应的规则名修改 ▼
   - RULE-SET,Bing_List,🪟 微软服务
   - RULE-SET,Bing_Yaml,🪟 微软服务
-  # ▲ 修复完毕 ▲
-  
+  - RULE-SET,Notion,📝 Notion 组
+  - RULE-SET,GitHub,🐙 GitHub 组
+  - RULE-SET,Adobe,🎨 Adobe 组
+
   - RULE-SET,Discord,💬 国外社交
   - RULE-SET,telegram_domain,✈️ Telegram 组
   - RULE-SET,telegram_ip,✈️ Telegram 组
@@ -917,6 +995,7 @@ rules:
   - RULE-SET,reddit,💬 国外社交
   - RULE-SET,Instagram,💬 国外社交
   - RULE-SET,Threads,💬 国外社交
+
   - RULE-SET,Netflix,🎬 Netflix 组
   - RULE-SET,Spotify,🎵 Spotify 组
   - RULE-SET,TikTok,📰 国外媒体
@@ -925,6 +1004,7 @@ rules:
   - RULE-SET,HBO,📰 国外媒体
   - RULE-SET,GlobalMedia,📰 国外媒体
   - RULE-SET,ProxyMedia,📰 国外媒体
+
   - RULE-SET,Epic,🎮 游戏平台
   - RULE-SET,Origin,🎮 游戏平台
   - RULE-SET,Sony,🎮 游戏平台
@@ -932,15 +1012,17 @@ rules:
   - RULE-SET,Nintendo,🎮 游戏平台
   - RULE-SET,Bahamut,🐉 巴哈姆特
   - RULE-SET,Bilibili,📺 哔哩哔哩
+  - RULE-SET,ChinaMedia,📺 国内媒体
   - RULE-SET,BilibiliHMT,📺 哔哩港澳台
   - RULE-SET,NetEaseMusic,🎵 网易音乐
+  - RULE-SET,Speedtest,🌐 全局直连
+
   - RULE-SET,WeChat,💬 微信服务
   - RULE-SET,Apple,💻 苹果服务
   - RULE-SET,freedom,🕊️ 自由意志
   - RULE-SET,direct_cus,DIRECT
   - RULE-SET,Airport,✈️ 机场专线
   - RULE-SET,SteamCN,🌐 全局直连
-  - RULE-SET,ChinaMedia,📺 国内媒体
   - RULE-SET,ProxyGFWlist,🎯 节点切换
   - RULE-SET,ChinaDomain,🌐 全局直连
   - RULE-SET,ChinaCompanyIp,🌐 全局直连
