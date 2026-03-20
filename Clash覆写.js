@@ -157,7 +157,6 @@ function main(config) {
     GoogleCN: provider(`${aclUrl}GoogleCN.list`, "./ruleset/GoogleCN.list"),
     google_domain: provider(`${metaUrl}geosite/google.yaml`, "./ruleset/google_domain.yaml", 'http', 'domain', 'yaml'),
     google_ip: provider(`${metaUrl}geoip/google.yaml`, "./ruleset/google_ip.yaml", 'http', 'ipcidr', 'yaml'),
-    Bing: provider(`${aclUrl}Bing.list`, "./ruleset/Bing.list"),
     bing: provider(`${blackUrl}Bing/Bing.yaml`, "./ruleset/bing.yaml", 'http', 'classical', 'yaml'),
     OneDrive: provider(`${aclUrl}OneDrive.list`, "./ruleset/OneDrive.list"),
     
@@ -169,7 +168,11 @@ function main(config) {
     claude: provider(`${blackUrl}Claude/Claude.yaml`, "./ruleset/claude.yaml", 'http', 'classical', 'yaml'),
     bard: provider(`${blackUrl}BardAI/BardAI.yaml`, "./ruleset/bard.yaml", 'http', 'classical', 'yaml'),
     perplexity: provider(`${metaUrl}geosite/perplexity.yaml`, "./ruleset/perplexity.yaml", 'http', 'domain', 'yaml'),
-    
+    Cursor: provider(`${blackUrl}Cursor/Cursor.yaml`, "./ruleset/cursor.yaml", 'http', 'classical', 'yaml'),
+    Grok: provider(`${blackUrl}xAI/xAI.yaml`, "./ruleset/grok.yaml", 'http', 'classical', 'yaml'),
+    Midjourney: provider(`${blackUrl}Midjourney/Midjourney.yaml`, "./ruleset/midjourney.yaml", 'http', 'classical', 'yaml'),
+    HuggingFace: provider(`${blackUrl}HuggingFace/HuggingFace.yaml`, "./ruleset/huggingface.yaml", 'http', 'classical', 'yaml'),
+
     Notion: provider(`${blackUrl}Notion/Notion.yaml`, "./ruleset/notion.yaml", 'http', 'classical', 'yaml'),
     GitHub: provider(`${blackUrl}GitHub/GitHub.yaml`, "./ruleset/GitHub.yaml", 'http', 'classical', 'yaml'),
     Adobe: provider(`${metaUrl}geosite/adobe.yaml`, "./ruleset/adobe.yaml", 'http', 'domain', 'yaml'),
@@ -251,7 +254,11 @@ function main(config) {
     { name: "OpenAi", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png", ...commonFilter },
     { name: "Copilot", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000", ...commonFilter },
     { name: "Claude", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000", ...commonFilter },
-    
+    { name: "Cursor", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=DiGZkjCzyZXn&format=png&color=000000", ...commonFilter },
+    { name: "Grok", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=USGXKHXKl9X7&format=png&color=000000", ...commonFilter },
+    { name: "Midjourney", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=PBeVLDM6af80&format=png&color=000000", ...commonFilter },
+    { name: "HuggingFace", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=LMTLvMIHsh1F&format=png&color=000000", ...commonFilter },
+
     // --- 生产力与应用 ---
     { name: "Notion", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png" },
     { name: "GitHub", type: "select", proxies: appProxies, icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000" },
@@ -313,7 +320,11 @@ function main(config) {
     "RULE-SET,copilot,Copilot",
     "RULE-SET,bard,AIGC",
     "RULE-SET,perplexity,AIGC",
-    
+    "RULE-SET,Cursor,Cursor",
+    "RULE-SET,Grok,Grok",
+    "RULE-SET,Midjourney,Midjourney",
+    "RULE-SET,HuggingFace,HuggingFace",
+
     // --- 优先级 3: 核心服务 (Google/Microsoft) ---
     "RULE-SET,YouTube,YouTube",
     "RULE-SET,GoogleFCM,谷歌",
@@ -324,7 +335,6 @@ function main(config) {
     "RULE-SET,OneDrive,微软",
     "RULE-SET,Microsoft,微软",
     "RULE-SET,bing,微软",
-    "RULE-SET,Bing,微软",
     
     // --- 优先级 4: 生产力与开发 ---
     "RULE-SET,Notion,Notion",
@@ -358,6 +368,7 @@ function main(config) {
     "RULE-SET,Nintendo,游戏平台",
     "RULE-SET,Bahamut,巴哈姆特",
     "RULE-SET,Bilibili,哔哩哔哩",
+    "RULE-SET,ChinaMedia,国内媒体",
     "RULE-SET,BilibiliHMT,哔哩哔哩港澳台",
     "RULE-SET,NetEaseMusic,网易音乐",
     
@@ -369,7 +380,6 @@ function main(config) {
     "RULE-SET,direct_cus,DIRECT",
     "RULE-SET,Airport,机场专线",
     "RULE-SET,SteamCN,全球直连",
-    "RULE-SET,ChinaMedia,国内媒体",
     "RULE-SET,ProxyGFWlist,节点选择",
     "RULE-SET,ChinaDomain,全球直连",
     "RULE-SET,ChinaCompanyIp,全球直连",
