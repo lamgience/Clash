@@ -158,6 +158,7 @@ function main(config) {
     google_domain: provider(`${metaUrl}geosite/google.yaml`, "./ruleset/google_domain.yaml", 'http', 'domain', 'yaml'),
     google_ip: provider(`${metaUrl}geoip/google.yaml`, "./ruleset/google_ip.yaml", 'http', 'ipcidr', 'yaml'),
     bing: provider(`${blackUrl}Bing/Bing.yaml`, "./ruleset/bing.yaml", 'http', 'classical', 'yaml'),
+    Bing: provider(`${aclUrl}Bing.list`, "./ruleset/Bing.list"),
     OneDrive: provider(`${aclUrl}OneDrive.list`, "./ruleset/OneDrive.list"),
     
     OpenAi: provider(`${blackUrl}OpenAI/OpenAI.yaml`, "./ruleset/openai.yaml", 'http', 'classical', 'yaml'),
@@ -208,7 +209,7 @@ function main(config) {
     Speedtest: provider(`${blackUrl}Speedtest/Speedtest.yaml`, "./ruleset/speedtest.yaml", 'http', 'classical', 'yaml'),
     private: provider(`${metaUrl}geosite/private.yaml`, "./ruleset/private.yaml", 'http', 'domain', 'yaml'),
     cn_domain: provider(`${metaUrl}geosite/cn.yaml`, "./ruleset/cn_domain.yaml", 'http', 'domain', 'yaml'),
-    ChinaDomain: provider(`${aclUrl}ChinaDomain.list`, "./ruleset/ChinaDomain.list", 'http', 'domain'),
+    ChinaDomain: provider(`${aclUrl}ChinaDomain.list`, "./ruleset/ChinaDomain.list", 'http', 'domain', 'text'),
     ChinaCompanyIp: provider(`${aclUrl}ChinaCompanyIp.list`, "./ruleset/ChinaCompanyIp.list", 'http', 'ipcidr'),
     "geolocation-!cn": provider(`${metaUrl}geosite/geolocation-!cn.yaml`, "./ruleset/geolocation-!cn.yaml", 'http', 'domain', 'yaml'),
     cn_ip: provider(`${metaUrl}geoip/cn.yaml`, "./ruleset/cn_ip.yaml", 'http', 'ipcidr', 'yaml'),
@@ -335,6 +336,7 @@ function main(config) {
     "RULE-SET,OneDrive,微软",
     "RULE-SET,Microsoft,微软",
     "RULE-SET,bing,微软",
+    "RULE-SET,Bing,微软",
     
     // --- 优先级 4: 生产力与开发 ---
     "RULE-SET,Notion,Notion",

@@ -11,7 +11,12 @@ allow-lan: true
 bind-address: "*"
 log-level: info
 ipv6: true
+external-controller: 127.0.0.1:9090
+secret: ""
+external-controller-pipe: \\.\pipe\verge-mihomo
 unified-delay: true
+keep-alive-interval: 1800
+ntp-server: ntp.aliyun.com
 
 profile:
   store-selected: true
@@ -38,7 +43,18 @@ hosts:
   "flash.cn": 127.0.0.1
 
 # ------------------------------------------------------------------------------
-# 3. DNS 深度优化 (Split-DNS)
+# 3. TUN 透明代理配置
+# ------------------------------------------------------------------------------
+tun:
+  enable: true
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack: ["any:53"]
+  mtu: 1500
+
+# ------------------------------------------------------------------------------
+# 4. DNS 深度优化 (Split-DNS)
 # ------------------------------------------------------------------------------
 dns:
   enable: true
@@ -66,6 +82,7 @@ dns:
     - "+.market.xiaomi.com"
     - "localhost.ptlogin2.qq.com"
     - "+.360.cn"
+    - "+.system.apple.com"
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
@@ -313,6 +330,34 @@ rule-providers:
     format: yaml
     url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml"
     path: ./ruleset/claude.yaml
+    interval: 86400
+  Cursor:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Cursor/Cursor.yaml"
+    path: ./ruleset/cursor.yaml
+    interval: 86400
+  Grok:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/xAI/xAI.yaml"
+    path: ./ruleset/grok.yaml
+    interval: 86400
+  Midjourney:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Midjourney/Midjourney.yaml"
+    path: ./ruleset/midjourney.yaml
+    interval: 86400
+  HuggingFace:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/HuggingFace/HuggingFace.yaml"
+    path: ./ruleset/huggingface.yaml
     interval: 86400
   bard:
     type: http
@@ -671,6 +716,30 @@ proxy-groups:
     <<: *common_filter
     proxies: *pg_ai
 
+  - name: Cursor
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=DiGZkjCzyZXn&format=png&color=000000"
+    <<: *common_filter
+    proxies: *pg_ai
+
+  - name: Grok
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=USGXKHXKl9X7&format=png&color=000000"
+    <<: *common_filter
+    proxies: *pg_ai
+
+  - name: Midjourney
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=PBeVLDM6af80&format=png&color=000000"
+    <<: *common_filter
+    proxies: *pg_ai
+
+  - name: HuggingFace
+    type: select
+    icon: "https://img.icons8.com/?size=100&id=LMTLvMIHsh1F&format=png&color=000000"
+    <<: *common_filter
+    proxies: *pg_ai
+
   - {name: Notion, type: select, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png", proxies: *pg_auto}
   - {name: GitHub, type: select, icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000", proxies: *pg_auto}
   - {name: Adobe, type: select, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg", proxies: *pg_auto}
@@ -837,7 +906,6 @@ rules:
   - RULE-SET,UnBan,全球直连
   - RULE-SET,BanAD,广告拦截
   - RULE-SET,BanProgramAD,应用净化
-  - RULE-SET,Speedtest,全球直连
   - RULE-SET,Gemini,Gemini
   - RULE-SET,gemini,Gemini
   - RULE-SET,OpenAi,OpenAi
@@ -846,19 +914,23 @@ rules:
   - RULE-SET,copilot,Copilot
   - RULE-SET,bard,AIGC
   - RULE-SET,perplexity,AIGC
+  - RULE-SET,Cursor,Cursor
+  - RULE-SET,Grok,Grok
+  - RULE-SET,Midjourney,Midjourney
+  - RULE-SET,HuggingFace,HuggingFace
   - RULE-SET,YouTube,YouTube
   - RULE-SET,GoogleFCM,谷歌
   - RULE-SET,google_domain,谷歌
   - RULE-SET,google_ip,谷歌
   - RULE-SET,GoogleCN,谷歌
-  - RULE-SET,Notion,Notion
-  - RULE-SET,GitHub,GitHub
-  - RULE-SET,Adobe,Adobe
   - RULE-SET,MicrosoftEdge,微软
   - RULE-SET,OneDrive,微软
   - RULE-SET,Microsoft,微软
   - RULE-SET,bing,微软
   - RULE-SET,Bing,微软
+  - RULE-SET,Notion,Notion
+  - RULE-SET,GitHub,GitHub
+  - RULE-SET,Adobe,Adobe
   - RULE-SET,Discord,国外社交
   - RULE-SET,telegram_domain,Telegram
   - RULE-SET,telegram_ip,Telegram
@@ -881,15 +953,16 @@ rules:
   - RULE-SET,Nintendo,游戏平台
   - RULE-SET,Bahamut,巴哈姆特
   - RULE-SET,Bilibili,哔哩哔哩
+  - RULE-SET,ChinaMedia,国内媒体
   - RULE-SET,BilibiliHMT,哔哩哔哩港澳台
   - RULE-SET,NetEaseMusic,网易音乐
+  - RULE-SET,Speedtest,全球直连
   - RULE-SET,WeChat,微信
   - RULE-SET,Apple,苹果服务
   - RULE-SET,freedom,自由意志
   - RULE-SET,direct_cus,DIRECT
   - RULE-SET,Airport,机场专线
   - RULE-SET,SteamCN,全球直连
-  - RULE-SET,ChinaMedia,国内媒体
   - RULE-SET,ProxyGFWlist,节点选择
   - RULE-SET,ChinaDomain,全球直连
   - RULE-SET,ChinaCompanyIp,全球直连
