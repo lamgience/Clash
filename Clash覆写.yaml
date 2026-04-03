@@ -698,6 +698,12 @@ proxy-groups:
     <<: *common_filter
     proxies: *pg_ai
 
+  - name: Google AI Labs
+    type: select
+    icon: "https://www.gstatic.com/google_preferences_icon.jpg"
+    <<: *common_filter
+    proxies: *pg_ai
+
   - name: OpenAi
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png"
@@ -906,6 +912,9 @@ rules:
   - RULE-SET,UnBan,全球直连
   - RULE-SET,BanAD,广告拦截
   - RULE-SET,BanProgramAD,应用净化
+  - DOMAIN,labs.google,Google AI Labs
+  - DOMAIN,labs.google.com,Google AI Labs
+  - DOMAIN-SUFFIX,labs.google.com,Google AI Labs
   - RULE-SET,Gemini,Gemini
   - RULE-SET,gemini,Gemini
   - RULE-SET,OpenAi,OpenAi
