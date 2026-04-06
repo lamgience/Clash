@@ -700,7 +700,7 @@ proxy-groups:
 
   - name: Google AI Labs
     type: select
-    icon: "https://www.gstatic.com/google_preferences_icon.jpg"
+    icon: "https://img.icons8.com/?size=100&id=unXm4ixWAr6H&format=png&color=000000"
     <<: *common_filter
     proxies: *pg_ai
 

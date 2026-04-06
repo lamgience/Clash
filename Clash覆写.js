@@ -252,7 +252,7 @@ function main(config) {
     // --- AI 分组 (保留预设并全显节点) ---
     { name: "AIGC", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000", ...commonFilter },
     { name: "Gemini", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000", ...commonFilter },
-    { name: "Google AI Labs", type: "select", proxies: aiProxies, icon: "https://www.gstatic.com/google_preferences_icon.jpg", ...commonFilter },
+    { name: "Google AI Labs", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=unXm4ixWAr6H&format=png&color=000000", ...commonFilter },
     { name: "OpenAi", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png", ...commonFilter },
     { name: "Copilot", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000", ...commonFilter },
     { name: "Claude", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000", ...commonFilter },
