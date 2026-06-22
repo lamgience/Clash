@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:antigravity.google)",
+      "mcp__MiniMax__web_search"
+    ]
+  }
+}
