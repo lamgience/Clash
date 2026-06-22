@@ -8,27 +8,27 @@ function main(config) {
   // [0] 预定义常量与策略逻辑
   // ========================================================================
   const regionProxies = [
-    "香港节点", "台湾节点", "美国节点", "日本节点", "新加坡节点", 
+    "香港节点", "台湾节点", "美国节点", "日本节点", "新加坡节点",
     "英国节点", "韩国节点", "澳大利亚节点", "俄罗斯节点", "其他节点"
   ];
-  
+
   const baseProxies = [
-    "自动选择", "手动切换", 
-    ...regionProxies, 
+    "自动选择", "手动切换",
+    ...regionProxies,
     "DIRECT"
   ];
 
   const appProxies = [
-    "自动选择", "节点选择", "手动切换", 
-    ...regionProxies, 
+    "自动选择", "节点选择", "手动切换",
+    ...regionProxies,
     "DIRECT"
   ];
 
   const aiProxies = [
-    "美国节点", "日本节点", "新加坡节点", 
-    "手动切换", 
-    "自动选择", "节点选择", 
-    "香港节点", "台湾节点", 
+    "美国节点", "日本节点", "新加坡节点",
+    "手动切换",
+    "自动选择", "节点选择",
+    "香港节点", "台湾节点",
     "英国节点", "韩国节点", "澳大利亚节点", "俄罗斯节点", "其他节点",
     "DIRECT"
   ];
@@ -48,20 +48,20 @@ function main(config) {
     "bind-address": "*",                   // 强化局域网共享发现
     "log-level": "info",
     "ipv6": true,
-    "external-controller": "127.0.0.1:9090", 
-    "secret": "", 
-    "external-controller-pipe": "\\\\.\\pipe\\verge-mihomo", 
-    
+    "external-controller": "127.0.0.1:9090",
+    "secret": "",
+    "external-controller-pipe": "\\\\.\\pipe\\verge-mihomo",
+
     "unified-delay": true,
     "tcp-concurrent": true,
     "keep-alive-interval": 1800,
     "find-process-mode": "strict",
     "global-client-fingerprint": "chrome",
-    
+
     "profile": {
       "store-selected": true
     },
-    
+
     "geodata-mode": true,
     "geo-auto-update": true,
     "geo-update-interval": 24,
@@ -70,7 +70,7 @@ function main(config) {
       "geosite": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat",
       "mmdb": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
     },
-    
+
     "sniffer": {
       "enable": true,
       "force-dns-mapping": true,
@@ -86,16 +86,16 @@ function main(config) {
         "+.c.163.com", "*.music.126.net", "*.126.net", "*.122.com", "localhost", "*.local", "*.lan"
       ]
     },
-    
+
     "hosts": {
       "router.asus.com": "192.168.50.1",
       "mtalk.google.com": "108.177.125.188",
       "services.googleapis.com": "172.217.163.42",
-      "flash.cn": "127.0.0.1"  
+      "flash.cn": "127.0.0.1"
     },
-    
-    "ntp-server": "ntp.aliyun.com",        
-    
+
+    "ntp-server": "ntp.aliyun.com",
+
     "dns": {
       "enable": true,
       "listen": ":53",
@@ -103,16 +103,16 @@ function main(config) {
       "enhanced-mode": "fake-ip",
       "fake-ip-range": "198.18.0.1/16",
       "fake-ip-filter": [
-        "*.lan", "*.local", "*.arpa", 
-        "+.market.xiaomi.com", "localhost.ptlogin2.qq.com", 
+        "*.lan", "*.local", "*.arpa",
+        "+.market.xiaomi.com", "localhost.ptlogin2.qq.com",
         "time.*.com", "ntp.*.com", "+.pool.ntp.org",
-        "*.msftncsi.com", "www.msftconnecttest.com", "+.msftconnecttest.com", 
+        "*.msftncsi.com", "www.msftconnecttest.com", "+.msftconnecttest.com",
         "xbox.*.com", "xboxlive.com",
         "stun.*", "+.stun.*.*", "+.stun.*", "+.ice.*.*", "+.360.cn"
       ],
       "fake-ip-filter-mode": "blacklist",
       "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-      "nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query", "8.8.8.8"], 
+      "nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query", "8.8.8.8"],
       "fallback": [],
       "fallback-filter": { "geoip": true, "geoip-code": "CN", "ipcidr": ["240.0.0.0/4"] },
       "nameserver-policy": {
@@ -120,7 +120,7 @@ function main(config) {
         "geosite:geolocation-!cn": ["https://dns.google/dns-query", "https://1.1.1.1/dns-query"]
       }
     },
-    
+
     "tun": {
       "enable": true,
       "stack": "mixed",
@@ -139,11 +139,11 @@ function main(config) {
     url, path, type, behavior, format, interval
   });
   if (!config['rule-providers']) config['rule-providers'] = {};
-  
+
   const aclUrl = "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/";
   const metaUrl = "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/";
   const blackUrl = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/";
-  
+
   config["rule-providers"] = Object.assign(config["rule-providers"], {
     LocalAreaNetwork: provider(`${aclUrl}LocalAreaNetwork.list`, "./ruleset/LocalAreaNetwork.list"),
     UnBan: provider(`${aclUrl}UnBan.list`, "./ruleset/UnBan.list"),
@@ -152,7 +152,7 @@ function main(config) {
     Microsoft: provider(`${aclUrl}Microsoft.list`, "./ruleset/Microsoft.list"),
     MicrosoftEdge: provider(`${blackUrl}MicrosoftEdge/MicrosoftEdge.yaml`, "./ruleset/MicrosoftEdge.yaml", 'http', 'classical', 'yaml'),
     Apple: provider(`${aclUrl}Apple.list`, "./ruleset/Apple.list"),
-    
+
     GoogleFCM: provider(`${aclUrl}Ruleset/GoogleFCM.list`, "./ruleset/GoogleFCM.list"),
     GoogleCN: provider(`${aclUrl}GoogleCN.list`, "./ruleset/GoogleCN.list"),
     google_domain: provider(`${metaUrl}geosite/google.yaml`, "./ruleset/google_domain.yaml", 'http', 'domain', 'yaml'),
@@ -160,7 +160,7 @@ function main(config) {
     bing: provider(`${blackUrl}Bing/Bing.yaml`, "./ruleset/bing.yaml", 'http', 'classical', 'yaml'),
     Bing: provider(`${aclUrl}Bing.list`, "./ruleset/Bing.list"),
     OneDrive: provider(`${aclUrl}OneDrive.list`, "./ruleset/OneDrive.list"),
-    
+
     OpenAi: provider(`${blackUrl}OpenAI/OpenAI.yaml`, "./ruleset/openai.yaml", 'http', 'classical', 'yaml'),
     Openai: provider(`${metaUrl}geosite/openai.yaml`, "./ruleset/Openai.yaml", 'http', 'domain', 'yaml'),
     Gemini: provider(`${metaUrl}geosite/google-gemini.yaml`, "./ruleset/Gemini.yaml", 'http', 'domain', 'yaml'),
@@ -177,7 +177,7 @@ function main(config) {
     Notion: provider(`${blackUrl}Notion/Notion.yaml`, "./ruleset/notion.yaml", 'http', 'classical', 'yaml'),
     GitHub: provider(`${blackUrl}GitHub/GitHub.yaml`, "./ruleset/GitHub.yaml", 'http', 'classical', 'yaml'),
     Adobe: provider(`${metaUrl}geosite/adobe.yaml`, "./ruleset/adobe.yaml", 'http', 'domain', 'yaml'),
-    
+
     telegram_ip: provider(`${metaUrl}geoip/telegram.yaml`, "./ruleset/telegram_ip.yaml", 'http', 'ipcidr', 'yaml'),
     telegram_domain: provider(`${metaUrl}geosite/telegram.yaml`, "./ruleset/telegram_domain.yaml", 'http', 'domain', 'yaml'),
     x: provider(`${blackUrl}Twitter/Twitter.yaml`, "./ruleset/x.yaml", 'http', 'classical', 'yaml'),
@@ -185,7 +185,7 @@ function main(config) {
     Threads: provider(`${blackUrl}Threads/Threads.yaml`, "./ruleset/Threads.yaml", 'http', 'classical', 'yaml'),
     reddit: provider(`${metaUrl}geosite/reddit.yaml`, "./ruleset/reddit.yaml", 'http', 'domain', 'yaml'),
     Discord: provider(`${blackUrl}Discord/Discord.yaml`, "./ruleset/discord.yaml", 'http', 'classical', 'yaml'),
-    
+
     Spotify: provider(`${blackUrl}Spotify/Spotify.yaml`, "./ruleset/Spotify.yaml", 'http', 'classical', 'yaml'),
     YouTube: provider(`${aclUrl}Ruleset/YouTube.list`, "./ruleset/YouTube.list"),
     Netflix: provider(`${aclUrl}Ruleset/Netflix.list`, "./ruleset/Netflix.list"),
@@ -194,7 +194,7 @@ function main(config) {
     PrimeVideo: provider(`${blackUrl}PrimeVideo/PrimeVideo.yaml`, "./ruleset/primevideo.yaml", 'http', 'classical', 'yaml'),
     HBO: provider(`${blackUrl}HBO/HBO.yaml`, "./ruleset/hbo.yaml", 'http', 'classical', 'yaml'),
     WeChat: provider("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/WeChat/WeChat.list", "./ruleset/WeChat.list"),
-    
+
     Steam: provider(`${blackUrl}Steam/Steam.yaml`, "./ruleset/steam.yaml", 'http', 'classical', 'yaml'),
     SteamCN: provider(`${aclUrl}Ruleset/SteamCN.list`, "./ruleset/SteamCN.list"),
     Epic: provider(`${aclUrl}Ruleset/Epic.list`, "./ruleset/Epic.list"),
@@ -205,7 +205,7 @@ function main(config) {
     Bilibili: provider("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml", "./ruleset/Bilibili.yaml", 'http', 'classical', 'yaml'),
     NetEaseMusic: provider(`${aclUrl}Ruleset/NetEaseMusic.list`, "./ruleset/NetEaseMusic.list"),
     Origin: provider(`${aclUrl}Ruleset/Origin.list`, "./ruleset/Origin.list"),
-    
+
     Speedtest: provider(`${blackUrl}Speedtest/Speedtest.yaml`, "./ruleset/speedtest.yaml", 'http', 'classical', 'yaml'),
     private: provider(`${metaUrl}geosite/private.yaml`, "./ruleset/private.yaml", 'http', 'domain', 'yaml'),
     cn_domain: provider(`${metaUrl}geosite/cn.yaml`, "./ruleset/cn_domain.yaml", 'http', 'domain', 'yaml'),
@@ -254,63 +254,58 @@ function main(config) {
     { name: "节点选择", type: "select", proxies: baseProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png", ...commonFilter },
     { name: "手动切换", type: "select", proxies: [...regionProxies], icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png", ...commonFilter },
     { name: "自动选择", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: 300, tolerance: 50, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png", ...commonFilter },
-    
+
     // --- AI 分组 (保留预设并全显节点) ---
-    { name: "AIGC", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000", ...commonFilter },
-    { name: "Gemini", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000", ...commonFilter },
-    { name: "Google AI Labs", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=unXm4ixWAr6H&format=png&color=000000", ...commonFilter },
+    { name: "AIGC", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png", ...commonFilter },
+    { name: "Gemini", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Bard.png", ...commonFilter },
+    { name: "Google AI Labs", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google.png", ...commonFilter },
     { name: "Google Antigravity", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png", ...commonFilter },
     { name: "OpenAi", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png", ...commonFilter },
-    { name: "Copilot", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000", ...commonFilter },
-    { name: "Claude", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000", ...commonFilter },
-    { name: "Cursor", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=DiGZkjCzyZXn&format=png&color=000000", ...commonFilter },
-    { name: "Grok", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=USGXKHXKl9X7&format=png&color=000000", ...commonFilter },
-    { name: "Midjourney", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=PBeVLDM6af80&format=png&color=000000", ...commonFilter },
-    { name: "HuggingFace", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=LMTLvMIHsh1F&format=png&color=000000", ...commonFilter },
-    { name: "Perplexity", type: "select", proxies: aiProxies, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/perplexity.svg", ...commonFilter },
-    { name: "DeepL", type: "select", proxies: aiProxies, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/deepl.svg", ...commonFilter },
-    { name: "Poe", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=nS515x18O6oG&format=png&color=000000", ...commonFilter },
-    { name: "Suno", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=fURWnZzS5Lsz&format=png&color=000000", ...commonFilter },
-    { name: "Civitai", type: "select", proxies: aiProxies, icon: "https://img.icons8.com/?size=100&id=O7tQkQGzYVwY&format=png&color=000000", ...commonFilter },
+    { name: "Copilot", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png", ...commonFilter },
+    { name: "Claude", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Claude.png", ...commonFilter },
+    { name: "Perplexity", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/lobehub/lobe-icons@master/packages/static-svg/color/perplexity.svg", ...commonFilter },
+    { name: "Cursor", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Cursor.png", ...commonFilter },
+    { name: "Grok", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Twitter.png", ...commonFilter },
+    { name: "Midjourney", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Midjourney.png", ...commonFilter },
+    { name: "HuggingFace", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/HuggingFace.png", ...commonFilter },
+    { name: "DeepL", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/lobehub/lobe-icons@master/packages/static-svg/color/deepl.svg", ...commonFilter },
+    { name: "Poe", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/lobehub/lobe-icons@master/packages/static-svg/color/poe.svg", ...commonFilter },
+    { name: "Suno", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/lobehub/lobe-icons@master/packages/static-svg/color/suno.svg", ...commonFilter },
+    { name: "Civitai", type: "select", proxies: aiProxies, icon: "https://testingcf.jsdelivr.net/gh/lobehub/lobe-icons@master/packages/static-svg/color/civitai.svg", ...commonFilter },
 
-    // --- 生产力与应用 ---
     { name: "Notion", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png", ...commonFilter },
-    { name: "GitHub", type: "select", proxies: appProxies, icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000", ...commonFilter },
-    { name: "Docker", type: "select", proxies: appProxies, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docker.svg", ...commonFilter },
-    { name: "Adobe", type: "select", proxies: appProxies, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg", ...commonFilter },
+    { name: "GitHub", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/GitHub.png", ...commonFilter },
+    { name: "Docker", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Docker.png", ...commonFilter },
+    { name: "Adobe", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Adobe.png", ...commonFilter },
     { name: "微软", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png", ...commonFilter },
     { name: "谷歌", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png", ...commonFilter },
-    
-    // --- 社交与媒体 ---
+
     { name: "Discord", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Discord.png", ...commonFilter },
     { name: "Telegram", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png", ...commonFilter },
-    { name: "国外社交", type: "select", proxies: appProxies, icon: "https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000", ...commonFilter },
+    { name: "国外社交", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png", ...commonFilter },
     { name: "国外媒体", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png", ...commonFilter },
     { name: "YouTube", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png", ...commonFilter },
     { name: "Netflix", type: "select", proxies: ["奈飞节点", ...appProxies], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png", ...commonFilter },
-    { name: "Spotify", type: "select", proxies: appProxies, icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", ...commonFilter },
-    
-    // --- 游戏 & 自由意志 (全显节点) ---
+    { name: "Spotify", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Spotify.png", ...commonFilter },
+
     { name: "游戏平台", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png", ...commonFilter },
-    { name: "自由意志", type: "select", proxies: appProxies, icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000", ...commonFilter },
-    
-    // --- 国内与直连 ---
+    { name: "自由意志", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Unblock.png", ...commonFilter },
+
     { name: "国内媒体", type: "select", proxies: ["节点选择", "自动选择", "手动切换", ...regionProxies, "DIRECT"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png", ...commonFilter },
-    { name: "苹果服务", type: "select", proxies: ["DIRECT", ...appProxies], icon: "https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000", ...commonFilter },
-    { name: "微信", type: "select", proxies: ["DIRECT", ...appProxies], icon: "https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000", ...commonFilter },
-    { name: "哔哩哔哩", type: "select", proxies: ["DIRECT", "节点选择", "自动选择", "香港节点", "台湾节点"], icon: "https://img.icons8.com/?size=100&id=l87yXVtzuGWB&format=png&color=000000", ...commonFilter },
+    { name: "苹果服务", type: "select", proxies: ["DIRECT", ...appProxies], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png", ...commonFilter },
+    { name: "微信", type: "select", proxies: ["DIRECT", ...appProxies], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/WeChat.png", ...commonFilter },
+    { name: "哔哩哔哩", type: "select", proxies: ["DIRECT", "节点选择", "自动选择", "香港节点", "台湾节点"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png", ...commonFilter },
     { name: "网易音乐", type: "select", proxies: ["DIRECT", "节点选择", "自动选择"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png", filter: "(?i)网易|音乐|NetEase|Music", ...commonFilter },
-    
-    // --- 特殊与兜底 ---
+
     { name: "哔哩哔哩港澳台", type: "select", proxies: ["节点选择", "自动选择", "手动切换", "香港节点", "台湾节点", "全球直连", "DIRECT"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png", ...commonFilter },
     { name: "巴哈姆特", type: "select", proxies: ["节点选择", "手动切换", "台湾节点", "DIRECT"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png", ...commonFilter },
-    { name: "机场专线", type: "select", proxies: ["DIRECT", ...appProxies], icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000", ...commonFilter },
+    { name: "机场专线", type: "select", proxies: ["DIRECT", ...appProxies], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Airport.png", ...commonFilter },
     { name: "全球直连", type: "select", proxies: ["DIRECT", "节点选择", "自动选择"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png", ...commonFilter },
-    { name: "加密货币", type: "select", proxies: ["新加坡节点", "台湾节点", "日本节点", "手动切换", "DIRECT"], icon: "https://img.icons8.com/?size=100&id=t7U35n48Hn6S&format=png&color=000000" },
+    { name: "加密货币", type: "select", proxies: ["新加坡节点", "台湾节点", "日本节点", "手动切换", "DIRECT"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bitcoin.png" },
     { name: "广告拦截", type: "select", proxies: ["REJECT", "DIRECT"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png" },
     { name: "应用净化", type: "select", proxies: ["REJECT", "DIRECT"], icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png" },
     { name: "漏网之鱼", type: "select", proxies: appProxies, icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png", ...commonFilter },
-    
+
     ...regionGroups
   ];
 
@@ -327,7 +322,7 @@ function main(config) {
     "RULE-SET,UnBan,全球直连",
     "RULE-SET,BanAD,广告拦截",
     "RULE-SET,BanProgramAD,应用净化",
-    
+
     // --- 优先级 2: AI 服务 (高优先级，防止误走其他代理) ---
     "DOMAIN,labs.google,Google AI Labs",
     "DOMAIN-SUFFIX,labs.google.com,Google AI Labs",
@@ -340,11 +335,7 @@ function main(config) {
     "RULE-SET,claude,Claude",
     "RULE-SET,copilot,Copilot",
     "RULE-SET,bard,AIGC",
-    "RULE-SET,perplexity,Perplexity",
-    "RULE-SET,DeepL,DeepL",
-    "RULE-SET,Poe,Poe",
-    "RULE-SET,Suno,Suno",
-    "RULE-SET,Civitai,Civitai",
+    "RULE-SET,perplexity,AIGC",
     "RULE-SET,Cursor,Cursor",
     "RULE-SET,Grok,Grok",
     "RULE-SET,Midjourney,Midjourney",
@@ -361,22 +352,21 @@ function main(config) {
     "RULE-SET,Microsoft,微软",
     "RULE-SET,bing,微软",
     "RULE-SET,Bing,微软",
-    
+
     // --- 优先级 4: 生产力与开发 ---
     "RULE-SET,Notion,Notion",
     "RULE-SET,GitHub,GitHub",
-    "RULE-SET,Docker,Docker",
     "RULE-SET,Adobe,Adobe",
-    
+
     // --- 优先级 5: 社交网络 ---
-    "RULE-SET,Discord,Discord",
+    "RULE-SET,Discord,国外社交",
     "RULE-SET,telegram_domain,Telegram",
     "RULE-SET,telegram_ip,Telegram",
     "RULE-SET,x,国外社交",
     "RULE-SET,reddit,国外社交",
     "RULE-SET,Instagram,国外社交",
     "RULE-SET,Threads,国外社交",
-    
+
     // --- 优先级 6: 流媒体 ---
     "RULE-SET,Netflix,Netflix",
     "RULE-SET,Spotify,Spotify",
@@ -386,7 +376,7 @@ function main(config) {
     "RULE-SET,HBO,国外媒体",
     "RULE-SET,GlobalMedia,国外媒体",
     "RULE-SET,ProxyMedia,国外媒体",
-    
+
     // --- 优先级 7: 游戏 ---
     "RULE-SET,Epic,游戏平台",
     "RULE-SET,Origin,游戏平台",
@@ -398,10 +388,9 @@ function main(config) {
     "RULE-SET,ChinaMedia,国内媒体",
     "RULE-SET,BilibiliHMT,哔哩哔哩港澳台",
     "RULE-SET,NetEaseMusic,网易音乐",
-    
+
     // --- 优先级 8: 直连服务与工具 ---
     "RULE-SET,Speedtest,全球直连",
-    "RULE-SET,Cryptocurrency,加密货币",
     "RULE-SET,WeChat,微信",
     "RULE-SET,Apple,苹果服务",
     "RULE-SET,freedom,自由意志",
@@ -416,7 +405,7 @@ function main(config) {
     "RULE-SET,cn_ip,DIRECT",
     "RULE-SET,Download,全球直连",
     "GEOIP,CN,全球直连",
-    
+
     // --- 优先级 9: 兜底 ---
     "MATCH,漏网之鱼"
   ];
