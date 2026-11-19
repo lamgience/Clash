@@ -409,7 +409,9 @@ export default function main(config) {
   ];
   // Nyanpasu compatibility: expand include-all/filter into explicit node lists.
   const proxyNames = Array.isArray(config.proxies)
-    ? config.proxies.map((p) => typeof p === "string" ? p : p?.name).filter(Boolean)
+    ? [...new Set(config.proxies
+      .map((p) => typeof p === "string" ? p : p?.name)
+      .filter((name) => typeof name === "string" && name.trim()))]
     : [];
   for (const key of [
     "unified-delay", "tcp-concurrent", "keep-alive-interval", "find-process-mode",
@@ -419,14 +421,18 @@ export default function main(config) {
   const excluded = /Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新/i;
   for (const group of config["proxy-groups"] || []) {
     const filter = typeof group.filter === "string" ? group.filter.replace(/^\(\?i\)/, "") : null;
+    let matcher = null;
+    if (filter) {
+      try { matcher = new RegExp(filter, "i"); } catch (_) { matcher = null; }
+    }
     const matched = filter
-      ? proxyNames.filter((name) => {
-          try { return new RegExp(filter, "i").test(name) && !excluded.test(name); }
-          catch (_) { return false; }
-        })
+      ? (matcher ? proxyNames.filter((name) => matcher.test(name) && !excluded.test(name)) : [])
       : (group["include-all"] ? proxyNames.filter((name) => !excluded.test(name)) : []);
     if (group["include-all"] || filter) {
-      group.proxies = [...new Set([...(group.proxies || []), ...matched])];
+      group.proxies = [...new Set([
+        ...(Array.isArray(group.proxies) ? group.proxies : []),
+        ...matched
+      ])];
       if (!group.proxies.length) group.proxies = ["DIRECT"];
       delete group["include-all"];
       delete group["exclude-filter"];
