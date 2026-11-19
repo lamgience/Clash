@@ -44,19 +44,13 @@ function main(config) {
   const yamlConfig = {
     "mode": "rule",
     "mixed-port": 7897,
-    "allow-lan": true,
-    "bind-address": "*",                   // 强化局域网共享发现
     "log-level": "info",
     "ipv6": true,
-    "external-controller": "127.0.0.1:9090",
-    "secret": "",
-    "external-controller-pipe": "\\\\.\\pipe\\verge-mihomo",
 
     "unified-delay": true,
     "tcp-concurrent": true,
     "keep-alive-interval": 1800,
     "find-process-mode": "strict",
-    "global-client-fingerprint": "chrome",
 
     "profile": {
       "store-selected": true
@@ -94,41 +88,12 @@ function main(config) {
       "flash.cn": "127.0.0.1"
     },
 
-    "ntp-server": "ntp.aliyun.com",
-
-    "dns": {
+    "ntp": {
       "enable": true,
-      "listen": ":53",
-      "ipv6": true,
-      "enhanced-mode": "fake-ip",
-      "fake-ip-range": "198.18.0.1/16",
-      "fake-ip-filter": [
-        "*.lan", "*.local", "*.arpa",
-        "+.market.xiaomi.com", "localhost.ptlogin2.qq.com",
-        "time.*.com", "ntp.*.com", "+.pool.ntp.org",
-        "*.msftncsi.com", "www.msftconnecttest.com", "+.msftconnecttest.com",
-        "xbox.*.com", "xboxlive.com",
-        "stun.*", "+.stun.*.*", "+.stun.*", "+.ice.*.*", "+.360.cn"
-      ],
-      "fake-ip-filter-mode": "blacklist",
-      "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-      "nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query", "8.8.8.8"],
-      "fallback": [],
-      "fallback-filter": { "geoip": true, "geoip-code": "CN", "ipcidr": ["240.0.0.0/4"] },
-      "nameserver-policy": {
-        "geosite:cn,private": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"],
-        "geosite:geolocation-!cn": ["https://dns.google/dns-query", "https://1.1.1.1/dns-query"]
-      }
+      "server": "ntp.aliyun.com",
+      "port": 123
     },
 
-    "tun": {
-      "enable": true,
-      "stack": "mixed",
-      "auto-route": true,
-      "auto-detect-interface": true,
-      "dns-hijack": ["any:53"],
-      "mtu": 1500
-    }
   };
   config = Object.assign(config, yamlConfig);
 
