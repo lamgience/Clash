@@ -8,8 +8,8 @@ export default function main(config) {
   // [0] 预定义常量与策略逻辑
   // ========================================================================
   const regionProxies = [
-    "香港节点", "台湾节点", "美国节点", "日本节点", "新加坡节点",
-    "英国节点", "韩国节点", "澳大利亚节点", "俄罗斯节点", "其他节点"
+    "香港节点", "澳门节点", "台湾节点", "日本节点", "韩国节点", "新加坡节点", "马来西亚节点", "泰国节点", "越南节点", "印度尼西亚节点", "菲律宾节点", "印度节点", "美国节点", "加拿大节点", "墨西哥节点", "巴西节点", "阿根廷节点", "英国节点", "德国节点", "法国节点", "荷兰节点", "瑞士节点", "意大利节点", "西班牙节点", "葡萄牙节点", "爱尔兰节点", "比利时节点", "奥地利节点", "芬兰节点", "瑞典节点", "挪威节点", "丹麦节点", "波兰节点", "捷克节点", "罗马尼亚节点", "乌克兰节点", "俄罗斯节点", "土耳其节点", "阿联酋节点", "以色列节点", "哈萨克斯坦节点", "澳大利亚节点", "新西兰节点", "南非节点",
+    "其他节点"
   ];
 
   const baseProxies = [
@@ -25,12 +25,8 @@ export default function main(config) {
   ];
 
   const aiProxies = [
-    "美国节点", "日本节点", "新加坡节点",
-    "手动切换",
-    "自动选择", "节点选择",
-    "香港节点", "台湾节点",
-    "英国节点", "韩国节点", "澳大利亚节点", "俄罗斯节点", "其他节点",
-    "DIRECT"
+    ...regionProxies,
+    "手动切换", "自动选择", "节点选择", "DIRECT"
   ];
 
   const commonFilter = {
@@ -162,17 +158,52 @@ export default function main(config) {
   });
 
   const regionGroups = [
-    autoGroup("香港节点", "(?i)香港|Hong Kong|HK|🇭🇰|HongKong|HGC|WTT|HKBN|PCCW", "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png"),
-    autoGroup("台湾节点", "(?i)台湾|臺灣|Taiwan|TW|🇹🇼|TaiWan|Hinet|TFN", "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png"),
-    autoGroup("美国节点", "(?i)美国|USA|United States|US|🇺🇸|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara", "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png"),
-    autoGroup("日本节点", "(?i)日本|Japan|JP|🇯🇵|Tokyo|Osaka|Saitama|Kawaguchi", "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png"),
-    autoGroup("新加坡节点", "(?i)新加坡|Singapore|SG|🇸🇬|狮城|Lion City", "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png"),
-    autoGroup("英国节点", "(?i)英国|UK|United Kingdom|GB|🇬🇧|London|England", "https://img.icons8.com/?size=100&id=15534&format=png&color=000000"),
-    autoGroup("韩国节点", "(?i)韩国|Korea|KR|🇰🇷|Seoul|KOR", "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png"),
-    autoGroup("澳大利亚节点", "(?i)澳大利亚|Australia|AU|🇦🇺|Sydney|Melbourne", "https://img.icons8.com/?size=100&id=22557&format=png&color=000000"),
-    autoGroup("俄罗斯节点", "(?i)俄罗斯|Russia|RU|🇷🇺|Moscow|Saint Petersburg", "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg"),
+    autoGroup("香港节点", "(?i)香港|Hong Kong|\\bHK\\b|🇭🇰|HongKong|HGC|WTT|HKBN|PCCW", "https://flagcdn.com/w80/hk.png"),
+    autoGroup("澳门节点", "(?i)澳门|澳門|Macau|Macao|\\bMO\\b|🇲🇴", "https://flagcdn.com/w80/mo.png"),
+    autoGroup("台湾节点", "(?i)台湾|臺灣|Taiwan|\\bTW\\b|🇹🇼|TaiWan|Hinet|TFN", "https://flagcdn.com/w80/tw.png"),
+    autoGroup("日本节点", "(?i)日本|Japan|\\bJP\\b|🇯🇵|Tokyo|Osaka|Saitama|Kawaguchi|Nagoya|Fukuoka", "https://flagcdn.com/w80/jp.png"),
+    autoGroup("韩国节点", "(?i)韩国|韓國|Korea|\\bKR\\b|🇰🇷|Seoul|KOR|Busan", "https://flagcdn.com/w80/kr.png"),
+    autoGroup("新加坡节点", "(?i)新加坡|Singapore|\\bSG\\b|🇸🇬|狮城|Lion City", "https://flagcdn.com/w80/sg.png"),
+    autoGroup("马来西亚节点", "(?i)马来西亚|馬來西亞|Malaysia|\\bMY\\b|🇲🇾|Kuala Lumpur|Johor", "https://flagcdn.com/w80/my.png"),
+    autoGroup("泰国节点", "(?i)泰国|泰國|Thailand|\\bTH\\b|🇹🇭|Bangkok", "https://flagcdn.com/w80/th.png"),
+    autoGroup("越南节点", "(?i)越南|Vietnam|\\bVN\\b|🇻🇳|Hanoi|Ho Chi Minh", "https://flagcdn.com/w80/vn.png"),
+    autoGroup("印度尼西亚节点", "(?i)印度尼西亚|印尼|Indonesia|\\bID\\b|🇮🇩|Jakarta", "https://flagcdn.com/w80/id.png"),
+    autoGroup("菲律宾节点", "(?i)菲律宾|菲律賓|Philippines|\\bPH\\b|🇵🇭|Manila", "https://flagcdn.com/w80/ph.png"),
+    autoGroup("印度节点", "(?i)印度|India|\\bIN\\b|🇮🇳|Mumbai|Delhi|Bangalore", "https://flagcdn.com/w80/in.png"),
+    autoGroup("美国节点", "(?i)美国|USA|United States|\\bUS\\b|🇺🇸|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara|Ashburn", "https://flagcdn.com/w80/us.png"),
+    autoGroup("加拿大节点", "(?i)加拿大|Canada|\\bCA\\b|🇨🇦|Toronto|Vancouver|Montreal", "https://flagcdn.com/w80/ca.png"),
+    autoGroup("墨西哥节点", "(?i)墨西哥|Mexico|\\bMX\\b|🇲🇽|Mexico City", "https://flagcdn.com/w80/mx.png"),
+    autoGroup("巴西节点", "(?i)巴西|Brazil|\\bBR\\b|🇧🇷|Sao Paulo|São Paulo", "https://flagcdn.com/w80/br.png"),
+    autoGroup("阿根廷节点", "(?i)阿根廷|Argentina|\\bAR\\b|🇦🇷|Buenos Aires", "https://flagcdn.com/w80/ar.png"),
+    autoGroup("英国节点", "(?i)英国|UK|United Kingdom|\\bGB\\b|🇬🇧|London|England|Manchester", "https://flagcdn.com/w80/gb.png"),
+    autoGroup("德国节点", "(?i)德国|Germany|\\bDE\\b|🇩🇪|Frankfurt|Berlin|Munich", "https://flagcdn.com/w80/de.png"),
+    autoGroup("法国节点", "(?i)法国|France|\\bFR\\b|🇫🇷|Paris|Marseille", "https://flagcdn.com/w80/fr.png"),
+    autoGroup("荷兰节点", "(?i)荷兰|Netherlands|\\bNL\\b|🇳🇱|Amsterdam|Rotterdam", "https://flagcdn.com/w80/nl.png"),
+    autoGroup("瑞士节点", "(?i)瑞士|Switzerland|\\bCH\\b|🇨🇭|Zurich|Geneva", "https://flagcdn.com/w80/ch.png"),
+    autoGroup("意大利节点", "(?i)意大利|Italy|\\bIT\\b|🇮🇹|Milan|Rome", "https://flagcdn.com/w80/it.png"),
+    autoGroup("西班牙节点", "(?i)西班牙|Spain|\\bES\\b|🇪🇸|Madrid|Barcelona", "https://flagcdn.com/w80/es.png"),
+    autoGroup("葡萄牙节点", "(?i)葡萄牙|Portugal|\\bPT\\b|🇵🇹|Lisbon", "https://flagcdn.com/w80/pt.png"),
+    autoGroup("爱尔兰节点", "(?i)爱尔兰|Ireland|\\bIE\\b|🇮🇪|Dublin", "https://flagcdn.com/w80/ie.png"),
+    autoGroup("比利时节点", "(?i)比利时|比利時|Belgium|\\bBE\\b|🇧🇪|Brussels", "https://flagcdn.com/w80/be.png"),
+    autoGroup("奥地利节点", "(?i)奥地利|奧地利|Austria|\\bAT\\b|🇦🇹|Vienna", "https://flagcdn.com/w80/at.png"),
+    autoGroup("芬兰节点", "(?i)芬兰|芬蘭|Finland|\\bFI\\b|🇫🇮|Helsinki", "https://flagcdn.com/w80/fi.png"),
+    autoGroup("瑞典节点", "(?i)瑞典|Sweden|\\bSE\\b|🇸🇪|Stockholm", "https://flagcdn.com/w80/se.png"),
+    autoGroup("挪威节点", "(?i)挪威|Norway|\\bNO\\b|🇳🇴|Oslo", "https://flagcdn.com/w80/no.png"),
+    autoGroup("丹麦节点", "(?i)丹麦|丹麥|Denmark|\\bDK\\b|🇩🇰|Copenhagen", "https://flagcdn.com/w80/dk.png"),
+    autoGroup("波兰节点", "(?i)波兰|波蘭|Poland|\\bPL\\b|🇵🇱|Warsaw", "https://flagcdn.com/w80/pl.png"),
+    autoGroup("捷克节点", "(?i)捷克|Czech|Czechia|\\bCZ\\b|🇨🇿|Prague", "https://flagcdn.com/w80/cz.png"),
+    autoGroup("罗马尼亚节点", "(?i)罗马尼亚|羅馬尼亞|Romania|\\bRO\\b|🇷🇴|Bucharest", "https://flagcdn.com/w80/ro.png"),
+    autoGroup("乌克兰节点", "(?i)乌克兰|烏克蘭|Ukraine|\\bUA\\b|🇺🇦|Kyiv", "https://flagcdn.com/w80/ua.png"),
+    autoGroup("俄罗斯节点", "(?i)俄罗斯|俄羅斯|Russia|\\bRU\\b|🇷🇺|Moscow|Saint Petersburg", "https://flagcdn.com/w80/ru.png"),
+    autoGroup("土耳其节点", "(?i)土耳其|土耳其|Turkey|\\bTR\\b|🇹🇷|Istanbul|Ankara", "https://flagcdn.com/w80/tr.png"),
+    autoGroup("阿联酋节点", "(?i)阿联酋|阿聯酋|UAE|United Arab Emirates|\\bAE\\b|🇦🇪|Dubai|Abu Dhabi", "https://flagcdn.com/w80/ae.png"),
+    autoGroup("以色列节点", "(?i)以色列|Israel|\\bIL\\b|🇮🇱|Tel Aviv", "https://flagcdn.com/w80/il.png"),
+    autoGroup("哈萨克斯坦节点", "(?i)哈萨克斯坦|哈薩克斯坦|Kazakhstan|\\bKZ\\b|🇰🇿|Almaty", "https://flagcdn.com/w80/kz.png"),
+    autoGroup("澳大利亚节点", "(?i)澳大利亚|澳洲|Australia|\\bAU\\b|🇦🇺|Sydney|Melbourne|Brisbane|Perth", "https://flagcdn.com/w80/au.png"),
+    autoGroup("新西兰节点", "(?i)新西兰|紐西蘭|New Zealand|\\bNZ\\b|🇳🇿|Auckland|Wellington", "https://flagcdn.com/w80/nz.png"),
+    autoGroup("南非节点", "(?i)南非|South Africa|\\bZA\\b|🇿🇦|Johannesburg|Cape Town", "https://flagcdn.com/w80/za.png"),
     autoGroup("奈飞节点", "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media", "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png", "https://www.netflix.com"),
-    autoGroup("其他节点", "(?i)阿根廷|AR|🇦🇷|奥地利|AT|🇦🇹|巴西|BR|🇧🇷|加拿大|CA|🇨🇦|瑞士|CH|🇨🇭|智利|CL|🇨🇱|德国|Germany|DE|🇩🇪|西班牙|ES|🇪🇸|芬兰|FI|🇫🇮|法国|France|FR|🇫🇷|印尼|ID|🇮🇩|爱尔兰|IE|🇮🇪|印度|IN|🇮🇳|意大利|IT|🇮🇹|卢森堡|LU|🇱🇺|马来西亚|MY|🇲🇾|荷兰|NL|🇳🇱|菲律宾|PH|🇵🇭|泰国|TH|🇹🇭|土耳其|TR|🇹🇷|越南|VN|🇻🇳|南非|ZA|🇿🇦", "https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000"),
+    autoGroup("其他节点", "(?i)其他|Other|Others|备用|未分类|Unknown|Unclassified", "https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000"),
   ];
 
   config["proxy-groups"] = [
