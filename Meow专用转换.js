@@ -418,5 +418,25 @@ export default function main(config) {
     }
     if (!Array.isArray(group.proxies) && !Array.isArray(group.use)) group.proxies = ["DIRECT"];
   }
+
+  const availableProxyNames = Array.isArray(config.proxies) ? [...new Set(config.proxies.map((p) => typeof p === "string" ? p : p?.name).filter((n) => typeof n === "string" && n.trim()))] : null;
+  const countryGroupNames = new Set((config["proxy-groups"] || []).map((g) => g.name).filter((name) => typeof name === "string" && /节点$/.test(name) && !["奈飞节点", "其他节点"].includes(name)));
+  if (availableProxyNames) {
+    const excludedNames = /Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新/i;
+    const emptyCountryGroups = new Set();
+    for (const group of config["proxy-groups"] || []) {
+      if (!countryGroupNames.has(group.name)) continue;
+      const filter = typeof group.filter === "string" ? group.filter.replace(/^\(\?i\)/, "") : "";
+      let matched = [];
+      if (filter) { try { matched = availableProxyNames.filter((name) => new RegExp(filter, "i").test(name) && !excludedNames.test(name)); } catch (_) {} }
+      else matched = (group.proxies || []).filter((name) => availableProxyNames.includes(name));
+      if (!matched.length) emptyCountryGroups.add(group.name);
+    }
+    if (emptyCountryGroups.size) config["proxy-groups"] = (config["proxy-groups"] || []).filter((g) => !emptyCountryGroups.has(g.name)).map((g) => { if (Array.isArray(g.proxies)) g.proxies = g.proxies.filter((n) => !emptyCountryGroups.has(n)); return g; });
+  }
+  const groupPriority = ["节点选择", "自动选择", "手动切换", "AIGC", "Google AI Labs", "Google Antigravity", "Gemini", "OpenAi", "Copilot", "Claude", "Perplexity", "Cursor", "Grok", "Midjourney", "HuggingFace", "DeepL", "Poe", "Suno", "Civitai", "Notion", "GitHub", "Docker", "Adobe", "微软", "谷歌", "应用专用", "机场专线", "自由意志", "Discord", "Telegram", "国外社交", "国外媒体", "YouTube", "Netflix", "Spotify", "游戏平台", "国内媒体", "苹果服务", "微信", "哔哩哔哩", "哔哩哔哩港澳台", "巴哈姆特", "网易音乐", "加密货币", ...[...countryGroupNames], "奈飞节点", "其他节点", "全球直连", "广告拦截", "应用净化", "漏网之鱼"];
+  const priorityIndex = new Map(groupPriority.map((name, index) => [name, index]));
+  config["proxy-groups"] = (config["proxy-groups"] || []).map((group, index) => ({ group, index })).sort((a, b) => (priorityIndex.get(a.group.name) ?? 9999) - (priorityIndex.get(b.group.name) ?? 9999) || a.index - b.index).map(({ group }) => group);
+
   return config;
 }
