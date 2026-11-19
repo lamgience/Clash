@@ -620,7 +620,7 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
-    proxies: [HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区]
+    proxies: [HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区]
 
   - name: 🚀 自动优选
     type: url-test
@@ -636,137 +636,137 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
-    proxies: [🚀 自动优选, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 🤖 AIGC 服务
     type: select
     icon: "https://img.icons8.com/?size=100&id=mSC3ebe4W6w6&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: ✨ Gemini 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=ETVUfl0Ylh1p&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🧠 OpenAI 组
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🧑‍💻 Copilot 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=A5L2E9lJjaSB&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🖥️ Cursor 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=DiGZkjCzyZXn&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🤖 Grok 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=USGXKHXKl9X7&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🎨 Midjourney 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=PBeVLDM6af80&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🤗 HuggingFace 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=LMTLvMIHsh1F&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🪄 Claude 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=kDfpmWz6OSCQ&format=png&color=000000"
-    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [USA 美国地区, Japan 日本地区, Singapore 新加坡地区, 🖐️ 手动指定, 🚀 自动优选, 🎯 节点切换, HongKong 香港地区, Taiwan 台湾地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 🕊️ 自由意志
     type: select
     icon: "https://img.icons8.com/?size=100&id=kYqbEzjS6EBh&format=png&color=000000"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
   - name: 📝 Notion 组
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Notion.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 🐙 GitHub 组
     type: select
     icon: "https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 🎨 Adobe 组
     type: select
     icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adobe.svg"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 🪟 微软服务
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 🔍 谷歌服务
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: ✈️ Telegram 组
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 💬 国外社交
     type: select
     icon: "https://img.icons8.com/?size=100&id=ZNMifeqJbPRv&format=png&color=000000"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 📰 国外媒体
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: ▶️ YouTube 组
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
   
   - name: 🎬 Netflix 组
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    proxies: [Netflix 奈飞专区, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [Netflix 奈飞专区, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 🎵 Spotify 组
     type: select
     icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 🎮 游戏平台
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: 📺 国内媒体
     type: select
@@ -776,12 +776,12 @@ proxy-groups:
   - name: 💻 苹果服务
     type: select
     icon: https://img.icons8.com/?size=100&id=fpDIWrTmgyvx&format=png&color=000000
-    proxies: [DIRECT, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区]
+    proxies: [DIRECT, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区]
 
   - name: 💬 微信服务
     type: select
     icon: https://img.icons8.com/?size=100&id=qXin8dFXNXBX&format=png&color=000000
-    proxies: [DIRECT, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区]
+    proxies: [DIRECT, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区]
 
   - name: 📺 哔哩哔哩
     type: select
@@ -809,7 +809,7 @@ proxy-groups:
   - name: ✈️ 机场专线
     type: select
     icon: "https://img.icons8.com/?size=100&id=guJpUesVT0mI&format=png&color=000000"
-    proxies: [DIRECT, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区]
+    proxies: [DIRECT, 🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区]
 
   - name: 🌐 全局直连
     type: select
@@ -829,15 +829,15 @@ proxy-groups:
   - name: 🐠 漏网之鱼
     type: select
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png"
-    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Others 其他地区, DIRECT]
+    proxies: [🚀 自动优选, 🎯 节点切换, 🖐️ 手动指定, HongKong 香港地区, Taiwan 台湾地区, USA 美国地区, Japan 日本地区, Singapore 新加坡地区, UK 英国地区, Korea 韩国地区, Australia 澳洲地区, Russia 俄国地区, Macau 澳门地区, Malaysia 马来西亚地区, Thailand 泰国地区, Vietnam 越南地区, Indonesia 印尼地区, Philippines 菲律宾地区, India 印度地区, Canada 加拿大地区, Mexico 墨西哥地区, Brazil 巴西地区, Argentina 阿根廷地区, Germany 德国地区, France 法国地区, Netherlands 荷兰地区, Switzerland 瑞士地区, Italy 意大利地区, Spain 西班牙地区, Portugal 葡萄牙地区, Ireland 爱尔兰地区, Belgium 比利时地区, Austria 奥地利地区, Finland 芬兰地区, Sweden 瑞典地区, Norway 挪威地区, Denmark 丹麦地区, Poland 波兰地区, Czech 捷克地区, Romania 罗马尼亚地区, Ukraine 乌克兰地区, Turkey 土耳其地区, UAE 阿联酋地区, Israel 以色列地区, Kazakhstan 哈萨克斯坦地区, NewZealand 新西兰地区, SouthAfrica 南非地区, Others 其他地区, DIRECT]
 
   - name: HongKong 香港地区
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
-    filter: "(?i)香港|Hong Kong|HK|HongKong|HGC|WTT|HKBN|PCCW"
+    icon: https://flagcdn.com/w80/hk.png
+    filter: "(?i)香港|Hong Kong|\\bHK\\b|HongKong|HGC|WTT|HKBN|PCCW"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -846,8 +846,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
-    filter: "(?i)台湾|臺灣|Taiwan|TW|TaiWan|Hinet|TFN"
+    icon: https://flagcdn.com/w80/tw.png
+    filter: "(?i)台湾|臺灣|Taiwan|\\bTW\\b|TaiWan|Hinet|TFN"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -856,8 +856,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-    filter: "(?i)美国|USA|United States|US|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara"
+    icon: https://flagcdn.com/w80/us.png
+    filter: "(?i)美国|USA|United States|\\bUS\\b|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -866,8 +866,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
-    filter: "(?i)日本|Japan|JP|Tokyo|Osaka|Saitama|Kawaguchi"
+    icon: https://flagcdn.com/w80/jp.png
+    filter: "(?i)日本|Japan|\\bJP\\b|Tokyo|Osaka|Saitama|Kawaguchi"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -876,8 +876,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
-    filter: "(?i)新加坡|Singapore|SG|狮城|Lion City"
+    icon: https://flagcdn.com/w80/sg.png
+    filter: "(?i)新加坡|Singapore|\\bSG\\b|狮城|Lion City"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -886,8 +886,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://img.icons8.com/?size=100&id=15534&format=png&color=000000
-    filter: "(?i)英国|UK|United Kingdom|GB|London|England"
+    icon: https://flagcdn.com/w80/gb.png
+    filter: "(?i)英国|UK|United Kingdom|\\bGB\\b|London|England"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -896,8 +896,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
-    filter: "(?i)韩国|Korea|KR|Seoul|KOR"
+    icon: https://flagcdn.com/w80/kr.png
+    filter: "(?i)韩国|Korea|\\bKR\\b|Seoul|KOR"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -906,8 +906,8 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://img.icons8.com/?size=100&id=22557&format=png&color=000000
-    filter: "(?i)澳大利亚|Australia|AU|Sydney|Melbourne"
+    icon: https://flagcdn.com/w80/au.png
+    filter: "(?i)澳大利亚|Australia|\\bAU\\b|Sydney|Melbourne"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
@@ -916,17 +916,367 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg
-    filter: "(?i)俄罗斯|Russia|RU|Moscow|Saint Petersburg"
+    icon: https://flagcdn.com/w80/ru.png
+    filter: "(?i)俄罗斯|Russia|\\bRU\\b|Moscow|Saint Petersburg"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
+
+  - name: Macau 澳门地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/mo.png
+    filter: "(?i)澳门|澳門|Macau|Macao|\\bMO\\b|🇲🇴"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Malaysia 马来西亚地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/my.png
+    filter: "(?i)马来西亚|馬來西亞|Malaysia|\\bMY\\b|🇲🇾|Kuala Lumpur"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Thailand 泰国地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/th.png
+    filter: "(?i)泰国|泰國|Thailand|\\bTH\\b|🇹🇭|Bangkok"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Vietnam 越南地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/vn.png
+    filter: "(?i)越南|Vietnam|\\bVN\\b|🇻🇳|Hanoi"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Indonesia 印尼地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/id.png
+    filter: "(?i)印度尼西亚|印尼|Indonesia|\\bID\\b|🇮🇩|Jakarta"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Philippines 菲律宾地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ph.png
+    filter: "(?i)菲律宾|菲律賓|Philippines|\\bPH\\b|🇵🇭|Manila"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: India 印度地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/in.png
+    filter: "(?i)印度|India|\\bIN\\b|🇮🇳|Mumbai|Delhi"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Canada 加拿大地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ca.png
+    filter: "(?i)加拿大|Canada|\\bCA\\b|🇨🇦|Toronto|Vancouver"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Mexico 墨西哥地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/mx.png
+    filter: "(?i)墨西哥|Mexico|\\bMX\\b|🇲🇽|Mexico City"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Brazil 巴西地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/br.png
+    filter: "(?i)巴西|Brazil|\\bBR\\b|🇧🇷|Sao Paulo"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Argentina 阿根廷地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ar.png
+    filter: "(?i)阿根廷|Argentina|\\bAR\\b|🇦🇷|Buenos Aires"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Germany 德国地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/de.png
+    filter: "(?i)德国|Germany|\\bDE\\b|🇩🇪|Frankfurt|Berlin"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: France 法国地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/fr.png
+    filter: "(?i)法国|France|\\bFR\\b|🇫🇷|Paris"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Netherlands 荷兰地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/nl.png
+    filter: "(?i)荷兰|Netherlands|\\bNL\\b|🇳🇱|Amsterdam"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Switzerland 瑞士地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ch.png
+    filter: "(?i)瑞士|Switzerland|\\bCH\\b|🇨🇭|Zurich"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Italy 意大利地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/it.png
+    filter: "(?i)意大利|Italy|\\bIT\\b|🇮🇹|Milan|Rome"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Spain 西班牙地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/es.png
+    filter: "(?i)西班牙|Spain|\\bES\\b|🇪🇸|Madrid"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Portugal 葡萄牙地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/pt.png
+    filter: "(?i)葡萄牙|Portugal|\\bPT\\b|🇵🇹|Lisbon"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Ireland 爱尔兰地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ie.png
+    filter: "(?i)爱尔兰|Ireland|\\bIE\\b|🇮🇪|Dublin"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Belgium 比利时地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/be.png
+    filter: "(?i)比利时|比利時|Belgium|\\bBE\\b|🇧🇪|Brussels"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Austria 奥地利地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/at.png
+    filter: "(?i)奥地利|奧地利|Austria|\\bAT\\b|🇦🇹|Vienna"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Finland 芬兰地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/fi.png
+    filter: "(?i)芬兰|芬蘭|Finland|\\bFI\\b|🇫🇮|Helsinki"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Sweden 瑞典地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/se.png
+    filter: "(?i)瑞典|Sweden|\\bSE\\b|🇸🇪|Stockholm"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Norway 挪威地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/no.png
+    filter: "(?i)挪威|Norway|\\bNO\\b|🇳🇴|Oslo"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Denmark 丹麦地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/dk.png
+    filter: "(?i)丹麦|丹麥|Denmark|\\bDK\\b|🇩🇰|Copenhagen"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Poland 波兰地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/pl.png
+    filter: "(?i)波兰|波蘭|Poland|\\bPL\\b|🇵🇱|Warsaw"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Czech 捷克地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/cz.png
+    filter: "(?i)捷克|Czech|Czechia|\\bCZ\\b|🇨🇿|Prague"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Romania 罗马尼亚地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ro.png
+    filter: "(?i)罗马尼亚|羅馬尼亞|Romania|\\bRO\\b|🇷🇴|Bucharest"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Ukraine 乌克兰地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ua.png
+    filter: "(?i)乌克兰|烏克蘭|Ukraine|\\bUA\\b|🇺🇦|Kyiv"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Turkey 土耳其地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/tr.png
+    filter: "(?i)土耳其|Turkey|\\bTR\\b|🇹🇷|Istanbul"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: UAE 阿联酋地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/ae.png
+    filter: "(?i)阿联酋|阿聯酋|UAE|\\bAE\\b|🇦🇪|Dubai"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Israel 以色列地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/il.png
+    filter: "(?i)以色列|Israel|\\bIL\\b|🇮🇱|Tel Aviv"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: Kazakhstan 哈萨克斯坦地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/kz.png
+    filter: "(?i)哈萨克斯坦|哈薩克斯坦|Kazakhstan|\\bKZ\\b|🇰🇿|Almaty"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: NewZealand 新西兰地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/nz.png
+    filter: "(?i)新西兰|紐西蘭|New Zealand|\\bNZ\\b|🇳🇿|Auckland"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
+
+  - name: SouthAfrica 南非地区
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://flagcdn.com/w80/za.png
+    filter: "(?i)南非|South Africa|\\bZA\\b|🇿🇦|Johannesburg"
+    include-all: true
+    exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|update"
 
   - name: Netflix 奈飞专区
     type: url-test
     url: https://www.netflix.com
     interval: 300
     tolerance: 50
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    icon: https://flagcdn.com/w80/us.png
     filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
@@ -937,7 +1287,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     icon: https://img.icons8.com/?size=100&id=QiwSMfboPt2R&format=png&color=000000
-    filter: "(?i)阿根廷|AR|奥地利|AT|巴西|BR|加拿大|CA|瑞士|CH|智利|CL|德国|Germany|DE|西班牙|ES|芬兰|FI|法国|France|FR|印尼|ID|爱尔兰|IE|印度|IN|意大利|IT|卢森堡|LU|马来西亚|MY|荷兰|NL|菲律宾|PH|泰国|TH|土耳其|TR|越南|VN|南非|ZA"
+    filter: "(?i)其他|Other|Others|备用|未分类|Unknown|Unclassified"
     include-all: true
     exclude-filter: "(?i)Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|请勿|剩余|套餐|跳转|官网|运营|更新"
 
