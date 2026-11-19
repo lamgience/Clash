@@ -566,10 +566,10 @@ proxy-groups:
       - "俄罗斯节点"
       - "其他节点"
   - name: "自动选择"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
+    type: "select"
+    proxies:
+      - "手动切换"
+      - "DIRECT"
   - name: "AIGC"
     type: "select"
     proxies:
@@ -1260,71 +1260,82 @@ proxy-groups:
       - "其他节点"
       - "DIRECT"
   - name: "香港节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)香港|Hong Kong|HK|🇭🇰|HongKong|HGC|WTT|HKBN|PCCW"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "台湾节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)台湾|臺灣|Taiwan|TW|🇹🇼|TaiWan|Hinet|TFN"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "美国节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)美国|USA|United States|US|🇺🇸|America|Los Angeles|San Jose|Silicon Valley|Seattle|Chicago|New York|Miami|Atlanta|Dallas|Fremont|Phoenix|Santa Clara"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "日本节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)日本|Japan|JP|🇯🇵|Tokyo|Osaka|Saitama|Kawaguchi"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "新加坡节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)新加坡|Singapore|SG|🇸🇬|狮城|Lion City"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "英国节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)英国|UK|United Kingdom|GB|🇬🇧|London|England"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "韩国节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)韩国|Korea|KR|🇰🇷|Seoul|KOR"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "澳大利亚节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)澳大利亚|Australia|AU|🇦🇺|Sydney|Melbourne"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "俄罗斯节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)俄罗斯|Russia|RU|🇷🇺|Moscow|Saint Petersburg"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "奈飞节点"
-    type: "url-test"
-    url: "https://www.netflix.com"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
   - name: "其他节点"
-    type: "url-test"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
-    filter: "(?i)阿根廷|AR|🇦🇷|奥地利|AT|🇦🇹|巴西|BR|🇧🇷|加拿大|CA|🇨🇦|瑞士|CH|🇨🇭|智利|CL|🇨🇱|德国|Germany|DE|🇩🇪|西班牙|ES|🇪🇸|芬兰|FI|🇫🇮|法国|France|FR|🇫🇷|印尼|ID|🇮🇩|爱尔兰|IE|🇮🇪|印度|IN|🇮🇳|意大利|IT|🇮🇹|卢森堡|LU|🇱🇺|马来西亚|MY|🇲🇾|荷兰|NL|🇳🇱|菲律宾|PH|🇵🇭|泰国|TH|🇹🇭|土耳其|TR|🇹🇷|越南|VN|🇻🇳|南非|ZA|🇿🇦"
+    type: "select"
+    proxies:
+      - "自动选择"
+      - "节点选择"
+      - "手动切换"
+      - "DIRECT"
 rules:
   - "DST-PORT,123,DIRECT"
   - "RULE-SET,LocalAreaNetwork,全球直连"
